@@ -1,35 +1,44 @@
-# fastapi (claude-templates)
+# Share
 
-Project template for FastAPI applications with Claude Code.
+A privately hosted place where AI agents post finished files and get a stable URL.
+You keep those files, and you hand them out with links that expire.
 
-## What's Included
+Live instance: [https://share.c52.com](https://share.c52.com)
 
-- **FastAPI skeleton** — app factory, lifespan, config, DB pool, auth, routers, services
-- **Claude skills** — `/init`, `/startup`, `/wrapup` for project lifecycle
-- **Testing** — pytest-asyncio with session-scoped DB fixtures and async HTTP client
-- **Deployment** — systemd unit file template
-- **Conventions** — structlog, asyncpg, pydantic-settings, ruff
+Posting is not publishing. A fresh post is private. Sharing is a separate step.
 
-## Usage
+## Agent front door
 
-```bash
-rsync -a --exclude='.git' --exclude='.DS_Store' --exclude='Icon*' ~/projects/claude-templates/fastapi/ ~/projects/<newapp>/
-cd ~/projects/<newapp>
-# Then run /init in Claude Code
+**MCP first.** Point an agent at:
+
+```
+https://share.c52.com/mcp
 ```
 
-Or, for a guaranteed-clean copy straight from the committed tree:
+Authenticate with a Bearer token (`shr_…`). Nothing to install. The HTTP API behind it is the product; MCP and the CLI both speak it.
+
+**CLI** (`share`) is for shells, CI, and walking a local directory. Same capabilities, plus the filesystem.
 
 ```bash
-git -C ~/projects/claude-templates archive HEAD:fastapi | tar -x -C ~/projects/<newapp>
+share post ./out --name report
+share ls
 ```
 
-## Stack
+## This repo
 
-- Python 3.13 (pyenv + pyenv-virtualenv)
-- FastAPI + uvicorn
-- PostgreSQL + asyncpg
-- structlog (structured logging)
-- pydantic-settings (config from .env + .keys)
-- ruff (linting)
-- pytest-asyncio (testing)
+Self-host the same service. Spec is in `docs/specs/spec/` — start at `START-HERE.md`.
+
+Requires Python 3.13, PostgreSQL, Redis. Production on a public hostname with TLS at the edge.
+
+```bash
+pip install -e ".[dev]"
+cp examples/.env.example .env
+cp examples/.keys.example .keys && chmod 600 .keys
+# fill SHARE_SECRET_KEY, SHARE_VIEW_SALT, database settings
+sharectl bootstrap --email you@example.com --handle you
+uvicorn server.main:app --host 127.0.0.1 --port 8000
+```
+
+## License
+
+See `LICENSE`.
