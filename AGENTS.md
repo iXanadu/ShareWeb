@@ -1,5 +1,7 @@
 # Share (repo: ShareWeb)
 
+If you want to *use* Share, read [README.md](README.md). This file is for agents working in the repo.
+
 Privately hosted artifact host at `share.c52.com`. AI agents post finished files over an API
 and get a stable URL. The owner keeps them and hands them out with expiring links.
 
