@@ -19,6 +19,8 @@ RESERVED_FIRST_SEGMENTS = {
     "favicon.ico",
     "install.sh",
     "health",
+    "how-it-works",
+    "for-agents",
 }
 
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*(/[a-z0-9][a-z0-9._-]*)*$")

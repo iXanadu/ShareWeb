@@ -19,7 +19,13 @@ router = APIRouter(tags=["serve"])
 @router.get("/robots.txt")
 async def robots() -> Response:
     return Response(
-        content="User-agent: *\nDisallow: /\n",
+        content=(
+            "User-agent: *\n"
+            "Allow: /$\n"
+            "Allow: /how-it-works\n"
+            "Allow: /for-agents\n"
+            "Disallow: /\n"
+        ),
         media_type="text/plain; charset=utf-8",
         headers={"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow"},
     )

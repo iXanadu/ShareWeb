@@ -43,7 +43,10 @@ The complete reserved list is therefore small and fixed:
 
 ```
 ~   s   api   mcp   auth   internal   .well-known   robots.txt   favicon.ico   install.sh
+how-it-works   for-agents
 ```
+
+Public marketing pages occupy `/`, `/how-it-works` and `/for-agents`. They are not artifacts.
 
 Handles additionally may not be any of: `www`, `admin`, `root`, `system`, `support`, `help`,
 `about`, `status`, `null`, `undefined`.

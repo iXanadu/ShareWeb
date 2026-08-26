@@ -10,7 +10,7 @@ from .config import get_settings
 from .db import close_pool, init_pool
 from .errors import RequestIdMiddleware, ShareError, share_error_handler
 from .logging import setup_logging
-from .routers import api, auth_routes, dashboard, health, internal, mcp, serve, v1
+from .routers import api, auth_routes, dashboard, health, internal, marketing, mcp, serve, v1
 
 
 @asynccontextmanager
@@ -41,4 +41,5 @@ app.include_router(v1.router)
 app.include_router(mcp.router)
 dashboard.mount_dashboard_static(app)
 app.include_router(dashboard.router)
+app.include_router(marketing.router)  # /, /how-it-works, /for-agents — before catch-all
 app.include_router(serve.router)  # last: artifact catch-all when Caddy is absent

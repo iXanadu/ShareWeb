@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For agents — Share</title>
+  <meta name="description" content="Share is an MCP server. Seven tools, one endpoint, one bearer token.">
+  <style>
+    :root { color-scheme: light dark; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: #f3f2f2;
+      color: #201e1d;
+      font-family: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
+      font-size: 19px;
+      line-height: 1.55;
+      text-wrap: pretty;
+    }
+    .w { max-width: 47em; margin: 0 auto; padding: 2em 1.5em 7em; }
+    .mast { border-top: 6px solid #201e1d; padding-top: 0.5em; }
+    .rail {
+      display: flex; flex-wrap: wrap; gap: 0.3em 1.5em; align-items: baseline;
+      border-bottom: 1px solid #201e1d; padding-bottom: 0.45em;
+      font-size: 0.74em; letter-spacing: 0.08em; text-transform: uppercase; color: #605d5d;
+    }
+    .rail b { font-weight: 600; letter-spacing: 0.1em; color: #201e1d; font-size: 1.15em; }
+    .rail .sp { margin-left: auto; }
+    nav { display: flex; flex-wrap: wrap; gap: 0.4em 1.5em; margin: 1.1em 0 0;
+      font-size: 0.78em; letter-spacing: 0.06em; text-transform: uppercase; }
+    nav a { text-decoration: none; }
+    nav a[aria-current] { color: #201e1d; font-weight: 600; }
+    h1 { font-size: 2.85em; line-height: 1.06; font-weight: 600; margin: 2.4em 0 0.5em; max-width: 22em; letter-spacing: -0.015em; }
+    h2 { font-size: 1.45em; line-height: 1.2; font-weight: 600; margin: 3.4em 0 0.7em; max-width: 26em; }
+    h3 { font-size: 1em; font-weight: 600; margin: 2em 0 0.35em; }
+    .lede { font-size: 1.24em; line-height: 1.42; max-width: 27em; margin: 0 0 1.6em; }
+    p { margin: 0 0 1em; max-width: 32em; }
+    .m { color: #605d5d; }
+    .s { font-size: 0.85em; }
+    .k { font-size: 0.74em; letter-spacing: 0.08em; text-transform: uppercase; color: #605d5d; margin: 0 0 0.6em; }
+    a { color: #006786; text-underline-offset: 2px; }
+    a:hover { color: #aa0b56; }
+    a:focus-visible, .b:focus-visible { outline: 2px solid #006786; outline-offset: 2px; }
+    .row { display: flex; flex-wrap: wrap; gap: 0.75em; align-items: center; margin: 0 0 0.6em; }
+    .b {
+      display: inline-block; font: inherit; font-weight: 600; font-size: 0.95em;
+      background: #006786; color: #ffffff; border: 1px solid #006786; border-radius: 2px;
+      padding: 0.5em 1.15em; min-height: 44px; box-sizing: border-box;
+      display: inline-flex; align-items: center; text-decoration: none;
+    }
+    .b:hover { background: #004961; border-color: #004961; color: #ffffff; }
+    .b2 { background: transparent; color: #201e1d; border-color: #bab6b6; font-weight: 400; }
+    .b2:hover { background: #eae7e7; border-color: #7d7979; color: #201e1d; }
+    pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.76em; line-height: 1.6; background: #ffffff;
+      border: 1px solid #dcd8d8; border-radius: 2px;
+      padding: 1.1em 1.2em; margin: 0 0 1em; overflow-x: auto; max-width: 44em;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.84em; }
+    pre code { font-size: inherit; }
+    .cm { color: #605d5d; }
+    dl { margin: 1.4em 0 0; display: grid; grid-template-columns: 12.5em 1fr; gap: 0.75em 1.75em; max-width: 44em; align-items: baseline; }
+    dt { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.78em; }
+    dd { margin: 0; font-size: 0.92em; }
+    .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(15em, 1fr)); gap: 2em 2.5em; margin: 1.6em 0 0; max-width: 46em; }
+    .cols p { margin: 0; font-size: 0.92em; }
+    ul { margin: 1em 0; padding: 0 0 0 1.1em; max-width: 32em; }
+    li { margin: 0 0 0.4em; }
+    ul.plain { list-style: none; padding: 0; max-width: 40em; }
+    ul.plain li { display: flex; flex-wrap: wrap; gap: 0.2em 1em; padding: 0.5em 0; border-bottom: 1px solid rgba(32,30,29,0.14); align-items: baseline; margin: 0; }
+    ul.plain li span { color: #605d5d; font-size: 0.87em; }
+    .steps { counter-reset: s; list-style: none; padding: 0; max-width: 34em; margin: 1.6em 0 0; }
+    .steps > li { counter-increment: s; position: relative; padding: 0 0 0 2.4em; margin: 0 0 1.5em; }
+    .steps > li::before {
+      content: counter(s); position: absolute; left: 0; top: -0.06em;
+      font-size: 1.35em; font-weight: 600; color: #d6006c;
+    }
+    .steps h3 { margin: 0 0 0.25em; }
+    .steps p { margin: 0; font-size: 0.92em; }
+    footer { margin: 6em 0 0; border-top: 1px solid rgba(32,30,29,0.2); padding-top: 1em;
+      font-size: 0.78em; color: #605d5d; display: flex; flex-wrap: wrap; gap: 0.3em 1.5em; }
+    ::selection { background: #cbeeff; }
+    @media (max-width: 34em) {
+      h1 { font-size: 2.1em; }
+      dl { grid-template-columns: 1fr; gap: 0.15em; }
+      dt { margin-top: 0.7em; }
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #1a1918; color: #ece9e7; }
+      .m, .k, .cm, nav, footer, ul.plain li span { color: #bab6b6; }
+      nav a[aria-current] { color: #ece9e7; }
+      .mast { border-top-color: #ece9e7; }
+      .rail { border-bottom-color: #ece9e7; }
+      .rail b { color: #ece9e7; }
+      a { color: #62c5ee; }
+      a:hover { color: #ff90b1; }
+      a:focus-visible, .b:focus-visible { outline-color: #62c5ee; }
+      .b { background: #62c5ee; color: #0a303e; border-color: #62c5ee; }
+      .b:hover { background: #99e0ff; border-color: #99e0ff; color: #0a303e; }
+      .b2 { background: transparent; color: #ece9e7; border-color: #605d5d; }
+      .b2:hover { background: #232120; border-color: #bab6b6; color: #ece9e7; }
+      pre { background: #232120; border-color: #3d3a39; }
+      ul.plain li { border-bottom-color: rgba(236,233,231,0.16); }
+      .steps > li::before { color: #ff90b1; }
+      footer { border-top-color: rgba(236,233,231,0.2); }
+      ::selection { background: #0a303e; }
+    }
+  </style>
+</head>
+<body>
+  <div class="w">
+    <header class="mast">
+      <div class="rail">
+        <b>Share</b>
+        <span>Self-hosted artifact host</span>
+        <span class="sp">share.c52.com</span>
+      </div>
+      <nav>
+      <a href="index.html">Overview</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="for-agents.html" aria-current="page">For agents</a>
+      <a href="https://github.com/iXanadu/ShareWeb/tree/main/docs/specs/spec">Docs &#8599;</a>
+      </nav>
+    </header>
+
+    <h1>For agents</h1>
+    <p class="lede">Share is an MCP server. Give an agent a bearer token and the
+    endpoint, and it can publish its own output.</p>
+
+    <h2>Connect</h2>
+    <p>Issue a token in the dashboard under Tokens, then add the server to your
+    agent&rsquo;s configuration.</p>
+    <pre><code>{
+  "mcpServers": {
+    "share": {
+      "url": "https://share.c52.com/mcp",
+      "headers": { "Authorization": "Bearer shr_..." }
+    }
+  }
+}</code></pre>
+    <p class="s m">Tokens are named, scoped and revocable. Revoking one stops the
+    agent without touching anything else.</p>
+
+    <h2>The tools</h2>
+    <dl>
+      <dt>share_post</dt><dd>Post files as an artifact. Small files go inline as
+        <code>content</code>; binaries as <code>contentBase64</code>. Optional
+        <code>name</code> and <code>title</code>. Stays private. Returns the artifact URL.</dd>
+      <dt>share_create_link</dt><dd>Create an expiring <code>/s/&hellip;</code> URL. Requires the <code>share:create</code> scope.</dd>
+      <dt>share_list</dt><dd>List artifacts. Pass <code>trashed</code> for the trash.</dd>
+      <dt>share_get</dt><dd>Get one artifact by name.</dd>
+      <dt>share_delete</dt><dd>Move an artifact to trash. Recoverable.</dd>
+      <dt>share_restore</dt><dd>Restore an artifact from trash.</dd>
+      <dt>share_whoami</dt><dd>Return the authenticated identity.</dd>
+    </dl>
+
+    <h2>Posting a report</h2>
+    <pre><code>{
+  "name": "share_post",
+  "arguments": {
+    "title": "Q3 margin review",
+    "files": [
+      { "path": "index.html",
+        "content": "&lt;!DOCTYPE html&gt;&lt;html&gt;...",
+        "contentType": "text/html; charset=utf-8" },
+      { "path": "chart.png",
+        "contentBase64": "iVBORw0KGgo...",
+        "contentType": "image/png" }
+    ]
+  }
+}</code></pre>
+    <p>The tool does the declare, the uploads and the commit in one call, and returns
+    the committed artifact. The agent never handles an upload URL.</p>
+
+    <h2>Notes for whoever writes the prompt</h2>
+    <ul>
+      <li>Name the entry file <code>index.html</code> and it will be what the URL opens.</li>
+      <li>Post a directory, not a single file, when the output has assets.</li>
+      <li>Posting again under the same name makes a new version. Nothing is overwritten.</li>
+      <li>The agent can delete and restore its own artifacts, so a bad run is not permanent.</li>
+      <li>An artifact is private when posted. Call <code>share_create_link</code> for a URL someone else can open.</li>
+    </ul>
+
+    <h2>Errors</h2>
+    <p>A failed tool call comes back as MCP tool content with <code>isError</code> set
+    and a <code>code: message</code> string, not as a protocol error &mdash; so an
+    agent can read the reason and retry rather than losing the turn.</p>
+
+    <div class="row" style="margin-top:2.4em">
+      <a class="b" href="https://github.com/iXanadu/ShareWeb">Star on GitHub</a>
+      <a class="b b2" href="https://github.com/iXanadu/ShareWeb/tree/main/docs/specs/spec">Read the docs on GitHub</a>
+    </div>
+
+    <footer>
+      <span>Share &mdash; a self-hosted artifact host</span>
+      <a href="https://github.com/iXanadu/ShareWeb">github.com/iXanadu/ShareWeb</a>
+      <a href="https://github.com/iXanadu/ShareWeb/blob/main/LICENSE">Apache License 2.0</a>
+    </footer>
+  </div>
+</body>
+</html>
