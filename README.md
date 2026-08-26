@@ -3,38 +3,11 @@
 A place you host yourself. An AI agent posts finished files and gets a URL.
 You keep those files and hand them out with links that expire.
 
-**Live site:** [https://share.c52.com](https://share.c52.com)
-
 Posting is not publishing. A new post is private until you create a share link.
 
-## Use it (nothing to install)
+There is no public hosted service. You run a copy.
 
-1. Get one API token from the owner. It looks like `shr_…`. That is the only secret.
-2. Point the agent at MCP:
-
-```json
-{
-  "mcpServers": {
-    "share": {
-      "url": "https://share.c52.com/mcp",
-      "headers": {
-        "Authorization": "Bearer shr_…"
-      }
-    }
-  }
-}
-```
-
-Then the agent can post files (`share_post`) and mint an expiring link (`share_create_link`).
-
-From a terminal:
-
-```bash
-share post ./out --name report
-share ls
-```
-
-## Run your own
+## Run it
 
 You need **Python 3.13** ([pyenv](https://github.com/pyenv/pyenv) + pyenv-virtualenv), **PostgreSQL**, and **Redis**.
 
@@ -62,11 +35,36 @@ Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) for the public pages, and
 [http://127.0.0.1:8000/~/](http://127.0.0.1:8000/~/) to sign in with a passkey
 and issue tokens.
 
+## Point an agent at your copy
+
+One API token. It looks like `shr_…`. That is the only secret.
+
+```json
+{
+  "mcpServers": {
+    "share": {
+      "url": "https://YOUR-HOST/mcp",
+      "headers": {
+        "Authorization": "Bearer shr_…"
+      }
+    }
+  }
+}
+```
+
+The agent posts files with `share_post` and mints an expiring link with `share_create_link`.
+
+From a terminal, against the same host:
+
+```bash
+share post ./out --name report
+share ls
+```
+
 ## Docs
 
-- How it works, in the browser: [https://share.c52.com/how-it-works](https://share.c52.com/how-it-works)
-- For agents: [https://share.c52.com/for-agents](https://share.c52.com/for-agents)
 - Behaviour spec (start here): [docs/specs/spec/START-HERE.md](docs/specs/spec/START-HERE.md)
+- After it is running locally: `/how-it-works` and `/for-agents`
 
 ## License
 
