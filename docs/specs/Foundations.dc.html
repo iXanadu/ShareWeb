@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/broadsheet-3159c9d6-9919-44f2-bd7a-8bf7f712eea5/styles.css">
+<script src="_ds/broadsheet-3159c9d6-9919-44f2-bd7a-8bf7f712eea5/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: #f3f2f2; color: #201e1d; }
+  a { color: #006786; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: #aa0b56; }
+</style>
+</helmet>
+
+<div style="max-width: 1180px; margin: 0 auto; padding: 60px 40px 120px; font-family: 'Source Serif 4', Georgia, serif; color: #201e1d; background: #f3f2f2;">
+
+  <header style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 80px;">
+    <div style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #605d5d;">Share · design foundations · v1</div>
+    <h1 style="font-size: 62px; line-height: 1.02; font-weight: 600; margin: 0; max-width: 20ch; text-wrap: pretty;">The values Part 13 leaves to the design</h1>
+    <p style="font-size: 21px; line-height: 1.5; max-width: 62ch; margin: 0; color: #444141; text-wrap: pretty;">Part 13 states requirements and refuses to name values, so that no value is written twice. This file names them. Where Part 13 says &ldquo;the design work&rdquo;, it means this file. Read it beside <span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 18px;">13-design-system.md</span>; every section below is numbered to the clause it satisfies.</p>
+  </header>
+
+  <section style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 90px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;">
+      <span style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #aa0b56;">13.1&ndash;13.3</span>
+      <h2 style="font-size: 40px; line-height: 1.1; font-weight: 600; margin: 0;">The three sharing states</h2>
+    </div>
+    <p style="font-size: 19px; line-height: 1.55; max-width: 66ch; margin: 0; color: #444141;">One component, three treatments, rendered identically in the list, the detail header, search results, the viewer, shared-with-me, the trash and the create-link summary. The chip is the signal; the glyph and the word are the redundant channels. Nothing here is green or red.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 0; margin-top: 15px;">
+      <div style="display: grid; grid-template-columns: 260px 1fr 1fr; gap: 30px; padding: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; border-bottom: 1px solid rgba(32,30,29,0.16);">
+        <div>Specimen</div><div>Values</div><div>Why</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr 1fr; gap: 30px; padding: 30px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #605d5d; font-size: 16px; font-weight: 400; line-height: 1.2; align-self: flex-start;">
+            <svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" opacity="0.2"></path><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"></path></svg>
+            Private
+          </span>
+          <span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; color: #7d7979;">state=private</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: #444141; display: flex; flex-direction: column; gap: 4px;">
+          <div>fill <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">transparent</span></div>
+          <div>border <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">1px #bab6b6</span> (neutral&#8209;400)</div>
+          <div>ink <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#605d5d</span> (neutral&#8209;700)</div>
+          <div>glyph Phosphor <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">lock-simple</span>, duotone</div>
+          <div>weight 400</div>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: #444141;">A closed box, hollow and neutral. It is the default and the quiet state, so it carries no colour at all &mdash; which is also why it cannot read as success (13.1.4).</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr 1fr; gap: 30px; padding: 30px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #99e0ff; border-radius: 2px; background: #cbeeff; color: #004961; font-size: 16px; font-weight: 500; line-height: 1.2; align-self: flex-start;">
+            <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M136,108A52,52,0,1,1,84,56,52,52,0,0,1,136,108Z" opacity="0.2"></path><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path></svg>
+            Shared with 3 people
+          </span>
+          <span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; color: #7d7979;">state=granted</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: #444141; display: flex; flex-direction: column; gap: 4px;">
+          <div>fill <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#cbeeff</span> (accent&#8209;200)</div>
+          <div>border <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">1px #99e0ff</span> (accent&#8209;300)</div>
+          <div>ink <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#004961</span> (accent&#8209;800)</div>
+          <div>glyph Phosphor <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">users</span>, duotone</div>
+          <div>weight 500</div>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: #444141;">Cool, tinted, mid-lightness. Named people, a bounded set &mdash; so the glyph shows people and the word counts them. Cyan is the product&rsquo;s ordinary interactive colour: present, not urgent.</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr 1fr; gap: 30px; padding: 30px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: start;">
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #aa0b56; border-radius: 2px; background: #aa0b56; color: #ffffff; font-size: 16px; font-weight: 600; line-height: 1.2; align-self: flex-start;">
+            <svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.34,119.6,183.6,154.34a46.58,46.58,0,0,1-44.31,12.26c-.31.34-.62.67-.95,1L103.6,202.34A46.63,46.63,0,1,1,37.66,136.4L72.4,101.66A46.6,46.6,0,0,1,116.71,89.4c.31-.34.62-.67,1-1L152.4,53.66a46.63,46.63,0,0,1,65.94,65.94Z" opacity="0.2"></path><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,7.78,8.22H152a8,8,0,0,0,8-7.78A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"></path></svg>
+            Link active
+          </span>
+          <span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; color: #7d7979;">state=shared</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: #444141; display: flex; flex-direction: column; gap: 4px;">
+          <div>fill <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#aa0b56</span> (accent&#8209;2&#8209;700)</div>
+          <div>border same as fill</div>
+          <div>ink <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#ffffff</span> &mdash; 6.9:1</div>
+          <div>glyph Phosphor <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">link</span>, duotone</div>
+          <div>weight 600</div>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: #444141;">A chain link on the only solid-filled badge in the product, in the rarer warm ink, at the heaviest weight. Of the three it is the one that warrants a second look (13.1.6), and it is warm rather than red because a live link is a deliberate act, not a fault (13.1.5).</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <h3 style="font-size: 22px; font-weight: 600; margin: 0;">Greyscale proof &mdash; 13.1.2</h3>
+        <div style="filter: grayscale(1); display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding: 20px; background: #f8f4f4;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #bab6b6; border-radius: 2px; color: #605d5d; font-size: 16px; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" opacity="0.2"></path><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"></path></svg>Private</span>
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #99e0ff; border-radius: 2px; background: #cbeeff; color: #004961; font-size: 16px; font-weight: 500; line-height: 1.2;"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M136,108A52,52,0,1,1,84,56,52,52,0,0,1,136,108Z" opacity="0.2"></path><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path></svg>Shared with 3 people</span>
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #aa0b56; border-radius: 2px; background: #aa0b56; color: #ffffff; font-size: 16px; font-weight: 600; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.34,119.6,183.6,154.34a46.58,46.58,0,0,1-44.31,12.26c-.31.34-.62.67-.95,1L103.6,202.34A46.63,46.63,0,1,1,37.66,136.4L72.4,101.66A46.6,46.6,0,0,1,116.71,89.4c.31-.34.62-.67,1-1L152.4,53.66a46.63,46.63,0,0,1,65.94,65.94Z" opacity="0.2"></path><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,7.78,8.22H152a8,8,0,0,0,8-7.78A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"></path></svg>Link active</span>
+        </div>
+        <p style="font-size: 17px; line-height: 1.55; margin: 0; color: #444141;">Three lightness steps, in order: paper, tint, solid, and three unrelated silhouettes &mdash; box, figures, chain. The order survives a printout, a photograph and a sunlit laptop.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <h3 style="font-size: 22px; font-weight: 600; margin: 0;">Dark theme &mdash; 13.7</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding: 20px; background: #1a1918;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #605d5d; border-radius: 2px; color: #bab6b6; font-size: 16px; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" opacity="0.2"></path><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"></path></svg>Private</span>
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #006786; border-radius: 2px; background: #0a303e; color: #99e0ff; font-size: 16px; font-weight: 500; line-height: 1.2;"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M136,108A52,52,0,1,1,84,56,52,52,0,0,1,136,108Z" opacity="0.2"></path><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path></svg>Shared with 3 people</span>
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #ff90b1; border-radius: 2px; background: #ff90b1; color: #4b1528; font-size: 16px; font-weight: 600; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.34,119.6,183.6,154.34a46.58,46.58,0,0,1-44.31,12.26c-.31.34-.62.67-.95,1L103.6,202.34A46.63,46.63,0,1,1,37.66,136.4L72.4,101.66A46.6,46.6,0,0,1,116.71,89.4c.31-.34.62-.67,1-1L152.4,53.66a46.63,46.63,0,0,1,65.94,65.94Z" opacity="0.2"></path><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,7.78,8.22H152a8,8,0,0,0,8-7.78A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"></path></svg>Link active</span>
+        </div>
+        <p style="font-size: 17px; line-height: 1.55; margin: 0; color: #444141;">Lightness order inverts; the three steps and the warm/cool split do not. <span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">shared</span> stays the solid one.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 30px; padding: 30px; background: #f8f4f4;">
+      <h3 style="font-size: 22px; font-weight: 600; margin: 0;">Not this</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px; border-radius: 2px; background: #cbeeff; color: #004961; font-size: 16px; align-self: flex-start; opacity: 0.5;">Link active</span>
+          <p style="font-size: 16px; line-height: 1.5; margin: 0; color: #444141;">Two states in one hue family. Cyan belongs to <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">granted</span> alone.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px; border-radius: 2px; background: #aa0b56; font-size: 16px; align-self: flex-start; opacity: 0.5;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.34,119.6,183.6,154.34a46.58,46.58,0,0,1-44.31,12.26c-.31.34-.62.67-.95,1L103.6,202.34A46.63,46.63,0,1,1,37.66,136.4L72.4,101.66A46.6,46.6,0,0,1,116.71,89.4c.31-.34.62-.67,1-1L152.4,53.66a46.63,46.63,0,0,1,65.94,65.94Z" opacity="0.2"></path><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,7.78,8.22H152a8,8,0,0,0,8-7.78A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"></path></svg></span>
+          <p style="font-size: 16px; line-height: 1.5; margin: 0; color: #444141;">The word dropped to save space. The badge never collapses, at any width (13.2).</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px; border-radius: 2px; background: #9e2b1e; color: #ffffff; font-size: 16px; align-self: flex-start; opacity: 0.5;">Link active</span>
+          <p style="font-size: 16px; line-height: 1.5; margin: 0; color: #444141;">Red on a sharing state. Red is destructive actions and failures only (13.3).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 90px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;">
+      <span style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #aa0b56;">13.2</span>
+      <h2 style="font-size: 40px; line-height: 1.1; font-weight: 600; margin: 0;">Modifier chips</h2>
+    </div>
+    <p style="font-size: 19px; line-height: 1.55; max-width: 66ch; margin: 0; color: #444141;">Modifiers sit after the state badge and may collapse into the row&rsquo;s plain-text expiry line on narrow viewports (D&#8209;03). They are outlined, never solid, so they never compete with the <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">shared</span> badge beside them.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border: 1px solid #aa0b56; border-radius: 2px; color: #aa0b56; font-size: 15px; line-height: 1.2;">Expires in 12 hours</span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border: 1px solid #7d7979; border-radius: 2px; color: #605d5d; font-size: 15px; line-height: 1.2;">Password</span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border: 1px solid #bab6b6; border-radius: 2px; color: #7d7979; font-size: 15px; line-height: 1.2; text-decoration: line-through;">Expired</span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border: 1px dashed #7d7979; border-radius: 2px; color: #605d5d; font-size: 15px; line-height: 1.2;">In trash</span>
+    </div>
+    <p style="font-size: 17px; line-height: 1.6; max-width: 66ch; margin: 0; color: #444141;">Warm outline is reserved for the expiring modifier, matching <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">shared</span>&rsquo;s ink &mdash; that is the whole of the warm family&rsquo;s licence (13.3). Expired is struck through so it reads as expired without its colour. In-trash is dashed so it reads as provisional.</p>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 90px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;">
+      <span style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #aa0b56;">13.4</span>
+      <h2 style="font-size: 40px; line-height: 1.1; font-weight: 600; margin: 0;">Identifiers</h2>
+    </div>
+    <p style="font-size: 19px; line-height: 1.55; max-width: 66ch; margin: 0; color: #444141;">Monospace, selectable, always paired with a copy control, never truncated by CSS. Where a long identifier must fit, it wraps or scrolls; it does not ellipsize, because a truncated hash is a hash you cannot use.</p>
+    <div style="display: flex; flex-direction: column; gap: 20px; max-width: 720px;">
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <div style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Artifact name &mdash; title position, no title present</div>
+        <div style="display: flex; align-items: center; gap: 15px;"><span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 26px; font-weight: 500; letter-spacing: -0.01em;">q3-margin-review</span><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; padding: 4px 10px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #006786; cursor: pointer;" style-hover="background: #e9f8ff; border-color: #006786;">Copy</button></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <div style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Share-link URL &mdash; wraps, never ellipsized</div>
+        <div style="display: flex; align-items: flex-start; gap: 15px;"><span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 17px; line-height: 1.5; word-break: break-all; background: #eae7e7; padding: 8px 10px; border-radius: 2px;">https://share.c52.com/s/7Kq2vB9mTx4Ld/q3-margin-review</span><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; padding: 4px 10px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #006786; cursor: pointer; flex: none;" style-hover="background: #e9f8ff; border-color: #006786;">Copy</button></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px;">
+        <div style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Digest &mdash; full value, monospace, selectable</div>
+        <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 15px; line-height: 1.5; word-break: break-all; color: #444141;">sha256:9f2c41ab7e0d8355bd1c6a4f92e07b83d5510cc7ea4b19f6082d3ac5be714d90</div>
+      </div>
+    </div>
+    <p style="font-size: 17px; line-height: 1.6; max-width: 66ch; margin: 0; color: #444141;">Monospace stack: <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">ui-monospace, SFMono-Regular, Menlo, Consolas, monospace</span>. System fonts only &mdash; no webfont is loaded for identifiers, so a blocked font never changes what an identifier says.</p>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 90px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;">
+      <span style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #aa0b56;">13.3, 13.9</span>
+      <h2 style="font-size: 40px; line-height: 1.1; font-weight: 600; margin: 0;">Colour roles</h2>
+    </div>
+    <p style="font-size: 19px; line-height: 1.55; max-width: 66ch; margin: 0; color: #444141;">Broadsheet ships two accents and no red. The product needs a red for destructive actions and failures that cannot be confused with <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">shared</span>&rsquo;s magenta, so one is added here and nowhere else.</p>
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: grid; grid-template-columns: 90px 200px 1fr; gap: 20px; padding: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; border-bottom: 1px solid rgba(32,30,29,0.16);"><div></div><div>Value</div><div>Used for, and only for</div></div>
+      <div style="display: grid; grid-template-columns: 90px 200px 1fr; gap: 20px; padding: 15px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: center;"><div style="height: 32px; background: #201e1d;"></div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#201e1d</div><div style="font-size: 17px; line-height: 1.5; color: #444141;">All chrome, all body copy, all headings. The shell is monochrome (13.6).</div></div>
+      <div style="display: grid; grid-template-columns: 90px 200px 1fr; gap: 20px; padding: 15px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: center;"><div style="height: 32px; background: #006786;"></div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#006786</div><div style="font-size: 17px; line-height: 1.5; color: #444141;">Links, buttons, focus rings, and the <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">granted</span> state. The ordinary interactive colour.</div></div>
+      <div style="display: grid; grid-template-columns: 90px 200px 1fr; gap: 20px; padding: 15px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: center;"><div style="height: 32px; background: #aa0b56;"></div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#aa0b56</div><div style="font-size: 17px; line-height: 1.5; color: #444141;">Someone holding a URL can reach this. The <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">shared</span> badge and the expiring modifier. Nowhere else &mdash; not on advisories, not on warnings.</div></div>
+      <div style="display: grid; grid-template-columns: 90px 200px 1fr; gap: 20px; padding: 15px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: center;"><div style="height: 32px; background: #9e2b1e;"></div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#9e2b1e</div><div style="font-size: 17px; line-height: 1.5; color: #444141;">Destructive actions and failures. Darker and far less saturated than the magenta above it, so the two never read as one family. 6.4:1 on paper. Never on a sharing state, and never a fill larger than a button.</div></div>
+      <div style="display: grid; grid-template-columns: 90px 200px 1fr; gap: 20px; padding: 15px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: center;"><div style="height: 32px; background: #605d5d;"></div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">#605d5d</div><div style="font-size: 17px; line-height: 1.5; color: #444141;">Secondary text, metadata, timestamps, the <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">private</span> state. 6.0:1 on paper.</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; padding: 25px 30px; background: #f8f4f4; max-width: 800px;">
+      <div style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Advisories, since they may not be warm</div>
+      <p style="font-size: 17px; line-height: 1.6; margin: 0; color: #444141;">Warning and advisory banners are neutral: paper ground, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">#201e1d</span> text, a 3px <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">#201e1d</span> left edge, and the word &ldquo;Note&rdquo; or &ldquo;Warning&rdquo; set in the serif&rsquo;s italic. They are non-blocking, so they do not take a colour at all. This is the one place the product accepts a rule as structure, because the banner must be distinguishable from body copy with author styles disabled.</p>
+      <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 10px; padding: 15px 20px; background: #f3f2f2; border-left: 3px solid #201e1d;">
+        <div style="font-size: 17px; line-height: 1.55;"><em style="font-style: italic;">Warning.</em> This version was posted 4 minutes after the link you shared was created. Recipients see the new files.</div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; padding: 25px 30px; background: #f8f4f4; max-width: 800px;">
+      <div style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Dark ground</div>
+      <div style="font-size: 17px; line-height: 1.7; color: #444141; font-family: ui-monospace, Menlo, monospace; font-size: 15px;">bg #1a1918 &nbsp; surface #232120 &nbsp; text #ece9e7 &nbsp; divider rgba(236,233,231,0.18)<br>interactive #62c5ee &nbsp; warm #ff90b1 &nbsp; danger #ef6a5a &nbsp; secondary #bab6b6</div>
+      <p style="font-size: 17px; line-height: 1.6; margin: 0; color: #444141;">Not pure black &mdash; press ink, matching the system&rsquo;s near-black. A viewer&rsquo;s explicit choice beats their OS preference, and <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">body</span> always paints both properties explicitly.</p>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 90px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;">
+      <span style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #aa0b56;">13.5</span>
+      <h2 style="font-size: 40px; line-height: 1.1; font-weight: 600; margin: 0;">Type and density</h2>
+    </div>
+    <p style="font-size: 19px; line-height: 1.55; max-width: 66ch; margin: 0; color: #444141;">Source Serif 4 throughout, including the chrome. Density is a feature; the scale below is what an eight-hour screen can carry without becoming shouty.</p>
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: grid; grid-template-columns: 1fr 220px; gap: 30px; padding: 20px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: baseline;"><div style="font-size: 40px; line-height: 1.1; font-weight: 600;">Page title</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">40 / 1.1 / 600</div></div>
+      <div style="display: grid; grid-template-columns: 1fr 220px; gap: 30px; padding: 20px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: baseline;"><div style="font-size: 26px; line-height: 1.2; font-weight: 600;">Section heading</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">26 / 1.2 / 600</div></div>
+      <div style="display: grid; grid-template-columns: 1fr 220px; gap: 30px; padding: 20px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: baseline;"><div style="font-size: 19px; line-height: 1.55;">Body &mdash; help pages, dialog explanations, FAQ</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">19 / 1.55 / 400</div></div>
+      <div style="display: grid; grid-template-columns: 1fr 220px; gap: 30px; padding: 20px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: baseline;"><div style="font-size: 17px; line-height: 1.5;">Interface &mdash; table cells, labels, buttons, menus</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">17 / 1.5 / 400</div></div>
+      <div style="display: grid; grid-template-columns: 1fr 220px; gap: 30px; padding: 20px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: baseline;"><div style="font-size: 15px; line-height: 1.45; color: #605d5d;">Metadata &mdash; timestamps, sizes, actor lines</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">15 / 1.45 / 400</div></div>
+      <div style="display: grid; grid-template-columns: 1fr 220px; gap: 30px; padding: 20px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: baseline;"><div style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Column head &mdash; the one uppercase use</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">14 / 0.08em / caps</div></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px 40px; margin-top: 15px; max-width: 860px;">
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Table row height</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">48px</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Minimum hit target</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">44px</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Top bar</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">56px</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Sidebar</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">240px</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Content measure</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">1180px max</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Prose measure</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">66ch</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Dialog width</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">520px</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Sharing panel</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">400px</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Section gap</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">40px</span></div>
+      <div style="display: flex; justify-content: space-between; gap: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Radius, everywhere</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">2px</span></div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 90px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;">
+      <span style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #aa0b56;">13.10</span>
+      <h2 style="font-size: 40px; line-height: 1.1; font-weight: 600; margin: 0;">Component anatomy</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <h3 style="font-size: 26px; font-weight: 600; margin: 0;">Buttons</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+        <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer;" style-hover="background: #004961; border-color: #004961;" style-active="background: #0a303e;">Create share link</button>
+        <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;" style-hover="background: #eae7e7; border-color: #7d7979;">Cancel</button>
+        <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid transparent; border-radius: 2px; background: transparent; color: #006786; cursor: pointer;" style-hover="background: #e9f8ff;">Download all</button>
+        <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #9e2b1e; border-radius: 2px; background: transparent; color: #9e2b1e; cursor: pointer;" style-hover="background: #9e2b1e; color: #ffffff;">Revoke</button>
+        <button disabled="disabled" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; opacity: 0.45;">Create share link</button>
+      </div>
+      <p style="font-size: 17px; line-height: 1.6; max-width: 66ch; margin: 0; color: #444141;">Destructive is outlined and fills on hover, so revoking is one click without ever being the loudest thing on a screen. Widening access is the solid primary; narrowing it is the outline (13.1, and START-HERE&rsquo;s second point).</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <h3 style="font-size: 26px; font-weight: 600; margin: 0;">Focus &mdash; 13.9</h3>
+      <div style="display: flex; gap: 20px; align-items: center; padding: 20px; background: #f8f4f4;">
+        <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; outline: 2px solid #201e1d; outline-offset: 2px;">Focused</button>
+        <p style="font-size: 17px; line-height: 1.6; margin: 0; color: #444141; max-width: 46ch;">2px ink ring at 2px offset. Ink rather than cyan, so the ring clears 3:1 against a cyan button, a magenta badge and paper alike &mdash; one ring that works against every element in the product. On dark, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">#ece9e7</span>.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <h3 style="font-size: 26px; font-weight: 600; margin: 0;">Artifact row &mdash; 11.5</h3>
+      <div style="display: flex; flex-direction: column; max-width: 940px;">
+        <div style="display: grid; grid-template-columns: 1fr 300px 150px; gap: 30px; padding: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; border-bottom: 1px solid rgba(32,30,29,0.16);"><div>Name</div><div>Access</div><div>Updated</div></div>
+        <div style="display: grid; grid-template-columns: 1fr 300px 150px; gap: 30px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">q3-margin-review</span><span style="font-size: 15px; color: #605d5d;">v7 &middot; 3 files &middot; 2.4 MB</span></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #aa0b56; border-radius: 2px; background: #aa0b56; color: #ffffff; font-size: 16px; font-weight: 600; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.34,119.6,183.6,154.34a46.58,46.58,0,0,1-44.31,12.26c-.31.34-.62.67-.95,1L103.6,202.34A46.63,46.63,0,1,1,37.66,136.4L72.4,101.66A46.6,46.6,0,0,1,116.71,89.4c.31-.34.62-.67,1-1L152.4,53.66a46.63,46.63,0,0,1,65.94,65.94Z" opacity="0.2"></path><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,7.78,8.22H152a8,8,0,0,0,8-7.78A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"></path></svg>Link active</span><span style="display: inline-flex; padding: 3px 9px; border: 1px solid #aa0b56; border-radius: 2px; color: #aa0b56; font-size: 15px; line-height: 1.2;">12 hours</span></div>
+          <div style="font-size: 15px; color: #605d5d;">4 min ago</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 300px 150px; gap: 30px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">vendor-audit-2026</span><span style="font-size: 15px; color: #605d5d;">v2 &middot; 11 files &middot; 84 MB</span></div>
+          <div style="display: flex; gap: 8px; align-items: center;"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #99e0ff; border-radius: 2px; background: #cbeeff; color: #004961; font-size: 16px; font-weight: 500; line-height: 1.2;"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M136,108A52,52,0,1,1,84,56,52,52,0,0,1,136,108Z" opacity="0.2"></path><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path></svg>Shared with 3 people</span></div>
+          <div style="font-size: 15px; color: #605d5d;">Yesterday</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 300px 150px; gap: 30px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">weekly-ops-digest</span><span style="font-size: 15px; color: #605d5d;">v31 &middot; 1 file &middot; 96 KB</span></div>
+          <div style="display: flex; gap: 8px; align-items: center;"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #bab6b6; border-radius: 2px; color: #605d5d; font-size: 16px; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" opacity="0.2"></path><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"></path></svg>Private</span></div>
+          <div style="font-size: 15px; color: #605d5d;">6 days ago</div>
+        </div>
+      </div>
+      <p style="font-size: 17px; line-height: 1.6; max-width: 66ch; margin: 0; color: #444141;">Rules between rows only, at 16% ink &mdash; the one place this system prints a rule in the chrome, because a table without them is unscannable at 48px density. No card, no zebra, no container.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <h3 style="font-size: 26px; font-weight: 600; margin: 0;">Fields and dialogs &mdash; 11.13</h3>
+      <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start;">
+        <div style="width: 520px; padding: 20px; background: #eae9e9; border-radius: 4px; box-shadow: 0 12px 32px rgba(45,43,43,0.22); display: flex; flex-direction: column; gap: 15px;">
+          <h4 style="font-size: 26px; font-weight: 600; margin: 0; line-height: 1.2;">Create a share link</h4>
+          <p style="font-size: 17px; line-height: 1.55; margin: 0; color: #444141;">Anyone with this URL can open <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">q3-margin-review</span> until it expires. Links always expire.</p>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <label style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Expires</label>
+            <div style="display: flex; gap: 0; border: 1px solid #bab6b6; border-radius: 2px; overflow: hidden;">
+              <span style="flex: 1; text-align: center; padding: 10px 15px; font-size: 17px; background: #006786; color: #ffffff;">24 hours</span>
+              <span style="flex: 1; text-align: center; padding: 10px 15px; font-size: 17px; border-left: 1px solid #bab6b6; color: #201e1d;">7 days</span>
+              <span style="flex: 1; text-align: center; padding: 10px 15px; font-size: 17px; border-left: 1px solid #bab6b6; color: #201e1d;">30 days</span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 5px;">
+            <label style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Password &mdash; optional</label>
+            <input type="text" placeholder="Set a password" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 12px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: #f3f2f2; color: #201e1d;">
+          </div>
+          <div style="display: flex; gap: 15px; justify-content: flex-end; margin-top: 10px;">
+            <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;">Cancel</button>
+            <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer;">Continue</button>
+          </div>
+        </div>
+        <div style="max-width: 40ch; display: flex; flex-direction: column; gap: 15px;">
+          <p style="font-size: 17px; line-height: 1.6; margin: 0; color: #444141;">Broadsheet&rsquo;s <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">.dialog</span> unchanged except its width: surface ground, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">radius-lg</span>, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">shadow-lg</span>, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">space-4</span> padding, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">space-3</span> gap, actions right-aligned. Backdrop is <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">neutral-900</span> at 50%.</p>
+          <p style="font-size: 17px; line-height: 1.6; margin: 0; color: #444141;">The primary stays enabled and the flow is multi-step with a read-back, per 11.13. Nothing here is a one-click widen.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      <h3 style="font-size: 26px; font-weight: 600; margin: 0;">Departures from Broadsheet&rsquo;s component layer</h3>
+      <p style="font-size: 19px; line-height: 1.55; max-width: 66ch; margin: 0; color: #444141;">Everything above is <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">.btn</span>, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">.input</span>, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">.seg</span>, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">.table</span>, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">.nav</span> and <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">.dialog</span> from <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">styles.css</span>, with the seven changes below and no others. The 240px sidebar has no counterpart in the system and is authored here. Build against the classes and override exactly these. An unmarked drift is how a third button gets built.</p>
+      <div style="display: flex; flex-direction: column; max-width: 1000px;">
+        <div style="display: grid; grid-template-columns: 170px 1fr 1fr 1.3fr; gap: 25px; padding: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; border-bottom: 1px solid rgba(32,30,29,0.16);"><div>Class</div><div>Broadsheet</div><div>Here</div><div>Because</div></div>
+        <div style="display: grid; grid-template-columns: 170px 1fr 1fr 1.3fr; gap: 25px; padding: 18px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 16px; line-height: 1.5; align-items: start;">
+          <div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">.btn</div>
+          <div style="color: #605d5d;">14px / 600, padding 10px 18px, no min-height</div>
+          <div>17px / 500, padding 10px 20px, min-height 44px</div>
+          <div style="color: #444141;">13.9&rsquo;s 44px hit target, and 13.5&rsquo;s eight-hour screen &mdash; chrome set at reading size rather than at a marketing page&rsquo;s label size.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 170px 1fr 1fr 1.3fr; gap: 25px; padding: 18px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 16px; line-height: 1.5; align-items: start;">
+          <div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">.btn-primary</div>
+          <div style="color: #605d5d;">accent <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">#0088b0</span>, label <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">#f3f2f2</span> &mdash; 3.0:1</div>
+          <div>accent&#8209;700 <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">#006786</span>, label <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">#ffffff</span> &mdash; 5.6:1</div>
+          <div style="color: #444141;">A 17px label is not large text, so it needs 4.5:1 (13.9). The system&rsquo;s pairing clears 3:1 and is tuned for chrome, not for a label this size.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 170px 1fr 1fr 1.3fr; gap: 25px; padding: 18px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 16px; line-height: 1.5; align-items: start;">
+          <div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">.btn-danger</div>
+          <div style="color: #605d5d;">does not exist</div>
+          <div>outlined <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">#9e2b1e</span>, fills on hover</div>
+          <div style="color: #444141;">New variant, per D&#8209;14. Outlined rather than solid so revoking stays one click without being the loudest thing on the screen.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 170px 1fr 1fr 1.3fr; gap: 25px; padding: 18px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 16px; line-height: 1.5; align-items: start;">
+          <div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">.input, .seg-opt</div>
+          <div style="color: #605d5d;">14px / 13px, min-height 36px</div>
+          <div>17px, min-height 44px</div>
+          <div style="color: #444141;">Same two reasons as <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">.btn</span>. Fields and buttons sit in the same row, so they move together.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 170px 1fr 1fr 1.3fr; gap: 25px; padding: 18px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 16px; line-height: 1.5; align-items: start;">
+          <div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">.table td</div>
+          <div style="color: #605d5d;">14px, rule at 8% ink</div>
+          <div>17px name over 15px meta, 48px row, rule at 16% ink</div>
+          <div style="color: #444141;">A two-line 48px row needs a rule strong enough to separate rows rather than lines. 16% is the system&rsquo;s own <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">--color-divider</span>, not a new value. The 4% row hover is kept.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 170px 1fr 1fr 1.3fr; gap: 25px; padding: 18px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 16px; line-height: 1.5; align-items: start;">
+          <div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">.nav</div>
+          <div style="color: #605d5d;">14px links, <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">border-bottom: none</span></div>
+          <div>17px, 56px tall, 1px divider below</div>
+          <div style="color: #444141;">The one rule the chrome prints, for the same reason the table prints them: the bar has to separate from a scrolling table of rows at a glance. The system omits it because its pages separate by whitespace, which a fixed bar cannot do.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 170px 1fr 1fr 1.3fr; gap: 25px; padding: 18px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 16px; line-height: 1.5; align-items: start;">
+          <div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px;">.dialog</div>
+          <div style="color: #605d5d;">min(440px, 100%)</div>
+          <div>520px</div>
+          <div style="color: #444141;">11.13&rsquo;s read-back has to be readable at a comfortable measure, and its expiry control is three options wide. Everything else about <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">.dialog</span> is unchanged.</div>
+        </div>
+      </div>
+      <p style="font-size: 17px; line-height: 1.6; max-width: 66ch; margin: 0; color: #444141;">Two things are deliberately <em style="font-style: italic;">not</em> a <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">.tag</span>. The state badge carries a glyph, a word and a fill at 16px, which <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">.tag</span>&rsquo;s 11px cannot do legibly, and 13.1.7 requires one component rendered identically in seven places &mdash; so it is its own component. Modifier chips are <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">.tag-outline</span> in shape, at 15px, with the border colour carrying the modifier. The focus ring departs from the system&rsquo;s accent ring for the reason in D&#8209;15. Glyphs are real Phosphor duotone, inline on <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">currentColor</span>, as the system requires.</p>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 30px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;">
+      <span style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #aa0b56;">13.8</span>
+      <h2 style="font-size: 40px; line-height: 1.1; font-weight: 600; margin: 0;">The recipient pages are elsewhere</h2>
+    </div>
+    <p style="font-size: 19px; line-height: 1.55; max-width: 66ch; margin: 0; color: #444141;">R1&ndash;R7 cannot use anything on this page &mdash; no webfont, no external asset, no dashboard chrome, and a style block that is byte-identical across every one of them. They are therefore not designed here. They ship as ten complete HTML documents covering the seven pages (R1 has three states, R2 has two) in <span style="font-family: ui-monospace, Menlo, monospace; font-size: 18px;">recipient/</span>, ready to serve as-is, with the block&rsquo;s constraints explained in <span style="font-family: ui-monospace, Menlo, monospace; font-size: 18px;">recipient/README.md</span>.</p>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

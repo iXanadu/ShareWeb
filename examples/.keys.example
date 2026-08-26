@@ -1,0 +1,5 @@
+# Secrets — NEVER commit. chmod 600 after copying.
+
+SHARE_DB_PASSWORD=
+SHARE_SECRET_KEY=
+SHARE_VIEW_SALT=

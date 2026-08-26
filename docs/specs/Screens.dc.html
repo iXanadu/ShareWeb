@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/broadsheet-3159c9d6-9919-44f2-bd7a-8bf7f712eea5/styles.css">
+<script src="_ds/broadsheet-3159c9d6-9919-44f2-bd7a-8bf7f712eea5/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: #d7d3d3; color: #201e1d; }
+  a { color: #006786; text-underline-offset: 2px; }
+  a:hover { color: #aa0b56; }
+</style>
+</helmet>
+
+<div style="padding: 60px 60px 140px; font-family: 'Source Serif 4', Georgia, serif; display: flex; flex-direction: column; gap: 70px;">
+
+  <header style="display: flex; flex-direction: column; gap: 15px; max-width: 1440px;">
+    <div style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #605d5d;">Share &middot; Phase 1 screens &middot; v1</div>
+    <h1 style="font-size: 56px; line-height: 1.05; font-weight: 600; margin: 0; max-width: 22ch; text-wrap: pretty;">The eleven screens Phase 1 ships</h1>
+    <p style="font-size: 21px; line-height: 1.5; max-width: 62ch; margin: 0; color: #444141; text-wrap: pretty;">Numbered to <span style="font-family: ui-monospace, Menlo, monospace; font-size: 18px;">inventory.md</span>, in the order &sect;16.2 builds them. Every string is verbatim from Part 12; every value is from <a href="Foundations.dc.html">Foundations</a>. Behaviour lives in Part 11 &mdash; these show what it looks like, not what it does. 1440&times;900.</p>
+  </header>
+
+  <section id="11.1" data-screen-label="11.1" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.1</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Sign in</h2><span style="font-size: 17px; color: #605d5d;">No shell. Nothing on this page names the instance&rsquo;s owner.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; flex-direction: column; justify-content: center; padding: 0 0 0 160px; box-sizing: border-box;">
+      <div style="display: flex; flex-direction: column; gap: 40px; max-width: 480px;">
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 40px; font-weight: 600; line-height: 1.1;">Share</span>
+          <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #605d5d;">share.c52.com</span>
+        </div>
+        <p style="font-size: 21px; line-height: 1.5; margin: 0;">Sign in with a passkey.</p>
+        <div style="display: flex; flex-direction: column; gap: 20px; align-items: flex-start;">
+          <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer;" style-hover="background: #004961; border-color: #004961;">Sign in</button>
+          <a href="#11.2" style="font-size: 17px;">Use a recovery code</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 15px 20px; border-left: 3px solid #201e1d; max-width: 44ch;">
+          <div style="font-size: 17px; line-height: 1.55;"><em style="font-style: italic;">Error state, in place.</em> That passkey is not registered here. Try another, or use a recovery code.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.3" data-screen-label="11.3" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.3</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Add a passkey</h2><span style="font-size: 17px; color: #605d5d;">Additive variant. The forced variant swaps heading and intro and removes the shell.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><a href="#11.5" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Artifacts</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><a href="#11.18" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">API tokens</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">18.2 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 4%; height: 4px; background: #605d5d;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <span style="margin-left: auto; font-size: 17px; color: #605d5d;">@rosa</span>
+        </header>
+        <main style="flex: 1; padding: 40px 30px; overflow: hidden; display: flex; flex-direction: column; gap: 30px; max-width: 720px;">
+          <h1 style="font-size: 26px; font-weight: 600; margin: 0;">Add a passkey</h1>
+          <p style="font-size: 19px; line-height: 1.55; margin: 0; color: #444141; max-width: 60ch;">A second passkey on another device is what makes losing the first uneventful.</p>
+          <div style="display: flex; flex-direction: column; gap: 5px; max-width: 380px;">
+            <label style="font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Name this passkey</label>
+            <input type="text" value="rosa&rsquo;s iPhone" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 12px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+            <span style="font-size: 15px; line-height: 1.45; color: #605d5d;">Defaults to your authenticator&rsquo;s name. Change it to something you will recognize when you have three.</span>
+          </div>
+          <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer; align-self: flex-start;" style-hover="background: #004961; border-color: #004961;">Register a passkey</button>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+            <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Already registered</span>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 30px; padding: 12px 0; border-bottom: 1px solid rgba(32,30,29,0.16); min-height: 48px;">
+              <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px;">rosa&rsquo;s MacBook</span><span style="font-size: 15px; color: #605d5d;">added 14 Mar 2026 &middot; last used 4 minutes ago &middot; syncs across your devices</span></div>
+              <div style="display: flex; gap: 15px; font-size: 17px;"><a href="#">Rename</a><a href="#" style="color: #9e2b1e;">Revoke</a></div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding: 15px 20px; border-left: 3px solid #201e1d; max-width: 60ch;">
+            <div style="font-size: 17px; line-height: 1.55;"><em style="font-style: italic;">Note.</em> You have one passkey. If you lose it, the only ways back are your recovery code or access to the server.</div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.5" data-screen-label="11.5" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.5</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Home &mdash; artifacts</h2><span style="font-size: 17px; color: #605d5d;">The sharing column is the reason this screen exists.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><span style="padding: 9px 17px; font-size: 17px; font-weight: 600; border-left: 3px solid #201e1d;">Artifacts</span><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><a href="#11.18" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">API tokens</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">18.2 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 4%; height: 4px; background: #605d5d;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 18px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;" style-hover="background: #eae7e7; border-color: #7d7979;">Upload</button><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 30px; overflow: hidden; display: flex; flex-direction: column; gap: 25px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 30px;">
+            <h1 style="font-size: 26px; font-weight: 600; margin: 0;">Artifacts</h1>
+            <div style="display: flex; gap: 20px; font-size: 17px; color: #605d5d;"><span>All</span><span>Kind</span><span>Tag</span><span>Agent</span><span>Shared</span><span style="color: #201e1d;">Recently updated</span></div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 15px; padding: 12px 20px; border-left: 3px solid #201e1d;">
+            <span style="font-size: 17px; line-height: 1.5;"><em style="font-style: italic;">Note.</em> 2 share links expire within 48 hours.</span><a href="#" style="font-size: 17px;">Review</a>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="display: grid; grid-template-columns: 1fr 290px 130px 90px 70px; gap: 25px; padding: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; border-bottom: 1px solid rgba(32,30,29,0.16);"><div>Name</div><div>Sharing</div><div>Updated</div><div>Size</div><div>Version</div></div>
+            <div style="display: grid; grid-template-columns: 1fr 290px 130px 90px 70px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);">
+              <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">q3-margin-review</span><span style="font-size: 15px; color: #605d5d;">Q3 margin review &middot; posted by claude-code@studio</span></div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #aa0b56; border-radius: 2px; background: #aa0b56; color: #ffffff; font-size: 16px; font-weight: 600; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.34,119.6,183.6,154.34a46.58,46.58,0,0,1-44.31,12.26c-.31.34-.62.67-.95,1L103.6,202.34A46.63,46.63,0,1,1,37.66,136.4L72.4,101.66A46.6,46.6,0,0,1,116.71,89.4c.31-.34.62-.67,1-1L152.4,53.66a46.63,46.63,0,0,1,65.94,65.94Z" opacity="0.2"></path><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,7.78,8.22H152a8,8,0,0,0,8-7.78A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"></path></svg>Link active</span><span style="display: inline-flex; padding: 3px 9px; border: 1px solid #aa0b56; border-radius: 2px; color: #aa0b56; font-size: 15px; line-height: 1.2;">12 hours</span></div>
+              <div style="font-size: 15px; color: #605d5d;">4 min ago</div><div style="font-size: 15px; color: #605d5d;">2.4 MB</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">v7</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 290px 130px 90px 70px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);">
+              <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">vendor-audit-2026</span><span style="font-size: 15px; color: #605d5d;">posted by claude-code@studio</span></div>
+              <div style="display: flex; gap: 8px; align-items: center;"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #99e0ff; border-radius: 2px; background: #cbeeff; color: #004961; font-size: 16px; font-weight: 500; line-height: 1.2;"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M136,108A52,52,0,1,1,84,56,52,52,0,0,1,136,108Z" opacity="0.2"></path><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"></path></svg>Shared with 3 people</span></div>
+              <div style="font-size: 15px; color: #605d5d;">Yesterday</div><div style="font-size: 15px; color: #605d5d;">84 MB</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">v2</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 290px 130px 90px 70px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);">
+              <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">weekly-ops-digest</span><span style="font-size: 15px; color: #605d5d;">posted by cron@ops</span></div>
+              <div style="display: flex; gap: 8px; align-items: center;"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #bab6b6; border-radius: 2px; color: #605d5d; font-size: 16px; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" opacity="0.2"></path><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"></path></svg>Private</span></div>
+              <div style="font-size: 15px; color: #605d5d;">6 days ago</div><div style="font-size: 15px; color: #605d5d;">96 KB</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">v31</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 290px 130px 90px 70px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);">
+              <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">brand/press-kit</span><span style="font-size: 15px; color: #605d5d;">Press kit &middot; posted by you</span></div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #aa0b56; border-radius: 2px; background: #aa0b56; color: #ffffff; font-size: 16px; font-weight: 600; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.34,119.6,183.6,154.34a46.58,46.58,0,0,1-44.31,12.26c-.31.34-.62.67-.95,1L103.6,202.34A46.63,46.63,0,1,1,37.66,136.4L72.4,101.66A46.6,46.6,0,0,1,116.71,89.4c.31-.34.62-.67,1-1L152.4,53.66a46.63,46.63,0,0,1,65.94,65.94Z" opacity="0.2"></path><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,7.78,8.22H152a8,8,0,0,0,8-7.78A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"></path></svg>Link active</span><span style="display: inline-flex; padding: 3px 9px; border: 1px solid #7d7979; border-radius: 2px; color: #605d5d; font-size: 15px; line-height: 1.2;">Password</span></div>
+              <div style="font-size: 15px; color: #605d5d;">2 weeks ago</div><div style="font-size: 15px; color: #605d5d;">312 MB</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">v4</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 290px 130px 90px 70px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);">
+              <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">retro-2026-08-11</span><span style="font-size: 15px; color: #605d5d;">posted by claude-code@laptop</span></div>
+              <div style="display: flex; gap: 8px; align-items: center;"><span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #bab6b6; border-radius: 2px; color: #605d5d; font-size: 16px; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,96V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H208A8,8,0,0,1,216,96Z" opacity="0.2"></path><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Z"></path></svg>Private</span></div>
+              <div style="font-size: 15px; color: #605d5d;">2 weeks ago</div><div style="font-size: 15px; color: #605d5d;">1.1 MB</div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">v1</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 25px; font-size: 15px; color: #605d5d;"><span>5 of 34</span><a href="#" style="font-size: 17px;">Load more</a></div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.6" data-screen-label="11.6" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.6</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Empty state and first-run checklist</h2><span style="font-size: 17px; color: #605d5d;">Item 6 is root-only. The checklist is the one place a card is used as a card.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><span style="padding: 9px 17px; font-size: 17px; font-weight: 600; border-left: 3px solid #201e1d;">Artifacts</span><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><a href="#11.18" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">API tokens</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">0 B of 500 GB</span><div style="height: 4px; background: #d7d3d3;"></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 18px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;">Upload</button><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 30px; overflow: hidden; display: flex; flex-direction: column; gap: 30px;">
+          <div style="max-width: 920px; background: #eae9e9; border-radius: 2px; padding: 20px 30px; display: flex; flex-direction: column; gap: 15px;">
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <h2 style="font-size: 26px; font-weight: 600; margin: 0;">Set up Share</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: #444141; max-width: 66ch;">Five things, once. The first two get an agent posting to this instance; the rest make sure you can still get in and still know what is reachable.</p>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: grid; grid-template-columns: 30px 1fr 190px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: start;"><span style="font-size: 17px; color: #7d7979;">1</span><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600;">Connect an agent</span><span style="font-size: 15px; line-height: 1.45; color: #605d5d;">Point Claude Code, Cursor, Codex, or any MCP host at this instance with one configuration block and a token.</span></div><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;"><a href="#11.18" style="font-size: 17px;">Create a token</a><a href="#" style="font-size: 15px; color: #605d5d;">Do this later</a></div></div>
+              <div style="display: grid; grid-template-columns: 30px 1fr 190px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: start;"><span style="font-size: 17px; color: #7d7979;">2</span><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600;">Post your first artifact</span><span style="font-size: 15px; line-height: 1.45; color: #605d5d;">Have your agent call <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">share_post</span>, or run <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">share post ./folder</span>. It stays private until you say otherwise.</span><span style="font-size: 15px; color: #605d5d; font-style: italic;">Waiting for your first post. This updates on its own.</span></div><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;"><a href="#11.27" style="font-size: 17px;">See the setup page</a></div></div>
+              <div style="display: grid; grid-template-columns: 30px 1fr 190px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: start;"><span style="font-size: 17px; color: #7d7979;">3</span><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600;">Add a second passkey</span><span style="font-size: 15px; line-height: 1.45; color: #605d5d;">One passkey is one device away from a recovery process. A second one on another device is what makes losing the first uneventful.</span></div><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;"><a href="#11.3" style="font-size: 17px;">Add a passkey</a><a href="#" style="font-size: 15px; color: #605d5d;">Do this later</a></div></div>
+              <div style="display: grid; grid-template-columns: 30px 1fr 190px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: start;"><span style="font-size: 17px; color: #7d7979;">4</span><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600;">Save your recovery code</span><span style="font-size: 15px; line-height: 1.45; color: #605d5d;">Twenty-four characters, shown once, good for one sign-in if every passkey is gone. Put it where you keep other things you cannot regenerate.</span></div><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;"><span style="font-size: 17px; color: #605d5d;">Done</span></div></div>
+              <div style="display: grid; grid-template-columns: 30px 1fr 190px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); align-items: start;"><span style="font-size: 17px; color: #7d7979;">5</span><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600;">Check what reaches your inbox</span><span style="font-size: 15px; line-height: 1.45; color: #605d5d;">Share emails you every time something of yours becomes reachable without a sign-in, including when an agent does it. Confirm that is still on.</span></div><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;"><a href="#" style="font-size: 17px;">Review notifications</a><a href="#" style="font-size: 15px; color: #605d5d;">Do this later</a></div></div>
+              <div style="display: grid; grid-template-columns: 30px 1fr 190px; gap: 20px; padding: 10px 0; align-items: start;"><span style="font-size: 17px; color: #7d7979;">6</span><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px; font-weight: 600;">Invite someone</span><span style="font-size: 15px; line-height: 1.45; color: #605d5d;">Share has no sign-up. People get accounts because you create them, and each gets their own space at <span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px;">share.c52.com/~handle</span>.</span></div><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;"><span style="font-size: 17px; color: #605d5d;">Skipped &middot; <a href="#">Undo</a></span></div></div>
+            </div>
+            <span style="font-size: 15px; color: #605d5d;">You can leave this at any time &mdash; it disappears once every item is done or skipped.</span>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="11.6b" data-screen-label="11.6b" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.6</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Empty state, checklist finished</h2><span style="font-size: 17px; color: #605d5d;">The same screen once every item is done or skipped. No card, no illustration.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><span style="padding: 9px 17px; font-size: 17px; font-weight: 600; border-left: 3px solid #201e1d;">Artifacts</span><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><a href="#11.18" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">API tokens</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">0 B of 500 GB</span><div style="height: 4px; background: #d7d3d3;"></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 18px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;">Upload</button><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 30px; overflow: hidden; display: flex; flex-direction: column; gap: 25px;">
+          <h1 style="font-size: 26px; font-weight: 600; margin: 0;">Artifacts</h1>
+          <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding-top: 60px;">
+            <h2 style="font-size: 30px; font-weight: 600; margin: 0;">Nothing here yet</h2>
+            <p style="font-size: 19px; line-height: 1.55; margin: 0; color: #444141;">Artifacts your agents post appear here, newest first.</p>
+            <a href="#" style="font-size: 17px; padding-top: 5px;">Upload from your browser</a>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.7" data-screen-label="11.7" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.7</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Artifact detail &mdash; overview</h2><span style="font-size: 17px; color: #605d5d;">Activity is the attribution surface that makes agent autonomy acceptable.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><span style="padding: 9px 17px; font-size: 17px; font-weight: 600; border-left: 3px solid #201e1d;">Artifacts</span><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><a href="#11.18" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">API tokens</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">18.2 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 4%; height: 4px; background: #605d5d;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 18px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;">Upload</button><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 25px 30px; overflow: hidden; display: flex; gap: 40px;">
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+            <a href="#11.5" style="font-size: 15px;">Artifacts</a>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <h1 style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 30px; font-weight: 500; margin: 0; letter-spacing: -0.01em;">q3-margin-review</h1>
+                <span style="display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px 4px 8px; border: 1px solid #aa0b56; border-radius: 2px; background: #aa0b56; color: #ffffff; font-size: 16px; font-weight: 600; line-height: 1.2;"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M218.34,119.6,183.6,154.34a46.58,46.58,0,0,1-44.31,12.26c-.31.34-.62.67-.95,1L103.6,202.34A46.63,46.63,0,1,1,37.66,136.4L72.4,101.66A46.6,46.6,0,0,1,116.71,89.4c.31-.34.62-.67,1-1L152.4,53.66a46.63,46.63,0,0,1,65.94,65.94Z" opacity="0.2"></path><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,7.78,8.22H152a8,8,0,0,0,8-7.78A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"></path></svg>Link active</span>
+              </div>
+              <span style="font-size: 17px; color: #605d5d;">PDF &middot; v7 &middot; 3 files &middot; 2.4 MB</span>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: center;">
+              <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer;" style-hover="background: #004961; border-color: #004961;">Open</button>
+              <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;" style-hover="background: #eae7e7; border-color: #7d7979;">Copy URL</button>
+              <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 12px; min-height: 44px; border: 1px solid transparent; border-radius: 2px; background: transparent; color: #006786; cursor: pointer;" style-hover="background: #e9f8ff;">More</button>
+            </div>
+            <div style="display: flex; gap: 25px; border-bottom: 1px solid rgba(32,30,29,0.16); margin-top: 5px;">
+              <span style="font-size: 17px; font-weight: 600; padding: 0 0 8px; border-bottom: 2px solid #201e1d; margin-bottom: -1px;">Overview</span>
+              <a href="#11.8" style="font-size: 17px; padding: 0 0 8px; color: #201e1d; text-decoration: none;">Files</a>
+              <a href="#" style="font-size: 17px; padding: 0 0 8px; color: #201e1d; text-decoration: none;">Versions</a>
+              <a href="#" style="font-size: 17px; padding: 0 0 8px; color: #201e1d; text-decoration: none;">Sharing</a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <h2 style="font-size: 22px; font-weight: 600; margin: 0;">Activity</h2>
+              <div style="display: flex; flex-direction: column;">
+                <div style="display: grid; grid-template-columns: 1fr 150px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Overwritten &rarr; v7 by <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">claude-code@studio</span></span><span style="font-size: 15px; color: #605d5d;">4 minutes ago</span></div>
+                <div style="display: grid; grid-template-columns: 1fr 150px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>18 views via &ldquo;client link&rdquo;</span><span style="font-size: 15px; color: #605d5d;">today</span></div>
+                <div style="display: grid; grid-template-columns: 1fr 150px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Link created, 24 hours, password set, by you</span><span style="font-size: 15px; color: #605d5d;">yesterday</span></div>
+                <div style="display: grid; grid-template-columns: 1fr 150px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Details changed by you</span><span style="font-size: 15px; color: #605d5d;">yesterday</span></div>
+                <div style="display: grid; grid-template-columns: 1fr 150px; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16); font-size: 17px;"><span>Posted v6 by <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">claude-code@studio</span></span><span style="font-size: 15px; color: #605d5d;">3 days ago</span></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;"><span style="font-size: 15px; line-height: 1.45; color: #605d5d; max-width: 60ch;">View counts are daily totals. Share records no identity, address, or location for a view.</span><a href="#" style="font-size: 17px; flex: none;">Load older</a></div>
+            </div>
+          </div>
+          <aside style="width: 300px; flex: none; display: flex; flex-direction: column; gap: 30px; padding-top: 45px;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Sharing</span>
+              <span style="font-size: 17px; line-height: 1.45;">1 link &middot; expires tomorrow 09:40 (in 12 hours) &middot; password set</span>
+              <a href="#" style="font-size: 17px;">Manage sharing</a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Posted by</span>
+              <span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">claude-code@studio</span>
+              <a href="#" style="font-size: 17px;">View all from this agent</a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Details</span>
+              <div style="display: grid; grid-template-columns: 90px 1fr; gap: 6px 15px; font-size: 17px;"><span style="color: #605d5d;">Created</span><span>11 Aug 2026</span><span style="color: #605d5d;">Updated</span><span>4 minutes ago</span><span style="color: #605d5d;">Tags</span><span>finance, q3</span><span style="color: #605d5d;">TTL</span><span>None</span><span style="color: #605d5d;">Views</span><span>212 &middot; last today</span></div>
+              <a href="#" style="font-size: 17px;">Edit details</a>
+            </div>
+          </aside>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.8" data-screen-label="11.8" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.8</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Files</h2><span style="font-size: 17px; color: #605d5d;">Paths and digests are literal. Versions are immutable, so nothing here deletes.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><span style="padding: 9px 17px; font-size: 17px; font-weight: 600; border-left: 3px solid #201e1d;">Artifacts</span><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><a href="#11.18" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">API tokens</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">18.2 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 4%; height: 4px; background: #605d5d;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 18px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;">Upload</button><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 25px 30px; overflow: hidden; display: flex; flex-direction: column; gap: 20px;">
+          <a href="#11.5" style="font-size: 15px;">Artifacts</a>
+          <h1 style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 30px; font-weight: 500; margin: 0;">q3-margin-review</h1>
+          <div style="display: flex; gap: 25px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+            <a href="#11.7" style="font-size: 17px; padding: 0 0 8px; color: #201e1d; text-decoration: none;">Overview</a>
+            <span style="font-size: 17px; font-weight: 600; padding: 0 0 8px; border-bottom: 2px solid #201e1d; margin-bottom: -1px;">Files</span>
+            <a href="#" style="font-size: 17px; padding: 0 0 8px; color: #201e1d; text-decoration: none;">Versions</a>
+            <a href="#" style="font-size: 17px; padding: 0 0 8px; color: #201e1d; text-decoration: none;">Sharing</a>
+          </div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 30px;">
+            <span style="font-size: 19px;">Files &middot; live version v7 &middot; 3 files &middot; 2.4 MB</span>
+            <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;" style-hover="background: #eae7e7; border-color: #7d7979;">Download .tar.gz</button>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div style="display: grid; grid-template-columns: 1fr 240px 110px; gap: 25px; padding: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; border-bottom: 1px solid rgba(32,30,29,0.16);"><div>Path</div><div>Type</div><div>Size</div></div>
+            <div style="display: grid; grid-template-columns: 1fr 240px 110px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">margin-review.pdf</span><span style="display: inline-flex; padding: 2px 8px; border: 1px solid #7d7979; border-radius: 2px; color: #605d5d; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;">entry</span></div><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">application/pdf</div><div style="font-size: 15px; color: #605d5d;">604 KB</div></div>
+            <div style="display: grid; grid-template-columns: 1fr 240px 110px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">assets/figures.pdf</span><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">application/pdf</div><div style="font-size: 15px; color: #605d5d;">1.8 MB</div></div>
+            <div style="display: grid; grid-template-columns: 1fr 240px 110px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">assets/notes.txt</span><div style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">text/plain</div><div style="font-size: 15px; color: #605d5d;">12 KB</div></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding: 15px 20px; border-left: 3px solid #201e1d; max-width: 70ch;">
+            <div style="font-size: 17px; line-height: 1.55;"><em style="font-style: italic;">Note.</em> Versions are immutable, so files cannot be removed from one. Post again without the file to change what is live.</div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.15" data-screen-label="11.15" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.15</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Trash</h2><span style="font-size: 17px; color: #605d5d;">Restoring does not bring share links back. The screen says so before you restore.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box; position: relative;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><a href="#11.5" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Artifacts</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><span style="padding: 9px 17px; font-size: 17px; font-weight: 600; border-left: 3px solid #201e1d;">Trash</span></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><a href="#11.18" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">API tokens</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">487 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 97%; height: 4px; background: #9e2b1e;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 30px; overflow: hidden; display: flex; flex-direction: column; gap: 25px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 30px;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <h1 style="font-size: 26px; font-weight: 600; margin: 0;">Trash &middot; 4 artifacts &middot; 61 GB &middot; deleted after 30 days</h1>
+              <span style="font-size: 17px; color: #605d5d;">Items here still count against your storage quota.</span>
+            </div>
+            <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #9e2b1e; border-radius: 2px; background: transparent; color: #9e2b1e; cursor: pointer; flex: none;" style-hover="background: #9e2b1e; color: #ffffff;">Empty trash</button>
+          </div>
+          <div style="display: flex; align-items: center; gap: 15px; padding: 12px 20px; border-left: 3px solid #201e1d;">
+            <span style="font-size: 17px; line-height: 1.5;"><em style="font-style: italic;">Warning.</em> You are over your storage quota. Emptying the trash frees 61 GB and is the fastest way back under it.</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 25px;">
+            <div style="display: flex; flex-direction: column;">
+              <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; padding-bottom: 8px;">Going soon</span>
+              <div style="display: grid; grid-template-columns: 1fr 150px 150px 110px 200px; gap: 25px; padding: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; border-bottom: 1px solid rgba(32,30,29,0.16);"><div>Name</div><div>Deleted</div><div>Gone on</div><div>Size</div><div></div></div>
+              <div style="display: grid; grid-template-columns: 1fr 150px 150px 110px 200px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">raw-exports-july</span><span style="font-size: 15px; color: #605d5d;">28 Jul 2026</span><span style="font-size: 15px;">tomorrow</span><span style="font-size: 15px; color: #605d5d;">58 GB</span><div style="display: flex; gap: 15px; font-size: 17px;"><a href="#">Restore</a><a href="#" style="color: #9e2b1e;">Delete permanently</a></div></div>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: grid; grid-template-columns: 1fr 150px 150px 110px 200px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><div style="display: flex; align-items: center; gap: 12px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">q2-margin-review</span><span style="display: inline-flex; padding: 3px 9px; border: 1px dashed #7d7979; border-radius: 2px; color: #605d5d; font-size: 15px; line-height: 1.2;">Name taken</span></div><span style="font-size: 15px; color: #605d5d;">12 Aug 2026</span><span style="font-size: 15px; color: #605d5d;">11 Sep 2026</span><span style="font-size: 15px; color: #605d5d;">2.1 MB</span><div style="display: flex; gap: 15px; font-size: 17px;"><a href="#">Restore</a><a href="#" style="color: #9e2b1e;">Delete permanently</a></div></div>
+              <div style="display: grid; grid-template-columns: 1fr 150px 150px 110px 200px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">draft-deck-v3</span><span style="font-size: 15px; color: #605d5d;">19 Aug 2026</span><span style="font-size: 15px; color: #605d5d;">18 Sep 2026</span><span style="font-size: 15px; color: #605d5d;">910 MB</span><div style="display: flex; gap: 15px; font-size: 17px;"><a href="#">Restore</a><a href="#" style="color: #9e2b1e;">Delete permanently</a></div></div>
+              <div style="display: grid; grid-template-columns: 1fr 150px 150px 110px 200px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">scratch/tmp-render</span><span style="font-size: 15px; color: #605d5d;">21 Aug 2026</span><span style="font-size: 15px; color: #605d5d;">20 Sep 2026</span><span style="font-size: 15px; color: #605d5d;">44 MB</span><div style="display: flex; gap: 15px; font-size: 17px;"><a href="#">Restore</a><a href="#" style="color: #9e2b1e;">Delete permanently</a></div></div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <div style="position: absolute; inset: 0; background: rgba(45,43,43,0.5); display: grid; place-items: center; padding: 20px;">
+        <div style="width: 520px; padding: 20px; background: #eae9e9; border-radius: 4px; box-shadow: 0 12px 32px rgba(45,43,43,0.22); display: flex; flex-direction: column; gap: 15px;">
+          <h4 style="font-size: 22px; font-weight: 600; margin: 0; line-height: 1.2;">Restore <span style="font-family: ui-monospace, Menlo, monospace;">draft-deck-v3</span>?</h4>
+          <p style="font-size: 17px; line-height: 1.55; margin: 0; color: #444141;">Every version comes back and the artifact resolves at its URL again. Its share links and grants do not come back &mdash; trashing revoked them, and anyone who held a link stays locked out until you make a new one.</p>
+          <div style="display: flex; gap: 15px; justify-content: flex-end;">
+            <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;">Cancel</button>
+            <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer;">Restore</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.18" data-screen-label="11.18" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.18</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">API tokens</h2><span style="font-size: 17px; color: #605d5d;">Sharing scope is off by default and its row reads differently when on.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><a href="#11.5" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Artifacts</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><span style="padding: 9px 17px; font-size: 17px; font-weight: 600; border-left: 3px solid #201e1d;">API tokens</span><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">18.2 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 4%; height: 4px; background: #605d5d;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 30px; overflow: hidden; display: flex; gap: 40px;">
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 25px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 30px;">
+              <h1 style="font-size: 26px; font-weight: 600; margin: 0;">API tokens</h1>
+              <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer;" style-hover="background: #004961; border-color: #004961;">New token</button>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div style="display: grid; grid-template-columns: 1fr 130px 1fr 130px; gap: 25px; padding: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979; border-bottom: 1px solid rgba(32,30,29,0.16);"><div>Name</div><div>Prefix</div><div>Scopes</div><div>Last used</div></div>
+              <div style="display: grid; grid-template-columns: 1fr 130px 1fr 130px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">claude-code@studio</span><span style="font-size: 15px; color: #605d5d;">created 11 Aug 2026 &middot; 34 artifacts posted</span></div><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">shr_8fK2</span><span style="font-size: 15px; line-height: 1.4;">artifacts:read, artifacts:write</span><span style="font-size: 15px; color: #605d5d;">4 min ago</span></div>
+              <div style="display: grid; grid-template-columns: 1fr 130px 1fr 130px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">cron@ops</span><span style="font-size: 15px; color: #605d5d;">created 03 Jun 2026 &middot; 31 artifacts posted</span></div><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">shr_b31c</span><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 15px; line-height: 1.4;">artifacts:write, share:create</span><span style="display: inline-flex; padding: 2px 8px; border: 1px solid #aa0b56; border-radius: 2px; color: #aa0b56; font-size: 14px; align-self: flex-start;">Can create share links</span></div><span style="font-size: 15px; color: #605d5d;">yesterday</span></div>
+              <div style="display: grid; grid-template-columns: 1fr 130px 1fr 130px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px;">claude-code@laptop</span><span style="font-size: 15px; color: #605d5d;">created 21 Aug 2026 &middot; 1 artifact posted</span></div><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">shr_c907</span><span style="font-size: 15px; line-height: 1.4;">artifacts:read, artifacts:write</span><span style="font-size: 15px; color: #605d5d;">never</span></div>
+            </div>
+            <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Revoked (2)</span>
+          </div>
+          <aside style="width: 420px; flex: none; padding: 20px; background: #eae9e9; border-radius: 4px; box-shadow: 0 12px 32px rgba(45,43,43,0.22); display: flex; flex-direction: column; gap: 15px; align-self: flex-start;">
+            <h4 style="font-size: 22px; font-weight: 600; margin: 0; line-height: 1.2;">Token created</h4>
+            <p style="font-size: 17px; line-height: 1.55; margin: 0; color: #444141;">Shown once, right now. Store it in whatever your agent reads secrets from.</p>
+            <div style="display: flex; align-items: flex-start; gap: 12px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px; line-height: 1.5; word-break: break-all; background: #f3f2f2; padding: 8px 10px; border-radius: 2px; flex: 1;">shr_c907_4kQ9vT2mBx7Ld0Ns8Rj1Ye</span><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; padding: 4px 10px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #006786; cursor: pointer; flex: none;">Copy</button></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Ready to paste into your MCP host</span>
+              <pre style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; line-height: 1.5; margin: 0; padding: 12px; background: #f3f2f2; border-radius: 2px; overflow-x: auto;">{
+  "mcpServers": {
+    "share": {
+      "url": "https://share.c52.com/mcp",
+      "headers": {
+        "Authorization": "Bearer shr_YOUR_TOKEN"
+      }
+    }
+  }
+}</pre>
+            </div>
+            <div style="display: flex; justify-content: flex-end;"><button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer;">Done</button></div>
+          </aside>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.19" data-screen-label="11.19" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.19</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Security &mdash; passkeys and sessions</h2><span style="font-size: 17px; color: #605d5d;">The last passkey cannot be revoked, and the screen says why rather than greying out.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><a href="#11.5" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Artifacts</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><a href="#11.18" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">API tokens</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">18.2 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 4%; height: 4px; background: #605d5d;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 30px; overflow: hidden; display: flex; gap: 40px;">
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 30px;">
+            <h1 style="font-size: 26px; font-weight: 600; margin: 0;">Security</h1>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 30px;">
+                <h2 style="font-size: 22px; font-weight: 600; margin: 0;">Passkeys</h2>
+                <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;" style-hover="background: #eae7e7; border-color: #7d7979;">Add a passkey</button>
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <div style="display: grid; grid-template-columns: 1fr 170px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px;">rosa&rsquo;s MacBook <span style="font-size: 15px; color: #605d5d;">&middot; This device</span></span><span style="font-size: 15px; color: #605d5d;">added 14 Mar 2026 &middot; last used 4 minutes ago &middot; syncs across your devices</span></div><div style="display: flex; gap: 15px; font-size: 17px;"><a href="#">Rename</a><a href="#" style="color: #9e2b1e;">Revoke</a></div></div>
+                <div style="display: grid; grid-template-columns: 1fr 170px; gap: 25px; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 17px;">Yubikey 5C</span><span style="font-size: 15px; color: #605d5d;">added 02 Apr 2026 &middot; last used 3 weeks ago &middot; this device only</span></div><div style="display: flex; gap: 15px; font-size: 17px;"><a href="#">Rename</a><a href="#" style="color: #9e2b1e;">Revoke</a></div></div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 30px;">
+                <h2 style="font-size: 22px; font-weight: 600; margin: 0;">Sessions</h2>
+                <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #9e2b1e; border-radius: 2px; background: transparent; color: #9e2b1e; cursor: pointer;" style-hover="background: #9e2b1e; color: #ffffff;">Sign out everywhere</button>
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <div style="display: flex; flex-direction: column; gap: 2px; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><span style="font-size: 17px;">Chrome on macOS <span style="font-size: 15px; color: #605d5d;">&middot; This device</span></span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">81.44.2.19 &middot; started 24 Aug 2026 &middot; last seen just now &middot; via rosa&rsquo;s MacBook</span></div>
+                <div style="display: flex; flex-direction: column; gap: 2px; min-height: 48px; padding: 10px 0; border-bottom: 1px solid rgba(32,30,29,0.16);"><span style="font-size: 17px;">Safari on iOS</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: #605d5d;">81.44.2.19 &middot; started 22 Aug 2026 &middot; last seen 2 days ago &middot; via rosa&rsquo;s iPhone</span></div>
+              </div>
+            </div>
+          </div>
+          <aside style="width: 320px; flex: none; display: flex; flex-direction: column; gap: 12px; padding-top: 62px;">
+            <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Recovery code</span>
+            <p style="font-size: 17px; line-height: 1.55; margin: 0;">One outstanding code, generated 14 Mar 2026.</p>
+            <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer; align-self: flex-start;" style-hover="background: #eae7e7; border-color: #7d7979;">Generate a new code</button>
+            <p style="font-size: 15px; line-height: 1.5; margin: 0; color: #605d5d;">The current code stops working immediately and the new one is shown once.</p>
+          </aside>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.26" data-screen-label="11.26" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.26</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Authorize an agent</h2><span style="font-size: 17px; color: #605d5d;">The approval state. The hard line is not a checkbox &mdash; this flow cannot grant sharing.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Library</span><a href="#11.5" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Artifacts</a><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Shared with me</a><a href="#11.15" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Trash</a></div>
+            <div style="display: flex; flex-direction: column;"><span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Agents</span><span style="padding: 9px 17px; font-size: 17px; font-weight: 600; border-left: 3px solid #201e1d;">API tokens</span><a href="#" style="padding: 9px 20px; font-size: 17px; color: #201e1d; text-decoration: none;">Audit log</a></div>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">18.2 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 4%; height: 4px; background: #605d5d;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 30px; overflow: hidden; display: flex; flex-direction: column; gap: 30px; max-width: 720px;">
+          <h1 style="font-size: 26px; font-weight: 600; margin: 0;">Authorize an agent</h1>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <h2 style="font-size: 30px; font-weight: 600; margin: 0; line-height: 1.15;">Give <span style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 28px; font-weight: 500;">claude-code@laptop</span> a token?</h2>
+            <div style="display: grid; grid-template-columns: 160px 1fr; gap: 12px 25px; font-size: 17px; line-height: 1.5;">
+              <span style="color: #605d5d;">Requested from</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">81.44.2.19</span>
+              <span style="color: #605d5d;">Started</span><span>2 minutes ago</span>
+              <span style="color: #605d5d;">Scopes</span><span>Read and download your artifacts<br>Post, overwrite, rename, tag, and move to the trash</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; padding: 15px 20px; border-left: 3px solid #201e1d; max-width: 60ch;">
+              <div style="font-size: 17px; line-height: 1.55;">This token will not be able to create share links.</div>
+            </div>
+            <div style="display: flex; gap: 15px;">
+              <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 500; padding: 10px 20px; min-height: 44px; border: 1px solid #006786; border-radius: 2px; background: #006786; color: #ffffff; cursor: pointer;" style-hover="background: #004961; border-color: #004961;">Approve</button>
+              <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 10px 20px; min-height: 44px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #201e1d; cursor: pointer;" style-hover="background: #eae7e7; border-color: #7d7979;">Deny</button>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 1px solid rgba(32,30,29,0.16);">
+            <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Approved state, for reference</span>
+            <h3 style="font-size: 22px; font-weight: 600; margin: 0;">Approved</h3>
+            <p style="font-size: 17px; line-height: 1.55; margin: 0; color: #444141; max-width: 60ch;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">claude-code@laptop</span> has a token. Return to your terminal &mdash; the token is not shown here.</p>
+            <a href="#11.18" style="font-size: 17px;">Manage this token</a>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section id="11.27" data-screen-label="11.27" style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: baseline; gap: 15px;"><span style="font-family: ui-monospace, Menlo, monospace; font-size: 17px; color: #aa0b56;">11.27</span><h2 style="font-size: 26px; font-weight: 600; margin: 0;">Help &mdash; connecting agents</h2><span style="font-size: 17px; color: #605d5d;">Bundled Markdown, one measure, no chrome competing with the code blocks.</span></div>
+    <div style="width: 1440px; height: 900px; background: #f3f2f2; color: #201e1d; box-shadow: 0 3px 10px rgba(45,43,43,0.16); display: flex; box-sizing: border-box;">
+      <nav style="width: 240px; flex: none; background: #eae9e9; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 0;">
+        <div style="display: flex; flex-direction: column; gap: 30px;">
+          <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 22px; font-weight: 600;">Share</span><span style="font-family: ui-monospace, Menlo, monospace; font-size: 14px; color: #605d5d;">share.c52.com</span></div>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="padding: 0 20px 5px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Help</span>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Quickstart</a>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Posting artifacts</a>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Privacy and sharing</a>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Share links and grants</a>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Versions, trash, and getting things back</a>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Search</a>
+            <span style="padding: 7px 17px; font-size: 16px; font-weight: 600; border-left: 3px solid #201e1d;">Connecting agents</span>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">CLI reference</a>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Passkeys and recovery</a>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Users and invites</a>
+            <a href="#" style="padding: 7px 20px; font-size: 16px; color: #201e1d; text-decoration: none;">Storage and quotas</a>
+          </div>
+        </div>
+        <div style="padding: 0 20px; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; color: #605d5d;">18.2 GB of 500 GB</span><div style="height: 4px; background: #d7d3d3;"><div style="width: 4%; height: 4px; background: #605d5d;"></div></div></div>
+      </nav>
+      <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+        <header style="height: 56px; flex: none; display: flex; align-items: center; gap: 20px; padding: 0 30px; border-bottom: 1px solid rgba(32,30,29,0.16);">
+          <input type="text" placeholder="Search artifacts" style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; padding: 8px 12px; width: 320px; border: 1px solid #bab6b6; border-radius: 2px; background: #eae9e9; color: #201e1d;">
+          <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;"><span style="font-size: 17px; color: #605d5d;">@rosa</span></div>
+        </header>
+        <main style="flex: 1; padding: 30px 50px; overflow: hidden; display: flex; flex-direction: column; gap: 25px; max-width: 780px;">
+          <h1 style="font-size: 40px; font-weight: 600; margin: 0; line-height: 1.1;">Connecting agents</h1>
+          <p style="font-size: 19px; line-height: 1.55; margin: 0; max-width: 66ch;">Share speaks MCP over streamable HTTP at <span style="font-family: ui-monospace, Menlo, monospace; font-size: 18px;">https://share.c52.com/mcp</span>, authenticated with the same bearer token the REST API uses.</p>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+              <span style="font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d7979;">Claude Code</span>
+              <button style="font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; padding: 4px 10px; border: 1px solid #bab6b6; border-radius: 2px; background: transparent; color: #006786; cursor: pointer;" style-hover="background: #e9f8ff; border-color: #006786;">Copy</button>
+            </div>
+            <pre style="font-family: ui-monospace, Menlo, monospace; font-size: 15px; line-height: 1.6; margin: 0; padding: 15px 18px; background: #eae9e9; border-radius: 2px; overflow-x: auto;">claude mcp add share \
+  --transport http https://share.c52.com/mcp \
+  --header "Authorization: Bearer shr_YOUR_TOKEN"</pre>
+          </div>
+          <p style="font-size: 17px; line-height: 1.55; margin: 0; color: #605d5d; max-width: 66ch;">Replace <span style="font-family: ui-monospace, Menlo, monospace; font-size: 16px;">shr_YOUR_TOKEN</span> with a real token. Share never fills a real token into these blocks.</p>
+          <div style="display: flex; flex-direction: column; gap: 10px; padding: 15px 20px; border-left: 3px solid #201e1d; max-width: 66ch;">
+            <div style="font-size: 17px; line-height: 1.55;"><em style="font-style: italic;">Note.</em> You have no tokens yet. An agent needs one to post here. <a href="#11.18">Create a token</a></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 15px;">
+            <h2 style="font-size: 22px; font-weight: 600; margin: 0;">Three things people ask</h2>
+            <div style="display: flex; flex-direction: column; gap: 4px; font-size: 17px;">
+              <a href="#">Why search cannot read your files</a>
+              <a href="#">Why every share link expires</a>
+              <a href="#">What happens when an agent overwrites something you shared</a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 15px; max-width: 1440px;">
+    <h2 style="font-size: 26px; font-weight: 600; margin: 0;">Not in this file</h2>
+    <p style="font-size: 19px; line-height: 1.55; margin: 0; max-width: 66ch; color: #444141;">11.2 recovery-code sign-in, 11.4 invite acceptance, 11.9 viewer, 11.12 sharing panel, 11.13 create-link dialog, 11.16 search palette, 11.17 upload, and 11.20&ndash;11.28 are Phase 2 and later per &sect;16. The create-link dialog&rsquo;s anatomy is in <a href="Foundations.dc.html">Foundations</a> because it is the product&rsquo;s spine and the component values had to be settled; its full three-state flow is Phase 2&rsquo;s work.</p>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

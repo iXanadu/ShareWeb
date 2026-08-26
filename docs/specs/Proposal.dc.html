@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/broadsheet-3159c9d6-9919-44f2-bd7a-8bf7f712eea5/styles.css">
+<script src="_ds/broadsheet-3159c9d6-9919-44f2-bd7a-8bf7f712eea5/_ds_bundle.js"></script>
+<style>
+  body { background: var(--color-bg); color: var(--color-text); margin: 0; }
+  a { color: var(--color-accent-700); text-decoration: none; border-bottom: 1px solid var(--color-accent-300); }
+  a:hover { color: var(--color-accent-900); border-bottom-color: var(--color-accent-700); }
+</style>
+</helmet>
+
+<div style="max-width: 1080px; padding: var(--space-8) var(--space-6) var(--space-8); font-family: var(--font-body); font-size: 17px; line-height: 1.62; text-wrap: pretty;">
+
+  <div style="display: flex; align-items: baseline; gap: var(--space-4); border-bottom: 3px solid var(--color-text); padding-bottom: var(--space-2); margin-bottom: 2px;">
+    <div style="font-family: var(--font-heading); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;">Share — design proposal</div>
+    <div style="flex: 1;"></div>
+    <div style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-700);">25 Aug 2026</div>
+  </div>
+  <div style="border-bottom: 1px solid var(--color-text); margin-bottom: var(--space-8);"></div>
+
+  <h1 style="font-family: var(--font-heading); font-size: 58px; line-height: 1.04; font-weight: 600; margin: 0 0 var(--space-4); max-width: 20ch;">What I would design, and what I would leave alone</h1>
+
+  <p style="font-size: 21px; line-height: 1.5; max-width: 62ch; margin: 0 0 var(--space-8); color: var(--color-neutral-800);">You handed me a sixteen-part specification that names itself implementation-ready and says twice that it contains no open questions. Mostly true. Below: the one contradiction I have to resolve before drawing anything, the four screens where design work actually remains, the twenty where it does not, and the places the spec's own rules collide with each other.</p>
+
+  <section style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6) var(--space-8); margin-bottom: var(--space-8);">
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: var(--space-2);">The short version</div>
+      <p style="margin: 0 0 var(--space-3);">Build four things and stop. A foundations sheet that settles the sharing-state indicator once. A clickable spine — list, detail, sharing panel, create-link dialog — because that is the flow the whole product exists for. The recipient pages, at phone width, because that is where a stranger meets your work. Then the rest of Phase 1 as static screens.</p>
+      <p style="margin: 0;">Everything else in Part 11 is a table, a form, or a list rendered in a pattern those four establish. Designing them individually spends your time confirming decisions already made.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-2-700); margin-bottom: var(--space-2);">What needs your answer</div>
+      <p style="margin: 0 0 var(--space-3);"><strong>One decision only:</strong> Part 13 or Broadsheet. The spec ships its own complete design system — monochrome operator console, teal / indigo / amber state colours, 40px rows, hex values given. This project has Broadsheet bound: newsprint serif, cyan and magenta, airy spacing, no boxes. They are not reconcilable and I will not quietly pick one.</p>
+      <p style="margin: 0;">My recommendation is in §2. Everything after it assumes you take it.</p>
+    </div>
+  </section>
+
+  <h2 style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0 0 var(--space-4); padding-top: var(--space-6);">1 &nbsp; What the spec has already decided</h2>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-4);">This matters because it sets the size of the job. Part 11 gives every screen a purpose, a route, a permission rule, a layout, a state table, and a copy reference. Part 12 supplies microcopy per screen and a full error catalogue. Part 13 gives tokens down to the hex value and asserts that two agents rendering the same screen from it should produce the same screen. Part 16 assigns every screen to a phase.</p>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-6);">So this is not an open design brief. Roughly eighty per cent of what I would normally decide — hierarchy, density, colour meaning, terminology, states, breakpoints, keyboard paths — is already written down. The value I can add is concentrated in three places: rendering the parts that are hard to picture from prose, pressure-testing the rules against each other at real pixel sizes, and finding the contradictions before a coding agent does.</p>
+
+  <h2 style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0 0 var(--space-4); padding-top: var(--space-6);">2 &nbsp; The design-system conflict</h2>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-4);">Part 13 §D2 says: <em>this is an operator's console, not a marketing site. No hero sections, no illustrations, no gradients, no photography, no decorative icons. Density is a feature. Borders are 1px hairlines.</em> Broadsheet says: no boxes, no dividers, hierarchy from the serif scale and negative space, photographs printed as misregistered process plates, spacing at 1.25×. Each is internally coherent. Applied to the same screen they fight in every dimension that matters.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-4);">
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 19px; font-weight: 600; margin-bottom: var(--space-2);">Follow Part 13</div>
+      <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: var(--space-2);">Recommended</div>
+      <p style="margin: 0 0 var(--space-3); font-size: 16px;"><strong>For.</strong> The spec is a contract a coding agent reads without me. If my screens disagree with Part 13, the agent has two sources of truth and picks wrongly. The three sharing colours are load-bearing and reasoned — teal deliberately not green, amber deliberately shared with warning. Density and monochrome chrome are correct for a tool someone stares at all day and for framing artifacts whose own colours are unpredictable (§D3).</p>
+      <p style="margin: 0; font-size: 16px;"><strong>Against.</strong> Nothing I hand back will look like the design system attached to this project, and it will look like a competent admin console rather than anything distinctive. Broadsheet's components go unused.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 19px; font-weight: 600; margin-bottom: var(--space-2);">Use Broadsheet</div>
+      <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-600); margin-bottom: var(--space-2);">Not advised</div>
+      <p style="margin: 0 0 var(--space-3); font-size: 16px;"><strong>For.</strong> A serif console is genuinely unusual and would make the product memorable. It is the system bound to this project, so it is one vocabulary rather than two.</p>
+      <p style="margin: 0; font-size: 16px;"><strong>Against.</strong> It breaks Part 13 on every principle at once. Broadsheet has no third state colour, no dense table, no state-chip language, no dark mode — I would be inventing all of it, which the design system forbids and the spec has already done better. And it invalidates the parts of Part 12 and Part 14 that reference §13 tokens.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 19px; font-weight: 600; margin-bottom: var(--space-2);">Split them</div>
+      <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-600); margin-bottom: var(--space-2);">What this document does</div>
+      <p style="margin: 0 0 var(--space-3); font-size: 16px;"><strong>For.</strong> Part 13 governs the product; Broadsheet governs anything written about the product — this proposal, a review deck, documentation. Two systems, two jobs, no overlap. Nothing is invented and nothing is contradicted.</p>
+      <p style="margin: 0; font-size: 16px;"><strong>Against.</strong> Two vocabularies to hold in mind, and a reader moving from a Broadsheet doc into a Part 13 screen feels the seam. In practice that seam is normal: product and prose rarely share a skin.</p>
+    </div>
+  </div>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-6); padding-left: var(--space-4); border-left: 2px solid var(--color-accent-2-500);"><strong>Settled, with one correction.</strong> Broadsheet is the house system; Part 13 is a design system an agent wrote into a specification, which is more authority than it should have taken. Part 13 governs the product screens because it is the better-reasoned answer for a console — not because it is the brand. Where the two can agree without a fight, Broadsheet's answer wins: the serif, and whitespace over rules.</p>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-6); padding-left: var(--space-4); border-left: 2px solid var(--color-accent-500);">Take the split. Product screens on Part 13, verbatim, tokens and all. Written deliverables on Broadsheet — which is what you are reading, so you can judge whether that division sits right before committing to it.</p>
+
+  <h2 style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0 0 var(--space-4); padding-top: var(--space-6);">3 &nbsp; What I would build</h2>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-6);">Four stages, each a usable deliverable on its own, in this order. Stop after any of them.</p>
+
+  <div style="display: grid; gap: var(--space-6); margin-bottom: var(--space-6);">
+
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 22rem; gap: var(--space-6); align-items: start;">
+      <div style="font-family: var(--font-heading); font-size: 40px; line-height: 0.9; color: var(--color-accent-500);">A</div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 26px; font-weight: 600; margin: 0 0 var(--space-2);">Foundations sheet</h3>
+        <p style="margin: 0 0 var(--space-2);">One page: the token palette in both themes, the type scale, the 40px and 32px table rows against each other, and above all the sharing-state indicator in every variant the spec defines — three states, four modifier chips, the <code style="font-family: var(--font-mono, monospace); font-size: 0.9em;">dot</code> reduction, in a row, in a header, in a search result, at 375px, with two sibling chips attached.</p>
+        <p style="margin: 0;">Also the shell: 240px sidebar, 56px top bar, empty state, error state, skeleton row, toast, and the typed-confirmation dialog.</p>
+      </div>
+      <div style="font-size: 15px; color: var(--color-neutral-800);">
+        <strong style="color: var(--color-text);">Why first.</strong> §D1 calls this component the most over-specified in the document because it appears in at least a dozen places, and says any inconsistency between two of them is a privacy bug rather than a polish bug. Settling it once, visibly, is the highest-leverage hour in the whole job. It is also where the spec's rules are most likely to collide — see §5.
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 22rem; gap: var(--space-6); align-items: start;">
+      <div style="font-family: var(--font-heading); font-size: 40px; line-height: 0.9; color: var(--color-accent-500);">B</div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 26px; font-weight: 600; margin: 0 0 var(--space-2);">The sharing spine, clickable</h3>
+        <p style="margin: 0 0 var(--space-2);">Screens 11.5 → 11.7 → 11.12 → 11.13, wired: click a row, open the sharing panel, create a link through all three modal states, land back on a panel that now shows it. Plus revoke, and the expiring and password chips appearing as a consequence.</p>
+        <p style="margin: 0;">Clickable rather than static, because 11.13's whole design is a sequence — Configure, Confirm, Created — and a sequence cannot be reviewed as three flat pictures.</p>
+      </div>
+      <div style="font-size: 15px; color: var(--color-neutral-800);">
+        <strong style="color: var(--color-text);">Why.</strong> The spec itself calls 11.13 the most consequential screen in the product and G3 makes the honesty of that moment the point of the whole thing. It is also the only screen carrying real interaction design rather than layout. If one thing gets reviewed properly, this is it.
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 22rem; gap: var(--space-6); align-items: start;">
+      <div style="font-family: var(--font-heading); font-size: 40px; line-height: 0.9; color: var(--color-accent-500);">C</div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 26px; font-weight: 600; margin: 0 0 var(--space-2);">Recipient pages, phone-first</h3>
+        <p style="margin: 0 0 var(--space-2);">R1 the password gate, R2 the non-HTML landing, R3 expired-or-revoked, R4 not-found. Drawn at 375px first and desktop second, with the no-JavaScript path real rather than assumed.</p>
+        <p style="margin: 0;">R5, R6 and R7 come along nearly free once R1–R4 exist; they are the same page with different words.</p>
+      </div>
+      <div style="font-size: 15px; color: var(--color-neutral-800);">
+        <strong style="color: var(--color-text);">Why.</strong> These are the only screens a person outside your instance ever sees, they inherit no stylesheet from the dashboard, and Part 16's Phase 2 exit criteria demand a password-protected link working from a phone on cellular with JavaScript off. Also the cheapest stage by a wide margin.
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 5.5rem 1fr 22rem; gap: var(--space-6); align-items: start;">
+      <div style="font-family: var(--font-heading); font-size: 40px; line-height: 0.9; color: var(--color-accent-500);">D</div>
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 26px; font-weight: 600; margin: 0 0 var(--space-2);">The rest of Phase 1, static</h3>
+        <p style="margin: 0 0 var(--space-2);">11.1 sign-in, 11.6 empty state and first-run checklist, 11.8 files, 11.15 trash, 11.18 tokens, 11.19 passkeys and sessions, 11.26 device authorization, 11.27 help and agent setup.</p>
+        <p style="margin: 0;">One state each — the populated one — except 11.6, which is a state, and 11.18, where the token-created-once panel is the whole point.</p>
+      </div>
+      <div style="font-size: 15px; color: var(--color-neutral-800);">
+        <strong style="color: var(--color-text);">Why last.</strong> Part 16 says the instance is genuinely usable at the end of Phase 1, so this is the set a builder needs earliest — but every one of them is a table or a form in a pattern stage A already fixed. Low risk, mechanical, and fast once the foundations hold.
+      </div>
+    </div>
+
+  </div>
+
+  <h2 style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0 0 var(--space-4); padding-top: var(--space-6);">4 &nbsp; What I would skip, and what that costs</h2>
+
+  <div style="margin-bottom: var(--space-6);">
+    <table class="table" style="width: 100%;">
+      <thead>
+        <tr><th scope="col">Skipped</th><th scope="col">Reason</th><th scope="col">What it costs you</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11.20, 11.22–11.25, 11.28 — security overview, users, audit, staleness, storage, status</td>
+          <td>Six filtered tables. Part 16 puts all six in Phase 3 or 4, and §11.29.4 already fixes table behaviour, sorting, pagination and in-body empty states.</td>
+          <td>Little. Each is a half-hour once the table pattern is settled, and none of them can teach us anything the pattern does not.</td>
+        </tr>
+        <tr>
+          <td>11.9–11.11 — viewer, versions, compare</td>
+          <td>The viewer is deliberately 48px of chrome over a neutral mat holding content whose appearance §D3 says we cannot predict. I have no real artifacts to put in it.</td>
+          <td>Some. The five-kind viewer is named a Phase 2 risk. Worth doing later with real files rather than now with grey rectangles.</td>
+        </tr>
+        <tr>
+          <td>11.2–11.4 — recovery code, passkey registration, invite</td>
+          <td>One centred single-purpose auth card, three sets of words. Stage D's 11.1 establishes the template.</td>
+          <td>Almost none. I would draw them as one screen with a copy variant list rather than three screens.</td>
+        </tr>
+        <tr>
+          <td>11.16 search palette, 11.17 upload</td>
+          <td>Both Phase 2, both conventional, both fully specified including the keyboard map in §11.29.7.</td>
+          <td>Minor. The palette is worth a real prototype eventually because it is keyboard-only; it is not worth one before the spine exists.</td>
+        </tr>
+        <tr>
+          <td>Dark mode on every screen</td>
+          <td>Part 13 generates both themes from one token source and forbids drift. I would prove it on the foundations sheet and one dense screen, not twice on twenty-eight.</td>
+          <td>Low, and detectable: if the tokens are right, dark is right. Phase 2's exit criteria demand both themes at two widths, which the token sheet satisfies.</td>
+        </tr>
+        <tr>
+          <td>Mobile layouts for admin screens</td>
+          <td>§11.29.8 already specifies the breakpoint behaviour. Nobody manages API tokens at 375px; recipients absolutely do open share links there.</td>
+          <td>Low. Mobile effort goes to stage C and to 11.5 and 11.7, where it is real.</td>
+        </tr>
+        <tr>
+          <td>Rewriting any copy</td>
+          <td>Part 12 is written, per-screen, with a defined voice and an error catalogue. Second-guessing it introduces exactly the drift Part 13 §13.11 warns about.</td>
+          <td>None. Where Part 12 has a gap I will flag it rather than fill it silently.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-6);">One capability limit worth stating plainly: I cannot generate images. Anywhere the design wants a photograph — an artifact thumbnail, a video poster, the sample content inside the viewer — you get a labelled placeholder or a rough sketch, and you drop real files in. Given §D2 bans illustrations and photography from the chrome anyway, this bites in one place only: the viewer, which is already stage-D-or-later.</p>
+
+  <h2 style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0 0 var(--space-4); padding-top: var(--space-6);">5 &nbsp; Four places the spec argues with itself</h2>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-4);">You said you have not read the technical detail. These are the design-facing ones I found; each is small, and each is the kind of thing that only shows up when someone draws it. §1.9 tells an implementer to resolve and record rather than stop, which is right — but these four are worth a decision from you rather than from a coding agent.</p>
+
+  <div style="display: grid; gap: var(--space-4); margin-bottom: var(--space-6); max-width: 76ch;">
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 600; margin-bottom: 4px;">The three-chip row at 375px</div>
+      <p style="margin: 0;">§D4 forbids ever dropping the word from a state badge, and says that if the space is not there the layout is wrong. But a live, password-protected, nearly-expired link legitimately shows three chips at once, in a 32px dense row, next to a monospace name that §D6 forbids truncating, on a 375px phone. Something has to give and the spec does not say what. Stage A's job is to find out which rule bends.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 600; margin-bottom: 4px;">Amber meaning two things at once</div>
+      <p style="margin: 0;">§13.2.2 deliberately shares the amber hue family between <em>link active</em> and <em>warning</em>, and calls that semantic rather than a collision. I think that holds — until a warning banner sits directly above a link-active badge and the same colour means "deliberate act by the owner" in one place and "something needs attention" eight pixels away. Worth seeing before it is settled.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 600; margin-bottom: 4px;">The Created state's one-time password</div>
+      <p style="margin: 0;">11.13.7 shows the generated password once, refuses Esc, refuses a backdrop click, and closes only on Done. Correct instinct. But it does not say what a user sees if they click Done without copying, and that user has a live link they cannot open. Either the panel blocks Done until the password is copied, or 11.12 keeps a way to rotate it. My read of §D5 says the second.</p>
+    </div>
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 600; margin-bottom: 4px;">Two documents, twelve hundred lines each</div>
+      <p style="margin: 0;">Part 11 and Part 13 are both long, both detailed, and overlap on layout in a dozen places. I will read both fully before drawing and keep a running list of disagreements rather than silently picking. That list is a deliverable in its own right; it is also the single most useful thing this exercise produces for whoever builds it.</p>
+    </div>
+  </div>
+
+  <h2 style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0 0 var(--space-4); padding-top: var(--space-6);">6 &nbsp; What happens next</h2>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-4);">Say go and I start on stage A — the foundations sheet — and bring it back before touching a screen, because everything after it inherits its decisions. Say go on a different stage and I will start there instead; they are ordered by leverage, not by dependency, except that A feeds all three.</p>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-8);">If the design-system call in §2 goes the other way — Broadsheet for the product, not just for the prose — tell me and I will redraw this proposal's stage A as a Broadsheet console instead, with the missing pieces named up front. It is a legitimate choice. It is just a larger one than it looks.</p>
+
+  <h2 style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0 0 var(--space-4); padding-top: var(--space-6); border-top: 3px solid var(--color-text);">7 &nbsp; Resolutions</h2>
+
+  <p style="max-width: 68ch; margin: 0 0 var(--space-6);">Answers to §5, and to the fair question of why a document that calls itself complete contains screens I would not draw. Each resolution below is a proposed spec edit, small enough to make as a diff rather than a rewrite.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6) var(--space-8); margin-bottom: var(--space-8);">
+
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: var(--space-1);">5.1</div>
+      <h3 style="font-family: var(--font-heading); font-size: 23px; font-weight: 600; margin: 0 0 var(--space-2);">The three-chip row</h3>
+      <p style="margin: 0 0 var(--space-2);"><strong>Resolved in favour of D4 and D6; density gives way.</strong> The state badge keeps colour, icon and word at every width, always. The modifier chips are not states — §13.2.3 says so — so they are the thing allowed to move.</p>
+      <p style="margin: 0 0 var(--space-2);">Above 900px: badge, then up to two modifier chips. Below 900px the row becomes two lines — name on the first, and on the second the facts the chips carried, as plain text: <em>Link · expires 7 Sep 2026, 18:04 UTC · password</em>. §11.29.3 already requires that absolute expiry as text in the row, so nothing is lost and D4's own escape clause is satisfied by the letter.</p>
+      <p style="margin: 0;">The 32px dense row becomes desktop-only, disabled below 900px. That is the rule that bends, and it bends because density is a preference and D4 is a privacy guarantee. The monospace name never truncates; the row grows instead.</p>
+    </div>
+
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: var(--space-1);">5.2</div>
+      <h3 style="font-family: var(--font-heading); font-size: 23px; font-weight: 600; margin: 0 0 var(--space-2);">Amber</h3>
+      <p style="margin: 0 0 var(--space-2);"><strong>Resolved by taking amber away from warnings.</strong> Amber belongs to link-active and to nothing else. §D1 already half-says this — <em>no other badge is amber-gold in solid</em> — so this finishes a rule the document started.</p>
+      <p style="margin: 0 0 var(--space-2);">Advisory and warning banners render on a neutral surface, hairline border, icon at text weight, no fill. A banner is a full sentence at the top of a region; it does not need a colour to be found. Errors keep red, destructive actions keep red.</p>
+      <p style="margin: 0;">The cost is one paragraph of §13.2.2's reasoning, which was the weaker half of it. The gain is that the only warm colour on any screen means exactly one thing: someone holding a URL can reach this.</p>
+    </div>
+
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: var(--space-1);">5.3</div>
+      <h3 style="font-family: var(--font-heading); font-size: 23px; font-weight: 600; margin: 0 0 var(--space-2);">The password shown once</h3>
+      <p style="margin: 0 0 var(--space-2);"><strong>Resolved with a recovery path, not a lock.</strong> Blocking Done until the password is copied inverts D5 — it obstructs the safe direction. So Done stays live, and if the copy control was never used it asks once, inline: <em>You have not copied the password. Without it the link cannot be opened.</em> Copy, or Close anyway.</p>
+      <p style="margin: 0 0 var(--space-2);">And 11.12 gains <strong>Set a new password</strong> on every password-protected link card. Not a naked click: rotating a password invalidates every recipient session for that link under P9, so it takes a small dialog naming that consequence — then shows the new secret in the same one-time panel.</p>
+      <p style="margin: 0;">This is D5 read correctly. Rotating does not widen access, so it does not need the full ceremony of creation; it does change who can reach the thing today, so it does not get to be silent either.</p>
+    </div>
+
+    <div>
+      <div style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: var(--space-1);">5.4</div>
+      <h3 style="font-family: var(--font-heading); font-size: 23px; font-weight: 600; margin: 0 0 var(--space-2);">Which part wins</h3>
+      <p style="margin: 0 0 var(--space-2);"><strong>Resolved by one paragraph of precedence, added to both §11.0 and §13.1.</strong> Part 11 is authoritative on <em>presence and behaviour</em>: which screens exist, which elements are on them, which states they have, which copy slot goes where. Part 13 is authoritative on <em>appearance</em>: every colour, size, weight, space, radius, shadow and component anatomy.</p>
+      <p style="margin: 0 0 var(--space-2);">Where they collide on layout — and they do, in about a dozen places — the tiebreak is whether the disputed thing is expressible as a token. If it is, Part 13 wins. If it is a rule about when something appears, Part 11 wins.</p>
+      <p style="margin: 0;">Part 16 already does exactly this for phase membership: <em>where inventory.md's phase column disagrees, this wins.</em> The same sentence, applied to layout, removes the whole class of problem.</p>
+    </div>
+
+  </div>
+
+  <h2 style="font-family: var(--font-heading); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin: 0 0 var(--space-4); padding-top: var(--space-4);">8 &nbsp; On skipping things the spec bothered to write</h2>
+
+  <p style="max-width: 72ch; margin: 0 0 var(--space-3);">Worth separating two different things. A spec entry and a design pass are not the same deliverable, and only one of them is optional.</p>
+
+  <p style="max-width: 72ch; margin: 0 0 var(--space-3);">Every screen in §4's skip list still gets built. A coding agent needs its route, its permission rule, its states, its error codes and its copy — and Part 11 supplies all five. What those screens do <em>not</em> need is a picture, because the prose is already sufficient to build from: an audit log is a filtered table, and §11.29.4 already fixes how every table in the product sorts, paginates and renders its empty state. Drawing it would produce a confirmation, not a decision.</p>
+
+  <p style="max-width: 72ch; margin: 0 0 var(--space-3);">Where design earns its place is the opposite case — where prose is not sufficient. 11.13 is a three-step sequence in one frame; you cannot read that and know whether it feels honest or fussy. The sharing indicator has to survive a dozen contexts at four widths. The recipient pages are seen by strangers on phones and inherit nothing. Those four resist description, which is exactly why they are stages A through C.</p>
+
+  <p style="max-width: 72ch; margin: 0 0 var(--space-8);">There is a second, less flattering reason worth saying out loud, since §5 is what prompted the question. The exhaustiveness is itself the source of the contradictions. Twelve hundred lines of layout prose in Part 11 and twelve hundred more in Part 13, written to leave nothing undecided, decided several things twice and differently. Completeness was the goal; consistency was the casualty. The skip list is partly a judgement that more prose about the audit screen was never the missing piece.</p>
+
+  <div style="border-top: 1px solid var(--color-neutral-400); padding-top: var(--space-3); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-600);">Share · design proposal · §2 settled: Part 13 for product, Broadsheet for prose</div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

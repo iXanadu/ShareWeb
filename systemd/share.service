@@ -1,0 +1,28 @@
+# Share systemd service — REFERENCE TEMPLATE.
+#
+# scripts/install.sh generates the live unit. Prefer the script.
+# Deploy: WebOne, /var/www/share.c52.com/prod, behind nginx (TLS at the edge).
+# Loopback port 8021. nginx is the public edge. Do not bind 8000.
+
+[Unit]
+Description=Share FastAPI service (share.c52.com)
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=share_user
+Group=www-data
+WorkingDirectory=/var/www/share.c52.com/prod
+Environment=PATH=/usr/local/pyenv/versions/share-3.13/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/local/pyenv/versions/share-3.13/bin/uvicorn server.main:app --host 127.0.0.1 --port 8021 --workers 1
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=uvicorn_share_c52_prod
+
+[Install]
+WantedBy=multi-user.target
