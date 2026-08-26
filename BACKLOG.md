@@ -20,18 +20,20 @@ _(none)_
 - **SW-1** Headed passkey register+sign-in passed (scripts/headed_passkey_check.py, virtual authenticator). Bootstrap session cookie still exists as a local back door (D-22). Root: Phase 1 §4. Found: 2026-08-26.
 - **SW-2** Caddy not installed on macmini; API serves artifacts (D-21). Root: §2.4. Found: 2026-08-26.
 - **SW-3** Dashboard screens 11.x not built. Assigned to shareweb-cursor-2. Root: Part 11. Found: 2026-08-26.
-- **SW-4** MCP is JSON-RPC POST /mcp (initialize, tools/list, tools/call) not full streamable-HTTP/SSE. CLI missing `open/cat/pull/link`. Root: Part 9. Found: 2026-08-26.
+- **SW-4** MCP GET /mcp is a ping SSE, not full streamable-HTTP. CLI missing `open/cat/pull/link`. Root: Part 9. Found: 2026-08-26.
 - **SW-5** Alembic not used; SQL files instead (D-23). Root: §3.1. Found: 2026-08-26.
 - **SW-6** Dashboard API `05a-dashboard-api.md` not written. Root: PLUMBING-AUDIT §2. Found: spec.
 
 ## BLOCKED-EXTERNAL
 
-- **SW-7** WebOne deploy / HTTPS / folder layout. Owner. Do not deploy. Found: huddle 2026-08-26.
+_(none)_
 
 ## STRATEGIC
 
 - Phase 2 sharing, Phase 3 users, Phase 4 hardening.
 
 ## FIXED
+
+- **SW-7** WebOne share.c52.com live (nginx, 8021, TLS). Found: huddle 2026-08-26.
 
 _(cleared)_

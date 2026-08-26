@@ -1,4 +1,4 @@
-"""Remote MCP endpoint at POST /mcp (Part 9). JSON-RPC over HTTP, bearer token."""
+"""Remote MCP endpoint at /mcp (Part 9). JSON-RPC POST + SSE GET, bearer token."""
 
 from __future__ import annotations
 
@@ -8,11 +8,12 @@ import json as json_mod
 from typing import Any
 
 from fastapi import APIRouter, Depends, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 
 from ..auth import Actor, require_user
 from ..errors import ShareError
 from ..services import artifacts as arts
+from ..services import sharing
 
 router = APIRouter(tags=["mcp"])
 
@@ -36,7 +37,11 @@ TOOLS = [
     },
     {
         "name": "share_post",
-        "description": "Post files as an artifact. Small files inline.",
+        "description": (
+            "Post files as an artifact. Small files inline. Posting does not make "
+            "anything public — call share_create_link for a URL others can open. "
+            "title and tags are how it will be found later."
+        ),
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -81,6 +86,27 @@ TOOLS = [
         "name": "share_whoami",
         "description": "Return the authenticated identity.",
         "inputSchema": {"type": "object", "properties": {}},
+    },
+    {
+        "name": "share_create_link",
+        "description": (
+            "Create an unguessable /s/ URL for an artifact so someone without an "
+            "account can open it. External effect: anyone with the URL can view "
+            "until it expires. Every link expires. Posting does not create a link."
+        ),
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string"},
+                "ttl": {"type": "string", "description": "14d, 24h, or 30m. Default 14d."},
+                "password": {
+                    "description": "true to generate one, or a string (>=8 chars).",
+                    "oneOf": [{"type": "boolean"}, {"type": "string"}],
+                },
+                "label": {"type": "string"},
+            },
+            "required": ["name"],
+        },
     },
 ]
 
@@ -150,7 +176,30 @@ async def _call(actor: Actor, name: str, args: dict, ip: str | None):
         return await arts.restore(actor, args["name"], ip)
     if name == "share_whoami":
         return {"id": actor.user_id, "handle": actor.handle, "isRoot": actor.is_root}
+    if name == "share_create_link":
+        return await sharing.create_link(
+            actor,
+            args["name"],
+            ttl=args.get("ttl"),
+            label=args.get("label"),
+            password=args.get("password"),
+            request_ip=ip,
+        )
     raise ShareError(404, "artifact_not_found", f"Unknown tool {name}")
+
+
+@router.get("/mcp")
+async def mcp_get(actor: Actor = Depends(require_user)):
+    """Streamable-HTTP SSE channel. JSON-RPC still goes on POST /mcp."""
+
+    async def events():
+        yield "event: ping\ndata: {}\n\n"
+
+    return StreamingResponse(
+        events(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "Connection": "keep-alive"},
+    )
 
 
 @router.post("/mcp")
