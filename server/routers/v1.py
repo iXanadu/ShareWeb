@@ -18,7 +18,6 @@ async def me(actor: Actor = Depends(require_user)):
         "id": actor.user_id,
         "handle": actor.handle,
         "isRoot": actor.is_root,
-        "tokenId": actor.token_id,
     }
 
 
