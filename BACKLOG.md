@@ -2,6 +2,9 @@
 
 Single source of truth for deferred work. If it is not here, it is not tracked.
 
+**Baseline (2026-08-27):** 35 tests pass locally (`pytest tests/ -q`). Huddle ShareWEb closed —
+idle unless owner speaks.
+
 Triage: BLOCKING (breaks the build / wrong-or-harmful output / destroys data → fix now) vs
 DEGRADING (still runs → pin and keep moving).
 
@@ -22,8 +25,9 @@ _(none)_
 - **SW-2** Mini has no Caddy; FastAPI serves artifacts locally (D-21). Prod is nginx on WebOne,
   not Caddy. Root: §2.4. Found: 2026-08-26.
 - **SW-3** Phase 1 dashboard screens 11.1/11.3/11.5–8/11.15/11.18/11.19/11.26/11.27 are built
-  (shareweb-cursor-2). Still missing sharing tabs (create-link in the web UI), recovery, audit.
-  Share links are API/MCP today. Root: Part 11. Found: 2026-08-26.
+  (shareweb-cursor-2). Nav also links `/~/shared` and audit log but those routes are stubs
+  ("not built yet"). Still missing sharing tabs (create-link in the web UI), recovery, audit.
+  Share links work via API/MCP today — not in the dashboard UI. Root: Part 11. Found: 2026-08-26.
 - **SW-4** MCP is JSON-RPC POST `/mcp` plus a one-shot GET SSE ping, not full streamable-HTTP.
   CLI has post/ls/get/rm/restore/whoami/login/logout/doctor; missing `open/cat/pull/link`.
   `share_create_link` exists on MCP. Root: Part 9. Found: 2026-08-26.
