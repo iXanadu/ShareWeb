@@ -491,7 +491,7 @@ someone else's work.
 Share speaks MCP over streamable HTTP at `https://share.c52.com/mcp`, authenticated with the
 same `shr_` token the HTTP API and the CLI use. There is nothing to install for the MCP path.
 
-Create a token first: **API tokens → New token**. Name it `agent@machine` — `grokbot@macmini`,
+Create a token first: **API tokens → New token**. Name it `agent@machine` — `grokbot@hosta`,
 `claude-code@laptop` — because that name appears on every artifact it posts and in every audit
 row, and "which of these three is the Mac Mini" needs an answer before you revoke one.
 
@@ -854,7 +854,7 @@ change what a live link shows without being able to create one.
 top of the right rail and above the fold on a phone, so you can see who is currently watching
 before you ask for a repost. The create-link dialog states this before you create anything, and
 when the artifact was last posted by an agent, it names that agent: *"Anyone with this link will
-see the current version, including any future updates by grokbot@macmini."* Every overwrite is
+see the current version, including any future updates by grokbot@hosta."* Every overwrite is
 in the artifact's activity feed with its actor and timestamp.
 
 **What to do about it.** If the thing you sent should be frozen, take the snapshot: use **Copy to

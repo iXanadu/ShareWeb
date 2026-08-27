@@ -137,7 +137,7 @@ async def require_user(request: Request) -> Actor:
 def public_base_url() -> str:
     settings = get_settings()
     host = settings.host
-    # Single-label LAN names (macmini) and localhost are HTTP this sprint.
+    # Single-label LAN names (hosta) and localhost are HTTP this sprint.
     if (
         host in {"localhost", "127.0.0.1"}
         or host.endswith(".local")

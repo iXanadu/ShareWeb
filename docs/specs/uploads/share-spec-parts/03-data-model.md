@@ -112,7 +112,7 @@ CREATE INDEX ON session (user_id) WHERE revoked_at IS NULL;
 CREATE TABLE api_token (
     id              text PRIMARY KEY,        -- shr_...
     user_id         text NOT NULL REFERENCES app_user(id) ON DELETE CASCADE,
-    name            text NOT NULL,           -- "claude-code@macmini"
+    name            text NOT NULL,           -- "claude-code@hosta"
     display_prefix  text NOT NULL,           -- first 12 chars, shown in the UI
     token_hash      bytea NOT NULL UNIQUE,   -- sha256; tokens are 256-bit random
     scopes          text[] NOT NULL,

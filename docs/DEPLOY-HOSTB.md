@@ -20,7 +20,7 @@ This repo only owns the app unit.
 ## After the human has folder + cert
 
 ```bash
-ssh webone
+ssh hostb
 cd /var/www/share.c52.com/prod
 git pull
 # .env / .keys owned by share_user, chmod 600
@@ -35,4 +35,4 @@ curl -sf http://127.0.0.1:8021/health
 curl -sf https://share.c52.com/health
 ```
 
-Do not run `./scripts/install.sh` from macmini — it refuses unless Linux.
+Do not run `./scripts/install.sh` from hosta — it refuses unless Linux.

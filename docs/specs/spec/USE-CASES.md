@@ -11,8 +11,8 @@ test for each one.
 Actors are the four in §1.5: **Owner** (passkey, root namespace), **Agent** (token `shr_…`),
 **User** (passkey, `~handle` space), **Recipient** (a link, maybe a password).
 
-Names used throughout, for readability: Robert is the owner; `grokbot@macmini` and
-`claude-code@macmini` are his agents; `~sarah` is a second user; the Fairfield listing team are
+Names used throughout, for readability: Robert is the owner; `grokbot@hosta` and
+`claude-code@hosta` are his agents; `~sarah` is a second user; the Fairfield listing team are
 recipients.
 
 ---
@@ -23,13 +23,13 @@ recipients.
 
 **Actor** Agent · **Phase** 1 · **Spec** §5.4, §9.3
 
-`grokbot@macmini` has built a four-file HTML posting calendar. It calls the MCP `share_post` tool
+`grokbot@hosta` has built a four-file HTML posting calendar. It calls the MCP `share_post` tool
 with a name (`postcal`), a title, and the file manifest. The three-phase post declares the
 manifest, uploads only the files the server does not already hold, and commits. It gets back
 `https://share.c52.com/postcal`.
 
 **True at the end.** The artifact exists at v1, private, owned by Robert, attributed to
-`grokbot@macmini`. One URL was returned and it works for a signed-in Robert. Nothing is reachable
+`grokbot@hosta`. One URL was returned and it works for a signed-in Robert. Nothing is reachable
 without a session. An audit record names the token and the source IP. No title, summary, tag or
 thumbnail was derived from any file's contents (P5).
 
@@ -126,7 +126,7 @@ the record. It is not reversible and the confirm said so. A new link is a new UR
 
 **Actor** Agent · **Phase** 2 · **Spec** §7.9, §4.6.1
 
-`claude-code@macmini` calls `share_create_link`. Its token does not carry `share:create`, which is
+`claude-code@hosta` calls `share_create_link`. Its token does not carry `share:create`, which is
 not granted by default. It gets `403 insufficient_scope` with a sentence it can pass to its human,
 and a URL that takes Robert to the right place.
 

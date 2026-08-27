@@ -10,7 +10,7 @@ async def test_device_unknown_lookup(client, root_user):
 
 async def test_device_start_poll_approve(client, root_user):
     started = await client.post(
-        "/api/v1/auth/device/start", json={"name": "claude-code@macmini"}
+        "/api/v1/auth/device/start", json={"name": "claude-code@hosta"}
     )
     assert started.status_code == 200, started.text
     data = started.json()
@@ -26,7 +26,7 @@ async def test_device_start_poll_approve(client, root_user):
         "/api/v1/auth/device/lookup", json={"userCode": data["userCode"]}
     )
     assert looked.status_code == 200, looked.text
-    assert looked.json()["name"] == "claude-code@macmini"
+    assert looked.json()["name"] == "claude-code@hosta"
 
     approved = await client.post(
         "/api/v1/auth/device/approve", json={"userCode": data["userCode"]}

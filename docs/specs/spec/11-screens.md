@@ -666,7 +666,7 @@ here and nowhere else, ever.**
 - **Permissions** — Any session. Unauthenticated visitors go to 11.1 with `next` preserved, then land back here with the code intact.
 - **Contents**
   - Code input: eight characters, `XXXX-XXXX`, auto-uppercased, hyphen inserted automatically, paste-tolerant. `POST /api/v1/auth/device/lookup` with the user code returns the pending request's `name`, `createdAt` and requested scopes.
-  - Approval panel: the agent's declared name (`claude-code@macmini`), the request's source IP and coarse user agent, the scopes it will receive — always the agent default set, `artifacts:read` and `artifacts:write` — and an explicit line: **this token will not be able to create share links**. **Approve** and **Deny**.
+  - Approval panel: the agent's declared name (`claude-code@hosta`), the request's source IP and coarse user agent, the scopes it will receive — always the agent default set, `artifacts:read` and `artifacts:write` — and an explicit line: **this token will not be able to create share links**. **Approve** and **Deny**.
 - **States** — *No code entered*; *unknown or expired code* (`404`/`410` → one message, no distinction, with a line telling them to run the command again); *already approved*; *approved* (a terminal confirmation telling them to return to their terminal — **the token itself is never shown here**, it goes to the polling agent); *denied* (terminal, states the agent will report a refusal); *rate limited* (`device_start`, 10/hour/IP).
 - **Interactions** — **Approve** issues the token server-side and audits `token.device_authorize`; the panel then offers **Manage this token** → 11.18, which is where scopes can be elevated deliberately (§4.6.2).
 - **Copy references** — §12.5 (11.26).

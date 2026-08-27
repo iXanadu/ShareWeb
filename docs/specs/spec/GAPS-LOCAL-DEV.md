@@ -1,8 +1,8 @@
 # Share — local dev gap fills (spec ambiguities resolved during bootstrap)
 
-## G-01 — Local file store paths on macmini
+## G-01 — Local file store paths on hosta
 
-**Context:** Spec §3.5 assumes `/var/lib/share/files`. On macmini dev we use `~/var/share/files` and `~/var/share/tmp` (same filesystem).
+**Context:** Spec §3.5 assumes `/var/lib/share/files`. On hosta dev we use `~/var/share/files` and `~/var/share/tmp` (same filesystem).
 
 **Resolution:** local `.env` points `SHARE_FILE_ROOT` / `SHARE_TMP_ROOT` at a directory under the operator home. Production playbook (Part 15) unchanged.
 

@@ -136,10 +136,10 @@ Three facts shape every screen here and are not restated in each one:
 │   Tokens     │  ─────────────────────────────────────────────────────────────  │
 │   Audit log  │  ▣ postcal            ◆ Link active      2h ago    110 KB  v2  │
 │              │    Q4 posting calendar  expires 7 Sep 2026, 18:04 UTC          │
-│ ──────────── │    bundle · grokbot@macmini                              ⋯     │
+│ ──────────── │    bundle · grokbot@hosta                              ⋯     │
 │ ▓▓▓░░ 41 GB  │  ─────────────────────────────────────────────────────────────  │
 │  of 500 GB   │  ▤ q3/market-report   ● Shared with 2    1d ago    2.4 MB  v5  │
-│ (RM) robert  │    document · claude-code@macmini                        ⋯     │
+│ (RM) robert  │    document · claude-code@hosta                        ⋯     │
 │              │  ─────────────────────────────────────────────────────────────  │
 │              │  ▦ hero-render        ○ Private          3d ago    18 MB   v1  │
 │              │    image · uploaded by you                              ⋯     │
@@ -225,15 +225,15 @@ Three facts shape every screen here and are not restated in each one:
 │ share.c52.com/postcal            [ Copy URL ] │  [ Manage sharing ]         │
 │                                               ├─────────────────────────────┤
 │ ┌ Overview │ Files │ Versions │ Sharing ────┐ │  POSTED BY                  │
-│ │                                           │ │  ⬡ grokbot@macmini          │
+│ │                                           │ │  ⬡ grokbot@hosta          │
 │ │ ACTIVITY                                  │ │  token shr_01J… · view all  │
 │ │ ● Today  14:02  Overwritten → v2          │ │                             │
-│ │          by grokbot@macmini               │ ├─────────────────────────────┤
+│ │          by grokbot@hosta               │ ├─────────────────────────────┤
 │ │ ● Today  14:02  Link created, 14 days,    │ │  DETAILS                    │
 │ │          password set, by you             │ │  Created 3 Aug 2026         │
 │ │ ● Yest.  09:11  4 views via "Fairfield"   │ │  Updated 24 Aug 2026        │
 │ │ ● 3 Aug  10:40  Posted v1                 │ │  Tags: social, grokbot      │
-│ │          by grokbot@macmini               │ │  TTL: none                  │
+│ │          by grokbot@hosta               │ │  TTL: none                  │
 │ │                          [ Load older ]   │ │  Views: 41 · last 2h ago    │
 │ └───────────────────────────────────────────┘ │  [ Edit details ]           │
 └───────────────────────────────────────────────┴─────────────────────────────┘
@@ -346,9 +346,9 @@ Three facts shape every screen here and are not restated in each one:
 │ Versions · 5 kept · retention: last 20, 365 days        [ Retention ⚙ ]  │
 ├──────────────────────────────────────────────────────────────────────────┤
 │  v5  ● LIVE   24 Aug 2026, 18:04 UTC   3 files  110 KB   +0 ~1 −0    ⋯   │
-│               grokbot@macmini · "November slots"                         │
+│               grokbot@hosta · "November slots"                         │
 │  v4  📌 pinned 17 Aug 2026, 09:22 UTC   3 files  109 KB   +1 ~0 −1   ⋯   │
-│               grokbot@macmini                                            │
+│               grokbot@hosta                                            │
 │  v3           10 Aug 2026, 09:20 UTC    2 files   96 KB   +0 ~2 −0   ⋯   │
 │                                                    [ Load older ]        │
 └──────────────────────────────────────────────────────────────────────────┘
@@ -462,7 +462,7 @@ One modal, 520px wide, three sequential states in the same frame: **Configure �
 │  │   bundle · 3 files · 110 KB · live version v2          │  │
 │  │   Currently: ○ Private — only you                      │  │
 │  │   Anyone with this link will see the CURRENT version,  │  │
-│  │   including any future updates by grokbot@macmini.     │  │
+│  │   including any future updates by grokbot@hosta.     │  │
 │  └────────────────────────────────────────────────────────┘  │
 │                                                              │
 │  HOW LONG                                                    │
@@ -636,7 +636,7 @@ The terminal state. It does not auto-dismiss, cannot be dismissed by clicking th
 ├──────────────────────────────────────────────────────────────────────────┤
 │  NAME              DELETED           GONE ON                SIZE         │
 │  ▣ old-deck        24 Aug, 11:02     23 Sep 2026 (30 days)  2.1 GB   ⋯   │
-│    by grokbot@macmini                                                    │
+│    by grokbot@hosta                                                    │
 │  ▤ q2/report       02 Aug, 09:40     01 Sep 2026 (in 8 days) 410 MB  ⋯   │
 │    by you                                    [ Restore ]                 │
 └──────────────────────────────────────────────────────────────────────────┘
@@ -672,7 +672,7 @@ The terminal state. It does not auto-dismiss, cannot be dismissed by clicking th
 ├──────────────────────────────────────────────────────────────┤
 │ ARTIFACTS                                                    │
 │ ▣ postcal          ◆ Link active · exp 7 Sep 2026     ⏎      │
-│    Q4 posting calendar · bundle · grokbot@macmini            │
+│    Q4 posting calendar · bundle · grokbot@hosta            │
 │ ▤ q3/postcal-old   ○ Private                                 │
 ├──────────────────────────────────────────────────────────────┤
 │ ACTIONS                                                      │
@@ -736,7 +736,7 @@ The terminal state. It does not auto-dismiss, cannot be dismissed by clicking th
 │  API tokens                                            [ + New token ]   │
 ├──────────────────────────────────────────────────────────────────────────┤
 │  NAME                 PREFIX        SCOPES              LAST USED    ⋯   │
-│  ⬡ grokbot@macmini    shr_7Fq2mR8v  read write ⚠share   2h ago       ⋯   │
+│  ⬡ grokbot@hosta    shr_7Fq2mR8v  read write ⚠share   2h ago       ⋯   │
 │                       created 3 Aug 2026 · 412 artifacts posted          │
 │  ⬡ claude-code@mini   shr_9Kd1pQ4x  read write          12m ago      ⋯   │
 │  ⬡ ci@github          shr_2Bn8vT6z  read write          never        ⋯   │
@@ -878,7 +878,7 @@ The terminal state. It does not auto-dismiss, cannot be dismissed by clicking th
 - **Layout** — Centred card, 480px. A single large code input, then, once matched, the approval panel.
 - **Components**
   - Code input: eight characters, `XXXX-XXXX`, auto-uppercased, hyphen inserted automatically, paste-tolerant. `POST /api/v1/auth/device/lookup` with the user code returns the pending request's `name`, `createdAt`, and requested scopes.
-  - Approval panel: the agent's declared name (`claude-code@macmini`), the request's source IP and coarse user agent, the scopes it will receive — always the agent default set, `artifacts:read` and `artifacts:write` — and an explicit line: **this token will not be able to create share links**. Buttons **Approve** and **Deny**.
+  - Approval panel: the agent's declared name (`claude-code@hosta`), the request's source IP and coarse user agent, the scopes it will receive — always the agent default set, `artifacts:read` and `artifacts:write` — and an explicit line: **this token will not be able to create share links**. Buttons **Approve** and **Deny**.
 - **States** — *No code entered*; *unknown or expired code* (`404`/`410` → one message, no distinction, with a line telling them to run the command again); *already approved*; *approved* (a terminal confirmation telling them to return to their terminal — the token itself is never shown here, it goes to the polling agent); *denied* (terminal, states the agent will report a refusal); *rate limited* (`device_start`, 10/hour/IP).
 - **Interactions** — **Approve** issues the token server-side and audits `token.device_authorize`; the panel then offers **Manage this token** → 11.18, which is where scopes can be elevated deliberately (§4.6.2).
 - **Copy references** — §12.5 (11.26).

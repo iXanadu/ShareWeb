@@ -22,7 +22,7 @@ GET /api/v1/artifacts/{name}/versions
     { "id": "ver_01JAV…", "seq": 2, "isLive": true,
       "fileCount": 3, "totalBytes": 112743, "note": "November slots",
       "createdAt": "2026-08-24T18:04:00Z",
-      "createdBy": { "type": "token", "id": "shr_01J…", "name": "grokbot@macmini" },
+      "createdBy": { "type": "token", "id": "shr_01J…", "name": "grokbot@hosta" },
       "changes": { "added": 0, "modified": 1, "removed": 0 } }
   ],
   "nextCursor": null, "hasMore": false

@@ -259,7 +259,7 @@ gets built.
 
 **Sections:** §3.5, §15.1
 
-**Conflict.** Spec stores files at `/var/lib/share`. That path needs root on macmini.
+**Conflict.** Spec stores files at `/var/lib/share`. That path needs root on hosta.
 
 **Resolution.** Local defaults to `<repo>/var/share/{files,tmp}`. Production still uses `/var/lib/share`. Same sharding layout.
 
@@ -271,11 +271,11 @@ gets built.
 
 **Sections:** §2.4, §6.5
 
-**Conflict.** Spec has Caddy `forward_auth` + `file_server`. Caddy is not installed on macmini.
+**Conflict.** Spec has Caddy `forward_auth` + `file_server`. Caddy is not installed on hosta.
 
 **Resolution.** `/internal/authorize` is implemented as specified. A catch-all in the API serves the blob after the same `can_view` decision. When Caddy exists (WebOne), disable the catch-all or let Caddy take `:443` and proxy only `/api`, `/~/`, `/internal`. `can_view` stays four lines either way.
 
-**Cost.** Range requests and `sendfile` are worse locally than Caddy. Fine for the macmini sprint.
+**Cost.** Range requests and `sendfile` are worse locally than Caddy. Fine for the hosta sprint.
 
 ---
 
@@ -319,7 +319,7 @@ gets built.
 
 **Sections:** §4.4
 
-**Conflict.** Spec sets `Secure` on `share_s`. Local macmini is HTTP.
+**Conflict.** Spec sets `Secure` on `share_s`. Local hosta is HTTP.
 
 **Resolution.** `Secure` is set when `SHARE_HOST` is not `localhost`/`127.0.0.1`. Production keeps `Secure`.
 
@@ -346,7 +346,7 @@ gets built.
 
 ---
 
-## D-27 — Local URL is http://macmini:8310, never :8000
+## D-27 — Local URL is http://hosta:8310, never :8000
 
 **Conflict.** Port 8000 is already used by another app on the dev box. The owner is not on that machine and cannot use localhost.
 

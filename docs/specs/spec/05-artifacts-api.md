@@ -332,7 +332,7 @@ Item shape:
   "ttlExpiresAt": null, "pinned": false, "allowFraming": false, "csp": null,
   "viewCount": 41, "lastViewedAt": "…",
   "createdAt": "…", "updatedAt": "…",
-  "createdBy": { "type": "token", "id": "shr_01J…", "name": "grokbot@macmini" }
+  "createdBy": { "type": "token", "id": "shr_01J…", "name": "grokbot@hosta" }
 }
 ```
 

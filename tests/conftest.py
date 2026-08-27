@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 os.environ.setdefault("SHARE_HOST", "localhost")
 os.environ.setdefault("SHARE_PORT", "8000")
-os.environ.setdefault("SHARE_DB_USER", "ixanadu")
+os.environ.setdefault("SHARE_DB_USER", os.environ.get("USER", "dev"))
 os.environ.setdefault("SHARE_DB_NAME", "share_test")
 os.environ.setdefault("SHARE_DB_PASSWORD", "")
 os.environ.setdefault("SHARE_REDIS_URL", "redis://127.0.0.1:6379/1")

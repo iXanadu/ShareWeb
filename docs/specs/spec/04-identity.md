@@ -181,7 +181,7 @@ Two paths, both requiring a human at some point.
 **Device-code flow**, for an agent that wants to bootstrap itself:
 
 ```
-POST /api/v1/auth/device/start   { "name": "claude-code@macmini" }
+POST /api/v1/auth/device/start   { "name": "claude-code@hosta" }
  ← 200 { deviceCode, userCode: "QRTZ-8H4M", verifyUrl: "https://share.c52.com/~/authorize",
          expiresIn: 600, interval: 5 }
 
@@ -196,7 +196,7 @@ The three calls the approval screen (§11.26) makes, all session-authenticated:
 
 ```
 POST /api/v1/auth/device/lookup   { "userCode": "QRTZ-8H4M" }
- ← 200 { name: "claude-code@macmini", requestedScopes: ["artifacts:read","artifacts:write"],
+ ← 200 { name: "claude-code@hosta", requestedScopes: ["artifacts:read","artifacts:write"],
          sourceIp: "…", userAgent: "…", createdAt: "…", expiresAt: "…" }
  ← 404 unknown_or_expired          … one response for both; no distinction
 

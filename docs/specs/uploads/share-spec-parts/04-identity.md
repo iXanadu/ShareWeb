@@ -180,7 +180,7 @@ Two paths, both requiring a human at some point.
 **Device-code flow**, for an agent that wants to bootstrap itself:
 
 ```
-POST /api/v1/auth/device/start   { "name": "claude-code@macmini" }
+POST /api/v1/auth/device/start   { "name": "claude-code@hosta" }
  ← 200 { deviceCode, userCode: "QRTZ-8H4M", verifyUrl: "https://share.c52.com/~/authorize",
          expiresIn: 600, interval: 5 }
 
