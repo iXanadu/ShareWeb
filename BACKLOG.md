@@ -17,12 +17,20 @@ _(none)_
 
 ## DEGRADING
 
-- **SW-1** Headed passkey register+sign-in passed (scripts/headed_passkey_check.py, virtual authenticator). Bootstrap session cookie still exists as a local back door (D-22). Root: Phase 1 §4. Found: 2026-08-26.
-- **SW-2** Caddy not installed on macmini; API serves artifacts (D-21). Root: §2.4. Found: 2026-08-26.
-- **SW-3** Dashboard screens 11.x not built. Assigned to shareweb-cursor-2. Root: Part 11. Found: 2026-08-26.
-- **SW-4** MCP GET /mcp is a ping SSE, not full streamable-HTTP. CLI missing `open/cat/pull/link`. Root: Part 9. Found: 2026-08-26.
+- **SW-1** Headed passkey register+sign-in passed (scripts/headed_passkey_check.py). Bootstrap
+  session cookie still exists as a local back door (D-22). Root: Phase 1 §4. Found: 2026-08-26.
+- **SW-2** Mini has no Caddy; FastAPI serves artifacts locally (D-21). Prod is nginx on WebOne,
+  not Caddy. Root: §2.4. Found: 2026-08-26.
+- **SW-3** Phase 1 dashboard screens 11.1/11.3/11.5–8/11.15/11.18/11.19/11.26/11.27 are built
+  (shareweb-cursor-2). Still missing sharing tabs (create-link in the web UI), recovery, audit.
+  Share links are API/MCP today. Root: Part 11. Found: 2026-08-26.
+- **SW-4** MCP is JSON-RPC POST `/mcp` plus a one-shot GET SSE ping, not full streamable-HTTP.
+  CLI has post/ls/get/rm/restore/whoami/login/logout/doctor; missing `open/cat/pull/link`.
+  `share_create_link` exists on MCP. Root: Part 9. Found: 2026-08-26.
 - **SW-5** Alembic not used; SQL files instead (D-23). Root: §3.1. Found: 2026-08-26.
 - **SW-6** Dashboard API `05a-dashboard-api.md` not written. Root: PLUMBING-AUDIT §2. Found: spec.
+- **SW-8** Mail/SMTP is empty. Notices (new share link, expiry, new token) are specified, not
+  wired. Root: §15. Found: huddle 2026-08-26.
 
 ## BLOCKED-EXTERNAL
 
@@ -30,10 +38,10 @@ _(none)_
 
 ## STRATEGIC
 
-- Phase 2 sharing, Phase 3 users, Phase 4 hardening.
+- Spec Phase 2+ : grants / second user, richer sharing UI, hardening.
+  (Expiring share links, passwords, and recipient View/Download already shipped.)
 
 ## FIXED
 
-- **SW-7** WebOne share.c52.com live (nginx, 8021, TLS). Found: huddle 2026-08-26.
-
-_(cleared)_
+- **SW-7** WebOne `share.c52.com` live: nginx TLS → `127.0.0.1:8021`, unit
+  `uvicorn_share_c52_prod`, 50MiB/file 64MiB/artifact. Found: huddle 2026-08-26.
