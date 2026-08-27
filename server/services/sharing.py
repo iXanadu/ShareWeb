@@ -167,6 +167,35 @@ async def create_link(
     return out
 
 
+def recipient_landing_html(*, title: str, kind: str, view_href: str, download_href: str) -> bytes:
+    """R2 — View + Download chrome for a non-HTML share link."""
+    from html import escape
+    from pathlib import Path
+
+    path = Path(__file__).resolve().parents[2] / "docs" / "specs" / "recipient" / "R2-landing.html"
+    title_e = escape(title)
+    kind_e = escape(kind)
+    view_e = escape(view_href, quote=True)
+    dl_e = escape(download_href, quote=True)
+    if path.is_file():
+        html = path.read_text(encoding="utf-8")
+        html = html.replace("<title>Q3 margin review</title>", f"<title>{title_e}</title>")
+        html = html.replace("<h1>Q3 margin review</h1>", f"<h1>{title_e}</h1>")
+        html = html.replace(
+            '<p class="m">PDF &middot; 3 files &middot; 2.4 MB</p>',
+            f'<p class="m">{kind_e}</p>',
+        )
+        html = html.replace('href="./index.html"', f'href="{view_e}"')
+        html = html.replace('href="./?download=1"', f'href="{dl_e}"')
+        return html.encode("utf-8")
+    return (
+        "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>"
+        f"<title>{title_e}</title></head><body><h1>{title_e}</h1>"
+        f"<p>{kind_e}</p><p><a href='{view_e}'>View</a> "
+        f"<a href='{dl_e}'>Download</a></p></body></html>"
+    ).encode("utf-8")
+
+
 def password_gate_html(token: str, *, wrong: bool = False) -> str:
     from pathlib import Path
 

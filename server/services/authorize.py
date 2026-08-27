@@ -231,10 +231,31 @@ async def authorize_request(request: Request):
         if target is None:
             return None
         sha_hex = target["sha256"].hex()
-        ctype = target["content_type"]
+        ctype = target["content_type"] or "application/octet-stream"
+        path_name = target["path"] or "file"
+        want_download = request.query_params.get("download") in {"1", "true"}
+        htmlish = ctype.startswith("text/html") or path_name.lower().endswith((".html", ".htm"))
+        if (
+            actor.is_recipient
+            and not want_download
+            and filepath in {"", "/"}
+            and not htmlish
+        ):
+            from .sharing import recipient_landing_html
+
+            view = path_name.lstrip("/")
+            kind = (ctype.split(";")[0] or Path(path_name).suffix.lstrip(".") or "file")
+            title = art["title"] or art["name"]
+            return recipient_landing_html(
+                title=title,
+                kind=kind,
+                view_href=view,
+                download_href="?download=1",
+            )
         disp = None
-        if ctype == "application/octet-stream":
-            disp = "attachment"
+        if ctype == "application/octet-stream" or want_download:
+            fname = Path(path_name).name.replace('"', "")
+            disp = f'attachment; filename="{fname}"'
         csp = art["csp"]
         if Path(target["path"]).suffix.lower() == ".svg":
             csp = "default-src 'none'; style-src 'unsafe-inline'"
