@@ -21,6 +21,13 @@ async def test_marketing_inner_pages(client):
     assert "sw_live_" not in agents.text
     html = await client.get("/for-agents.html")
     assert html.status_code == 200
+    server = await client.get("/your-server")
+    assert server.status_code == 200
+    assert "Your own server" in server.text
+    assert "sw_live_" not in server.text
+    assert "PostgreSQL" in server.text
+    slash = await client.get("/your-server/", follow_redirects=False)
+    assert slash.status_code == 308
 
 
 async def test_marketing_does_not_steal_artifacts(client, root_user):
@@ -41,4 +48,16 @@ async def test_robots_allows_marketing(client):
     assert "Allow: /$" in body
     assert "Allow: /how-it-works" in body
     assert "Allow: /for-agents" in body
+    assert "Allow: /your-server" in body
     assert "Disallow: /" in body
+
+
+async def test_marketing_assets(client):
+    css = await client.get("/site.css")
+    assert css.status_code == 200
+    assert "text/css" in css.headers.get("content-type", "")
+    hero = await client.get("/assets/01-hero-rook-nest.jpg")
+    assert hero.status_code == 200
+    assert hero.headers.get("content-type", "").startswith("image/")
+    fav = await client.get("/favicon.png")
+    assert fav.status_code == 200

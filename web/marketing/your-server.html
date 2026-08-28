@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your own server — Share</title>
+  <meta name="description" content="A small Linux VPS runs Share. Ten minutes of setup by hand, then you prompt an agent for the rest.">
+  <meta property="og:title" content="Your own server — Share">
+  <meta property="og:description" content="A small Linux VPS runs Share. Ten minutes of setup by hand, then you prompt an agent for the rest.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://share.c52.com/your-server">
+  <meta property="og:image" content="https://share.c52.com/assets/og-banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="site.css?v=rook2">
+  <link rel="icon" href="favicon.png?v=rook2" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=rook2">
+</head>
+<body>
+  <div class="w w-wide">
+    <header class="mast">
+      <div class="mast-top">
+        <a class="brand" href="index.html">
+          <img class="brand-mark press-img" src="assets/02-mark-bold.jpg?v=rook2" alt="" width="46" height="46">
+          Share
+        </a>
+        <nav>
+          <a href="index.html">Overview</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="for-agents.html">For agents</a>
+          <a href="your-server.html" aria-current="page">Your own server</a>
+          <a href="https://github.com/iXanadu/ShareWeb/tree/main/docs/specs/spec">Docs ↗</a>
+        </nav>
+        <a class="follow-author" href="https://x.com/cooksbayouboy" target="_blank" rel="noopener noreferrer">
+          <img src="author-avatar.png" width="48" height="48" alt="">
+          <span>Follow the author</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="page-split">
+    <main class="page-main">
+    <h1>Your own server</h1>
+    <p class="lede">Share is small. So are the other tools worth self-hosting. One cheap VPS runs several of them — you do about ten minutes of work by hand, then you prompt an agent for the rest.</p>
+
+    <div class="timeline-bar" aria-label="Setup time: manual vs prompted">
+      <div class="timeline-track">
+        <div class="timeline-seg" title="Create the instance"></div>
+        <div class="timeline-seg" title="DNS record"></div>
+        <div class="timeline-seg" title="Update and make a user"></div>
+        <div class="timeline-seg" title="Start the agent"></div>
+        <div class="timeline-seg tint" title="Prompted setup"></div>
+      </div>
+      <div class="timeline-steps">
+        <span>Create instance</span>
+        <span>DNS</span>
+        <span>User + update</span>
+        <span>Start agent</span>
+        <span>Hardening, nginx, cert, Share&hellip;</span>
+      </div>
+      <div class="timeline-labels">
+        <p class="hand">&approx; 10 minutes by hand</p>
+        <p class="prompted">prompted, reviewed, not typed</p>
+      </div>
+    </div>
+
+    <p class="price-line">One box. $5 a month.</p>
+
+    <div class="undo-grid">
+      <article>
+        <h3>If you wreck the OS — destroy it.</h3>
+        <p>Delete the instance and create another. The software can be rebuilt by running the same prompts again. The artifacts cannot, unless you copied Postgres and the file store off-box first.</p>
+      </article>
+      <article>
+        <h3>What a mistake costs — pennies.</h3>
+        <p>Small Linux instances print an hourly rate on the tile. A box you kill after twenty minutes costs a fraction of a cent. The expensive mistake is skipping backups, not the instance fee.</p>
+      </article>
+      <article>
+        <h3>What lives on the box — your files.</h3>
+        <p>Share stores artifacts in PostgreSQL and on that machine&rsquo;s disk. There is no third-party SaaS holding a copy. That is the point, and it is why an off-box backup is part of the first prompted work, not a later nice-to-have.</p>
+      </article>
+    </div>
+
+    <h2>What you are buying</h2>
+    <p>Any provider with a small Linux instance works. Around <strong>$5&nbsp;/&nbsp;&euro;5 a month</strong> buys roughly 1–4&nbsp;GB of RAM, a shared vCPU and 20–50&nbsp;GB of disk. Prices and tiers move constantly — treat the names below as where to look, not as a quote.</p>
+
+    <h3>Widely used, global regions</h3>
+    <div class="cols">
+      <div>
+        <h3>Akamai (Linode)</h3>
+        <p>What this site runs on. Regions across NA, EU, India, Japan, Singapore, Australia, Brazil. Predictable flat billing.</p>
+      </div>
+      <div>
+        <h3>DigitalOcean</h3>
+        <p>The gentlest console of the lot, and the best-documented. NA, EU, Singapore, Bangalore, Sydney.</p>
+      </div>
+      <div>
+        <h3>Vultr</h3>
+        <p>The widest region list — thirty-odd cities including Seoul, Tokyo, Osaka, Mumbai, Tel Aviv, Johannesburg, S&atilde;o Paulo.</p>
+      </div>
+    </div>
+
+    <h3>Europe</h3>
+    <div class="cols">
+      <div>
+        <h3>Hetzner</h3>
+        <p>Germany and Finland, plus US sites. Usually the most RAM per euro of anyone here. Very popular for exactly this kind of hosting.</p>
+      </div>
+      <div>
+        <h3>OVHcloud</h3>
+        <p>French, large, with EU, Canadian and APAC regions. Cheap VPS tier; the console takes some getting used to.</p>
+      </div>
+      <div>
+        <h3>Scaleway &middot; netcup &middot; IONOS</h3>
+        <p>France and Germany. Inexpensive, EU-resident, GDPR-simple. netcup in particular is a lot of machine for the money.</p>
+      </div>
+      <div>
+        <h3>UpCloud</h3>
+        <p>Finnish, fast storage, EU plus a few global sites. Slightly more money, noticeably quicker disks.</p>
+      </div>
+    </div>
+
+    <h3>Asia-Pacific, and elsewhere</h3>
+    <div class="cols">
+      <div>
+        <h3>Alibaba Cloud &middot; Tencent Cloud</h3>
+        <p>The obvious choices if your users are in mainland China or nearby.</p>
+      </div>
+      <div>
+        <h3>BinaryLane &middot; local hosts</h3>
+        <p>Australia, and most countries have a good small provider. Local latency and local billing often beat a big name.</p>
+      </div>
+      <div>
+        <h3>Oracle Cloud Free Tier</h3>
+        <p>Genuinely free ARM instances, and generous ones. Capacity is often unavailable, and idle instances can be reclaimed — fine to try, a poor place for something you rely on.</p>
+      </div>
+    </div>
+
+    <p class="m s"><strong>Pick the region deliberately.</strong> Two things depend on it and neither is speed: the jurisdiction your files sit in, and — if you are in the EU or serving EU users — whether you have just made your own life harder under GDPR. An EU-resident host is the simpler answer there. Otherwise choose the city closest to you, not the cheapest one.</p>
+    <p class="m s">Share wants native PostgreSQL, Redis, and a disk for the file store. <strong>2&nbsp;GB of RAM is a comfortable start</strong>; 1&nbsp;GB is tight once Postgres is on the box. ARM instances are cheaper and work here if packages have an <code>arm64</code> build. Resizing later means downtime — start a little above the minimum.</p>
+
+    <h2>The part you do by hand</h2>
+    <p>Everything here is done once, as root, before any agent is involved. It exists so the agent has a safe account to work in and a name to get a certificate for.</p>
+    <ol class="steps">
+      <li>
+        <h3>Create the instance</h3>
+        <p>Ubuntu LTS. <strong>Paste your SSH public key into the create form</strong> — doing it now means you never enable password login at all.</p>
+      </li>
+      <li>
+        <h3>Point a DNS name at it</h3>
+        <p>An <code>A</code> record for the host you want, e.g. <code>share.example.com</code> &rarr; the instance IP. Do this early; certificates need the name to resolve.</p>
+      </li>
+      <li>
+        <h3>Update, and make yourself a user</h3>
+        <p>Log in as root once and run the update, then create a normal account with <code>sudo</code> and copy your key to it. From then on you log in as that user, not root.</p>
+        <pre><code>apt update &amp;&amp; apt full-upgrade -y
+adduser you
+usermod -aG sudo you
+rsync --archive --chown=you:you ~/.ssh /home/you/</code></pre>
+      </li>
+      <li>
+        <h3>Install your agent, and stop typing</h3>
+        <p>Install whichever coding agent you use, log in as <em>your</em> user, and start it in a working directory. That is the end of the manual part.</p>
+      </li>
+    </ol>
+
+    <h2>Worth knowing before you start</h2>
+    <ul class="plain">
+      <li>The agent has your sudo <span>Give it a user account, not a root login</span></li>
+      <li>$5 is the box, not the backups <span>Ask it to copy Postgres and the file store off-box</span></li>
+      <li>This host will hold the artifacts <span>Its disk is the files you handed out</span></li>
+      <li>Cheap instances are shared <span>Fine for tools; not for anything latency-critical</span></li>
+    </ul>
+
+    <h2>Then you prompt for the rest</h2>
+    <p>This is the actual technique: you are not learning to administer a server, you are learning to <em>direct</em> one. Work in small steps, ask for an explanation before a change, and ask for evidence after it.</p>
+    <p>Give the agent sudo through your user — <strong>not a root login</strong>. An agent with sudo can do anything you can do, which is the point and also the risk. Small steps keep it reviewable.</p>
+
+    <h3>1 &middot; Look before touching</h3>
+    <pre><code>You are on a fresh Ubuntu server that will be on the public
+internet. Change nothing yet. Tell me: what is installed, what
+is listening on a port, what the firewall state is, and what
+you would change before this box is exposed. List it as
+findings, worst first.</code></pre>
+
+    <h3>2 &middot; Basic hardening</h3>
+    <pre><code>Do the standard hardening for a small public server:
+unattended security upgrades, a firewall allowing only SSH,
+HTTP and HTTPS, SSH key-only authentication, and fail2ban.
+Explain each change before you make it, and after each one
+show me the command that proves it took effect.</code></pre>
+
+    <h3>3 &middot; A name and a certificate</h3>
+    <pre><code>Install nginx and certbot. Set up share.example.com with a
+Let's Encrypt certificate. Then prove renewal actually works
+with a dry run — do not just tell me it is configured.</code></pre>
+    <p class="m s">That last sentence matters more than it looks. A certificate that installs cleanly and silently fails to renew is a site that breaks in ninety days.</p>
+
+    <h3>4 &middot; Install Share</h3>
+    <pre><code>Install Share from https://github.com/iXanadu/ShareWeb
+on this server, following the repo README. Python 3.13,
+PostgreSQL and Redis. Run it as its own service user, never
+as root or as me. Bind it to loopback and put nginx in front
+with the certificate you just set up. Files and Postgres stay
+on this machine — tell me the backup plan before you start.
+Then prove /health and /internal/ready return ok.</code></pre>
+
+    <h2>How to talk to it</h2>
+    <ul>
+      <li><strong>Ask for proof, not a report.</strong> &ldquo;Show me the command that proves it&rdquo; beats &ldquo;is it working?&rdquo; — an agent that says <em>done</em> is describing its intent, not the machine.</li>
+      <li><strong>One thing at a time.</strong> A prompt that installs and configures and hardens in one pass is one you cannot review.</li>
+      <li><strong>Make it explain first.</strong> If the explanation is wrong, you have caught it before it ran.</li>
+      <li><strong>Keep the secrets out of the chat.</strong> Tokens and keys belong in files on the server. Tell it to write them there and show you the permissions, not the contents.</li>
+    </ul>
+
+    <div class="row" style="margin-top:2.4em">
+      <a class="b" href="https://github.com/iXanadu/ShareWeb">Star on GitHub</a>
+      <a class="b b2" href="how-it-works.html">How it works</a>
+    </div>
+    </main>
+
+    <aside class="testimony" aria-label="What one small server runs">
+      <p class="k">One $5 box, in practice</p>
+      <blockquote>
+        <p><strong>Share</strong> — agents post finished files; you hand out links that expire.</p>
+        <p><strong>pigeon</strong> — Gmail for your agents, a few hundred MB of RAM.</p>
+        <p><strong>Tiding</strong> — memory that survives the session, across machines.</p>
+        <p>These are all small Python services behind one nginx. The cost of the server is not the interesting number; the interesting number is that none of them are someone else&rsquo;s SaaS, and none of them can change their terms on you.</p>
+      </blockquote>
+    </aside>
+    </div>
+
+    <footer>
+      <span>Share &middot; Homedog.com Inc.</span>
+      <a href="https://github.com/iXanadu/ShareWeb">Source on GitHub</a>
+      <a href="https://github.com/iXanadu/ShareWeb/blob/main/LICENSE">Apache&nbsp;2.0</a>
+    </footer>
+  </div>
+</body>
+</html>

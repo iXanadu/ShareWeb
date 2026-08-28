@@ -5,149 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Share — your agent’s output, on the web</title>
   <meta name="description" content="A self-hosted artifact host. Agents post finished files over MCP and get a stable URL; you hand them out with links that expire.">
-  <style>
-    :root { color-scheme: light dark; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      background: #f3f2f2;
-      color: #201e1d;
-      font-family: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
-      font-size: 19px;
-      line-height: 1.55;
-      text-wrap: pretty;
-    }
-    .w { max-width: 47em; margin: 0 auto; padding: 2em 1.5em 7em; }
-    .mast { border-top: 6px solid #201e1d; padding-top: 0.5em; }
-    .rail {
-      display: flex; flex-wrap: wrap; gap: 0.3em 1.5em; align-items: baseline;
-      border-bottom: 1px solid #201e1d; padding-bottom: 0.45em;
-      font-size: 0.74em; letter-spacing: 0.08em; text-transform: uppercase; color: #605d5d;
-    }
-    .rail b { font-weight: 600; letter-spacing: 0.1em; color: #201e1d; font-size: 1.15em; }
-    .rail .sp { margin-left: auto; }
-    nav { display: flex; flex-wrap: wrap; gap: 0.4em 1.5em; margin: 1.1em 0 0;
-      font-size: 0.78em; letter-spacing: 0.06em; text-transform: uppercase; }
-    nav a { text-decoration: none; }
-    nav a[aria-current] { color: #201e1d; font-weight: 600; }
-    h1 { font-size: 2.85em; line-height: 1.06; font-weight: 600; margin: 2.4em 0 0.5em; max-width: 22em; letter-spacing: -0.015em; }
-    h2 { font-size: 1.45em; line-height: 1.2; font-weight: 600; margin: 3.4em 0 0.7em; max-width: 26em; }
-    h3 { font-size: 1em; font-weight: 600; margin: 2em 0 0.35em; }
-    .lede { font-size: 1.24em; line-height: 1.42; max-width: 27em; margin: 0 0 1.6em; }
-    p { margin: 0 0 1em; max-width: 32em; }
-    .m { color: #605d5d; }
-    .s { font-size: 0.85em; }
-    .k { font-size: 0.74em; letter-spacing: 0.08em; text-transform: uppercase; color: #605d5d; margin: 0 0 0.6em; }
-    a { color: #006786; text-underline-offset: 2px; }
-    a:hover { color: #aa0b56; }
-    a:focus-visible, .b:focus-visible { outline: 2px solid #006786; outline-offset: 2px; }
-    .row { display: flex; flex-wrap: wrap; gap: 0.75em; align-items: center; margin: 0 0 0.6em; }
-    .b {
-      display: inline-block; font: inherit; font-weight: 600; font-size: 0.95em;
-      background: #006786; color: #ffffff; border: 1px solid #006786; border-radius: 2px;
-      padding: 0.5em 1.15em; min-height: 44px; box-sizing: border-box;
-      display: inline-flex; align-items: center; text-decoration: none;
-    }
-    .b:hover { background: #004961; border-color: #004961; color: #ffffff; }
-    .b2 { background: transparent; color: #201e1d; border-color: #bab6b6; font-weight: 400; }
-    .b2:hover { background: #eae7e7; border-color: #7d7979; color: #201e1d; }
-    pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.76em; line-height: 1.6; background: #ffffff;
-      border: 1px solid #dcd8d8; border-radius: 2px;
-      padding: 1.1em 1.2em; margin: 0 0 1em; overflow-x: auto; max-width: 44em;
-    }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.84em; }
-    pre code { font-size: inherit; }
-    .cm { color: #605d5d; }
-    dl { margin: 1.4em 0 0; display: grid; grid-template-columns: 12.5em 1fr; gap: 0.75em 1.75em; max-width: 44em; align-items: baseline; }
-    dt { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.78em; }
-    dd { margin: 0; font-size: 0.92em; }
-    .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(15em, 1fr)); gap: 2em 2.5em; margin: 1.6em 0 0; max-width: 46em; }
-    .cols p { margin: 0; font-size: 0.92em; }
-    ul { margin: 1em 0; padding: 0 0 0 1.1em; max-width: 32em; }
-    li { margin: 0 0 0.4em; }
-    ul.plain { list-style: none; padding: 0; max-width: 40em; }
-    ul.plain li { display: flex; flex-wrap: wrap; gap: 0.2em 1em; padding: 0.5em 0; border-bottom: 1px solid rgba(32,30,29,0.14); align-items: baseline; margin: 0; }
-    ul.plain li span { color: #605d5d; font-size: 0.87em; }
-    .steps { counter-reset: s; list-style: none; padding: 0; max-width: 34em; margin: 1.6em 0 0; }
-    .steps > li { counter-increment: s; position: relative; padding: 0 0 0 2.4em; margin: 0 0 1.5em; }
-    .steps > li::before {
-      content: counter(s); position: absolute; left: 0; top: -0.06em;
-      font-size: 1.35em; font-weight: 600; color: #d6006c;
-    }
-    .steps h3 { margin: 0 0 0.25em; }
-    .steps p { margin: 0; font-size: 0.92em; }
-    footer { margin: 6em 0 0; border-top: 1px solid rgba(32,30,29,0.2); padding-top: 1em;
-      font-size: 0.78em; color: #605d5d; display: flex; flex-wrap: wrap; gap: 0.3em 1.5em; }
-    ::selection { background: #cbeeff; }
-    @media (max-width: 34em) {
-      h1 { font-size: 2.1em; }
-      dl { grid-template-columns: 1fr; gap: 0.15em; }
-      dt { margin-top: 0.7em; }
-    }
-    @media (prefers-color-scheme: dark) {
-      body { background: #1a1918; color: #ece9e7; }
-      .m, .k, .cm, nav, footer, ul.plain li span { color: #bab6b6; }
-      nav a[aria-current] { color: #ece9e7; }
-      .mast { border-top-color: #ece9e7; }
-      .rail { border-bottom-color: #ece9e7; }
-      .rail b { color: #ece9e7; }
-      a { color: #62c5ee; }
-      a:hover { color: #ff90b1; }
-      a:focus-visible, .b:focus-visible { outline-color: #62c5ee; }
-      .b { background: #62c5ee; color: #0a303e; border-color: #62c5ee; }
-      .b:hover { background: #99e0ff; border-color: #99e0ff; color: #0a303e; }
-      .b2 { background: transparent; color: #ece9e7; border-color: #605d5d; }
-      .b2:hover { background: #232120; border-color: #bab6b6; color: #ece9e7; }
-      pre { background: #232120; border-color: #3d3a39; }
-      ul.plain li { border-bottom-color: rgba(236,233,231,0.16); }
-      .steps > li::before { color: #ff90b1; }
-      footer { border-top-color: rgba(236,233,231,0.2); }
-      ::selection { background: #0a303e; }
-    }
-  </style>
+  <meta property="og:title" content="Share — your agent’s output, on the web">
+  <meta property="og:description" content="A self-hosted artifact host. Agents post finished files over MCP and get a stable URL; you hand them out with links that expire.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://share.c52.com/">
+  <meta property="og:image" content="https://share.c52.com/assets/og-banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="site.css?v=rook2">
+  <link rel="icon" href="favicon.png?v=rook2" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=rook2">
 </head>
 <body>
   <div class="w">
-    <header class="mast">
-      <div class="rail">
-        <b>Share</b>
-        <span>Self-hosted artifact host</span>
-        <span class="sp">share.c52.com</span>
+    <header class="mast mast-edition">
+      <div class="mast-top">
+        <a class="brand" href="index.html">
+          <img class="brand-mark press-img" src="assets/02-mark-bold.jpg?v=rook1" alt="" width="46" height="46">
+          Share
+        </a>
+        <nav>
+          <a href="index.html" aria-current="page">Overview</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="for-agents.html">For agents</a>
+          <a href="your-server.html">Your own server</a>
+          <a href="https://github.com/iXanadu/ShareWeb/tree/main/docs/specs/spec">Docs ↗</a>
+        </nav>
+        <a class="follow-author" href="https://x.com/cooksbayouboy" target="_blank" rel="noopener noreferrer">
+          <img src="author-avatar.png" width="48" height="48" alt="">
+          <span>Follow the author</span>
+        </a>
       </div>
-      <nav>
-      <a href="index.html" aria-current="page">Overview</a>
-      <a href="how-it-works.html">How it works</a>
-      <a href="for-agents.html">For agents</a>
-      <a href="https://github.com/iXanadu/ShareWeb/tree/main/docs/specs/spec">Docs &#8599;</a>
-      </nav>
+      <p class="dateline">Vol. I &mdash; August 2026 &middot; A self-hosted artifact host &middot; MCP &middot; passkeys and bearer tokens &middot; Apache-2.0</p>
     </header>
 
-    <h1>Your agent&rsquo;s output, on the web.</h1>
-
-    <p class="lede">An agent posts finished files over an API and gets back a stable
-    URL. You keep the artifacts and hand them out with links that expire.</p>
-
-    <div class="row">
-      <a class="b" href="https://github.com/iXanadu/ShareWeb">Star on GitHub</a>
-      <a class="b b2" href="how-it-works.html">How it works</a>
+    <div class="hero-split">
+      <div class="hero-copy">
+        <h1>Your agent&rsquo;s output, on the web.</h1>
+        <p class="lede">An agent posts finished files over an API and gets back a stable
+        URL. You keep the artifacts and hand them out with links that expire.</p>
+        <div class="row">
+          <a class="b" href="https://github.com/iXanadu/ShareWeb">Star on GitHub</a>
+          <a class="b b2" href="how-it-works.html">How it works</a>
+        </div>
+        <p class="s m">Run your own. Python 3.13, FastAPI, PostgreSQL, Redis.</p>
+      </div>
+      <img class="press-img hero-bird" src="assets/01-hero-rook-nest.jpg?v=rook1" alt="An engraved rook placing a twig on its stick nest" width="1408" height="1408">
     </div>
-    <p class="s m">Run your own. Python 3.13, FastAPI, PostgreSQL, Redis.</p>
+
+    <div class="numbers-rail" aria-label="Key figures">
+      <figure>
+        <span class="num">7</span>
+        <figcaption>Tools an agent can call, over one endpoint</figcaption>
+      </figure>
+      <figure>
+        <span class="num">1</span>
+        <figcaption>Command from a finished build to a working URL</figcaption>
+      </figure>
+      <figure>
+        <span class="num">4</span>
+        <figcaption>Cases in which a request is authorised. There is no fifth</figcaption>
+      </figure>
+      <figure>
+        <span class="num">0</span>
+        <figcaption>Artifacts that are public when posted</figcaption>
+      </figure>
+    </div>
+
+    <blockquote class="pull-quote">
+      <p>A rookery is not rebuilt each spring. It is added to &mdash; one stick at a
+      time, by whoever is carrying one.</p>
+      <cite>Why the rook</cite>
+    </blockquote>
 
     <h2>Seven tools over one endpoint</h2>
     <p>Share speaks MCP at <code>/mcp</code> with a bearer token. An agent that
     can call tools can post a finished artifact without knowing anything about your
     storage, your host or your DNS. Posting is private. A share link is a separate
     step.</p>
+
     <dl>
-      <dt>share_post</dt><dd>Post files as an artifact. Stays private. Returns the artifact URL.</dd>
-      <dt>share_create_link</dt><dd>Mint an expiring <code>/s/&hellip;</code> URL so someone without an account can open it.</dd>
-      <dt>share_list</dt><dd>List artifacts in the caller&rsquo;s space.</dd>
-      <dt>share_get</dt><dd>Get one artifact by name.</dd>
-      <dt>share_delete</dt><dd>Move an artifact to trash.</dd>
-      <dt>share_restore</dt><dd>Restore an artifact from trash.</dd>
-      <dt>share_whoami</dt><dd>Return the authenticated identity.</dd>
+      <dt>share_post</dt>
+      <dd>Post files as an artifact. Stays private. Returns the artifact URL.</dd>
+      <dt>share_create_link</dt>
+      <dd>Mint an expiring <code>/s/&hellip;</code> URL so someone without an account can open it.</dd>
+      <dt>share_list</dt>
+      <dd>List artifacts in the caller&rsquo;s space.</dd>
+      <dt>share_get</dt>
+      <dd>Get one artifact by name.</dd>
+      <dt>share_delete</dt>
+      <dd>Move an artifact to trash.</dd>
+      <dt>share_restore</dt>
+      <dd>Restore an artifact from trash.</dd>
+      <dt>share_whoami</dt>
+      <dd>Return the authenticated identity.</dd>
     </dl>
 
     <h2>Or one command</h2>
@@ -159,6 +109,12 @@ Posting build  (14 files)
 https://share.c52.com/q3-margin-review</code></pre>
     <p class="s m">It refuses to post files that look like secrets unless you pass
     <code>--force-secrets</code>.</p>
+
+    <figure class="band">
+      <img class="press-img" src="assets/07-nest-band-wide.jpg?v=rook1" alt="An engraved rook's nest built into a horizontal branch" width="2000" height="800">
+      <figcaption>Sticks are reused, not re-cut. Files are addressed by SHA-256, so
+      re-posting a directory uploads only what changed.</figcaption>
+    </figure>
 
     <h2>Private until you say otherwise</h2>
     <div class="cols">
@@ -226,9 +182,9 @@ uvicorn server.main:app --port 8000</code></pre>
     </div>
 
     <footer>
-      <span>Share &mdash; a self-hosted artifact host</span>
-      <a href="https://github.com/iXanadu/ShareWeb">github.com/iXanadu/ShareWeb</a>
-      <a href="https://github.com/iXanadu/ShareWeb/blob/main/LICENSE">Apache License 2.0</a>
+      <span>Share &middot; Homedog.com Inc.</span>
+      <a href="https://github.com/iXanadu/ShareWeb">Source on GitHub</a>
+      <a href="https://github.com/iXanadu/ShareWeb/blob/main/LICENSE">Apache&nbsp;2.0</a>
     </footer>
   </div>
 </body>

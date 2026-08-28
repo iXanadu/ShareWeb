@@ -21,6 +21,12 @@ RESERVED_FIRST_SEGMENTS = {
     "health",
     "how-it-works",
     "for-agents",
+    "your-server",
+    "assets",
+    "site.css",
+    "favicon.png",
+    "apple-touch-icon.png",
+    "author-avatar.png",
 }
 
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9._-]*(/[a-z0-9][a-z0-9._-]*)*$")

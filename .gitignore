@@ -44,3 +44,6 @@ htmlcov/
 
 # Local file store
 var/
+
+# Dropped design packages (assets are copied into web/marketing/)
+docs/Site-Refresh.zip

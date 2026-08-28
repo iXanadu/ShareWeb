@@ -42,4 +42,5 @@ app.include_router(mcp.router)
 dashboard.mount_dashboard_static(app)
 app.include_router(dashboard.router)
 app.include_router(marketing.router)  # /, /how-it-works, /for-agents — before catch-all
+marketing.mount_marketing_static(app)
 app.include_router(serve.router)  # last: artifact catch-all when Caddy is absent

@@ -24,6 +24,7 @@ async def robots() -> Response:
             "Allow: /$\n"
             "Allow: /how-it-works\n"
             "Allow: /for-agents\n"
+            "Allow: /your-server\n"
             "Disallow: /\n"
         ),
         media_type="text/plain; charset=utf-8",
