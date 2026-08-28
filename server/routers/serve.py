@@ -74,10 +74,16 @@ async def serve_artifact(full_path: str, request: Request):
     if result is None:
         return not_found_response()
     if isinstance(result, (bytes, bytearray)):
+        from ..services.markdown_view import GENERATED_HTML_CSP
+
         return Response(
             content=bytes(result),
             media_type="text/html; charset=utf-8",
-            headers={"Cache-Control": "no-store", **NOT_FOUND_HEADERS},
+            headers={
+                "Cache-Control": "no-store",
+                "Content-Security-Policy": GENERATED_HTML_CSP,
+                **NOT_FOUND_HEADERS,
+            },
         )
     headers = {
         "Cache-Control": result.cache_control,

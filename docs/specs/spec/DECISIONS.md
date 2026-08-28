@@ -365,3 +365,15 @@ gets built.
 **Resolution.** First prod deploy: systemd unit on loopback, nginx terminates TLS. FastAPI serves artifacts. Caddy can wait.
 
 **Cost.** `sendfile` is worse than Caddy `file_server`. Acceptable until a dedicated edge is worth it.
+
+---
+
+## D-29 — Markdown files render as HTML on display
+
+**Sections:** §6.6.3, R2
+
+**Conflict.** Spec serves `.md` as `text/plain` and R2 as the landing for any non-HTML artifact. Opening a share link to a Markdown note therefore shows View/Download chrome, then raw source. The owner asked for formatted display.
+
+**Resolution.** Stored bytes and `contentType` stay as posted (`text/plain` or `text/markdown`). A GET of a `.md` / `.markdown` / `text/markdown` file without `?download=1` is rendered server-side (CommonMark + tables/strikethrough/task lists) into a no-JS HTML document using the recipient type tokens. Raw HTML in the source is escaped; `javascript:` and other non-`http`/`https`/`mailto` URLs are stripped. Files over 1 MiB, unreadable files, and `?download=1` stay on the existing raw/R2 path.
+
+**Cost.** A Markdown share-link root no longer hits R2. Download remains. This is a display wrapper, not a new artifact `kind`.

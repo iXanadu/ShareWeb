@@ -235,6 +235,17 @@ async def authorize_request(request: Request):
         path_name = target["path"] or "file"
         want_download = request.query_params.get("download") in {"1", "true"}
         htmlish = ctype.startswith("text/html") or path_name.lower().endswith((".html", ".htm"))
+        if not want_download:
+            from .markdown_view import is_markdown, render_markdown_file
+
+            if is_markdown(path_name, ctype):
+                rendered = render_markdown_file(
+                    blob_abs(sha_hex),
+                    title=art["title"],
+                    download_href="?download=1",
+                )
+                if rendered is not None:
+                    return rendered
         if (
             actor.is_recipient
             and not want_download
@@ -283,10 +294,16 @@ async def internal_authorize(request: Request):
     from fastapi import Response
 
     if isinstance(result, (bytes, bytearray)):
+        from .markdown_view import GENERATED_HTML_CSP
+
         return Response(
             content=result,
             media_type="text/html; charset=utf-8",
-            headers={"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow"},
+            headers={
+                "Cache-Control": "no-store",
+                "X-Robots-Tag": "noindex, nofollow",
+                "Content-Security-Policy": GENERATED_HTML_CSP,
+            },
         )
     headers = {
         "X-Share-File": result.rel,

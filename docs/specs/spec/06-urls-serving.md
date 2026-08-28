@@ -202,6 +202,8 @@ Sanitising rules, applied to every response:
   so scripts inside SVG are inert.
 - Any type not in the table and not explicitly declared is `application/octet-stream` with
   `Content-Disposition: attachment` — unknown binaries download rather than render.
+- `.md` stays `text/plain` (or a declared `text/markdown`) on disk and on `?download=1`. A GET
+  of that file without download is rendered as HTML (D-29).
 
 Compressible for precompression: `text/*`, `application/json`, `application/xml`,
 `application/javascript`, `image/svg+xml`, `application/wasm`. Never images, video, audio, or
