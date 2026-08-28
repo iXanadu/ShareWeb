@@ -7,6 +7,10 @@ async def test_marketing_home(client):
     assert "text/html" in resp.headers.get("content-type", "")
     assert "Your agent" in resp.text
     assert "share_create_link" in resp.text
+    assert "BACKLOG.md" in resp.text
+    assert "START-HERE" not in resp.text
+    assert "16-roadmap" not in resp.text
+    assert "commits/main" not in resp.text
     assert "sw_live_" not in resp.text
     assert "/robert/" not in resp.text
 

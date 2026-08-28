@@ -28,9 +28,8 @@ If a visitor needs detail, link to the file on GitHub. The three pages carry
 positioning only — what Share is, the shape of the API, and how to point an
 agent at it.
 
-`index.html` § "Where it stands" is a link list rather than a status paragraph for
-the same reason: `BACKLOG.md`, the roadmap and the commit history report the
-current state themselves.
+`index.html` § "Where it stands" links only to `BACKLOG.md`. Do not add
+START-HERE, the roadmap, or the commit history there.
 
 ## Serving notes
 
@@ -86,7 +85,7 @@ If any of these change, the copy is wrong:
 
 - **No hosted service, and no status snapshot.** The pages never assert which
   phase is built or whether share.c52.com is up. `index.html` links to
-  `BACKLOG.md` and the commit history instead.
+  `BACKLOG.md` instead.
 - **No MCP transport detail.** The pages say MCP without specifying JSON-RPC-over-POST.
   SW-4: an agent framework expecting streamable HTTP/SSE will fail to connect.
 - License is Apache 2.0 (confirmed from `LICENSE`). Footers name it.

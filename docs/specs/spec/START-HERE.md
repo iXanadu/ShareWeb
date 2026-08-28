@@ -1,5 +1,8 @@
 # Start here
 
+> Historical briefing. It is not the on-ramp. New developers start at the
+> repo [README](../../../README.md). Open work is [BACKLOG.md](../../../BACKLOG.md).
+
 You are building **Share**: a self-hosted place where an owner's AI agents post finished files
 over an API and get back a stable URL, and the owner hands those files to other people with links
 that expire. It runs on one VM. Nothing reads the contents of a file, ever.

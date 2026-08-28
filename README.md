@@ -1,15 +1,27 @@
 # Share
 
-A place you host yourself. An AI agent posts finished files and gets a URL.
-You keep those files and hand them out with links that expire.
+Self-hosted artifact host. An agent posts finished files over MCP and gets a stable URL. You keep the files and hand them out with links that expire.
 
-Posting is not publishing. A new post is private until you create a share link.
+**Not** a public SaaS, not GitHub Pages, not a zip in an email. You run a copy. Posting is not publishing: a new post is private until you create a share link.
 
-There is no public hosted service. You run a copy.
+## Features
 
-## Run it
+- **MCP** — seven tools at `POST /mcp`, bearer token `shr_…`
+- **Private by default** — `share_post` never mints a public URL
+- **Expiring share links** — `share_create_link` (`/s/…`), optional password, revoke anytime
+- **Content-addressed files** — SHA-256; re-posting a directory uploads only what changed
+- **Passkeys + tokens** — you sign in in the browser; agents get named, scoped, revocable tokens
+- **Same 404** — unknown and unauthorized are indistinguishable
 
-You need **Python 3.13** ([pyenv](https://github.com/pyenv/pyenv) + pyenv-virtualenv), **PostgreSQL**, and **Redis**.
+## Requirements
+
+- Python 3.13 via [pyenv](https://github.com/pyenv/pyenv) + pyenv-virtualenv (do **not** use `python -m venv`)
+- PostgreSQL 17
+- Redis
+
+macOS with Homebrew: `brew install pyenv pyenv-virtualenv postgresql@17 redis`, then start Postgres and Redis.
+
+## Quick start
 
 ```bash
 git clone https://github.com/iXanadu/ShareWeb.git
@@ -20,51 +32,108 @@ pyenv local share-3.13
 pip install -e ".[dev]"
 
 cp examples/.env.example .env
-cp examples/.keys.example .keys && chmod 600 .keys
+cp examples/.keys.example .keys
+chmod 600 .keys
 ```
 
-Edit `.env` (database user is your OS username on a Mac, or `share` on Linux).
-Put two long random strings in `.keys` for `SHARE_SECRET_KEY` and `SHARE_VIEW_SALT`.
+Edit `.env`: `SHARE_DB_USER` is your OS username on a Mac (leave `SHARE_DB_HOST` empty for the Unix socket). On Linux it is often `share`.
 
 ```bash
+createdb share_dev          # once
+openssl rand -hex 32        # → SHARE_SECRET_KEY in .keys
+openssl rand -hex 32        # → SHARE_VIEW_SALT in .keys
+
 sharectl bootstrap --email you@example.com --handle you
 uvicorn server.main:app --host 127.0.0.1 --port 8000
 ```
 
-Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) for the public pages, and
-[http://127.0.0.1:8000/~/](http://127.0.0.1:8000/~/) to sign in with a passkey
-and issue tokens.
+Migrations run on startup. Bootstrap prints **once**: an API token (`shr_…`) and a session cookie. Save both. The bootstrap token can post files; minting share links needs the `share:create` scope, which only a signed-in owner can grant.
 
-## Point an agent at your copy
+| URL | What |
+| --- | --- |
+| http://127.0.0.1:8000/ | Public pages |
+| http://127.0.0.1:8000/~/ | Dashboard — register a passkey, issue tokens |
+| http://127.0.0.1:8000/mcp | MCP (JSON-RPC POST) |
 
-One API token. It looks like `shr_…`. That is the only secret.
+```bash
+pytest tests/ -q
+ruff check .
+```
+
+## Point an agent at it
+
+One token. That is the only secret that belongs in the agent config.
 
 ```json
 {
   "mcpServers": {
     "share": {
       "url": "https://YOUR-HOST/mcp",
-      "headers": {
-        "Authorization": "Bearer shr_…"
-      }
+      "headers": { "Authorization": "Bearer shr_…" }
     }
   }
 }
 ```
 
-The agent posts files with `share_post` and mints an expiring link with `share_create_link`.
-
-From a terminal, against the same host:
+From a terminal:
 
 ```bash
 share post ./out --name report
 share ls
 ```
 
-## Docs
+## Tools
 
-- Behaviour spec (start here): [docs/specs/spec/START-HERE.md](docs/specs/spec/START-HERE.md)
-- After it is running locally: `/how-it-works` and `/for-agents`
+| Tool | Notes |
+| --- | --- |
+| `share_post` | Post files. Stays private. Returns the artifact URL. |
+| `share_create_link` | Mint an expiring `/s/…` URL. Needs `share:create`. |
+| `share_list` | List artifacts. Pass `trashed` for trash. |
+| `share_get` | One artifact by name. |
+| `share_delete` | Move to trash. Recoverable. |
+| `share_restore` | Restore from trash. |
+| `share_whoami` | Authenticated identity. |
+
+Failed calls come back as MCP tool content with `isError: true` and a `code: message` string, not as a protocol error.
+
+## Configuration
+
+Non-sensitive settings in `.env`; secrets in `.keys` (never commit either when filled). Templates: `examples/.env.example`, `examples/.keys.example`.
+
+| Variable | File | Purpose |
+| --- | --- | --- |
+| `SHARE_HOST` | `.env` | Public hostname (WebAuthn RP ID in production) |
+| `SHARE_BIND_HOST` | `.env` | Bind address (local: `127.0.0.1`) |
+| `SHARE_PORT` | `.env` | Listen port (default `8000`) |
+| `SHARE_DB_HOST` | `.env` | Empty = Unix socket (peer auth) |
+| `SHARE_DB_NAME` | `.env` | Database (local: `share_dev`) |
+| `SHARE_DB_USER` | `.env` | Role (your OS user on a Mac) |
+| `SHARE_REDIS_URL` | `.env` | Redis |
+| `SHARE_FILE_ROOT` | `.env` | Artifact blobs |
+| `SHARE_TMP_ROOT` | `.env` | Upload scratch (same filesystem as file root) |
+| `SHARE_SECRET_KEY` | `.keys` | App secret |
+| `SHARE_VIEW_SALT` | `.keys` | View-token salt |
+| `SHARE_DB_PASSWORD` | `.keys` | Only if the role has a password |
+
+## Putting it on a box
+
+Bind the app to loopback and put nginx (or Caddy) in front for TLS. Run it as its own service user, never as root. Files and Postgres stay on that machine — back them up off-box.
+
+The public page `/your-server` is the practice: ten minutes by hand, then you prompt an agent for the rest. Live copy: [share.c52.com/your-server](https://share.c52.com/your-server).
+
+## Tests
+
+```bash
+pytest tests/ -q
+```
+
+Uses a local `share_test` database and Redis DB `/1`. No production data.
+
+## Open work
+
+[BACKLOG.md](BACKLOG.md) — if it is not there, it is not tracked.
+
+The `docs/specs/` tree is historical. Do not start there.
 
 ## License
 
