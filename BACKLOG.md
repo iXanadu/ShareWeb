@@ -35,6 +35,8 @@ _(none)_
 - **SW-6** Dashboard API `05a-dashboard-api.md` not written. Root: PLUMBING-AUDIT §2. Found: spec.
 - **SW-8** Mail/SMTP is empty. Notices (new share link, expiry, new token) are specified, not
   wired. Root: §15. Found: huddle 2026-08-26.
+- **SW-9** `share_user` GitHub deploy key on WebOne cannot `git fetch` (`Permission denied
+  (publickey)`). Pulls work as `ixanadu` (in `share_user` group). Root: prod ops. Found: 2026-08-28.
 
 ## BLOCKED-EXTERNAL
 
