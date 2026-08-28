@@ -72,6 +72,8 @@ def test_wrap_and_file_roundtrip(tmp_path: Path):
     assert "share.c52.com" in text
     wrapped = wrap_document(title="t", body_html="<p>x</p>", download_href="?download=1")
     assert b"<p>x</p>" in wrapped
+    assert b"<!--email_off-->" in wrapped
+    assert b"<!--/email_off-->" in wrapped
 
 
 async def _post_markdown(client, headers, name="note"):

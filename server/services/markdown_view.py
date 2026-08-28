@@ -196,7 +196,9 @@ def wrap_document(*, title: str, body_html: str, download_href: str) -> bytes:
         '      <p class="h">share.c52.com</p>\n'
         f'      <a class="b2" href="{href_e}">Download</a>\n'
         "    </div>\n"
+        "    <!--email_off-->\n"
         f'    <article class="md">\n{body_html}\n    </article>\n'
+        "    <!--/email_off-->\n"
         "  </div>\n"
         "</body>\n"
         "</html>\n"

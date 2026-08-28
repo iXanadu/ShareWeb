@@ -376,4 +376,4 @@ gets built.
 
 **Resolution.** Stored bytes and `contentType` stay as posted (`text/plain` or `text/markdown`). A GET of a `.md` / `.markdown` / `text/markdown` file without `?download=1` is rendered server-side (CommonMark + tables/strikethrough/task lists) into a no-JS HTML document using the recipient type tokens. Raw HTML in the source is escaped; `javascript:` and other non-`http`/`https`/`mailto` URLs are stripped. Files over 1 MiB, unreadable files, and `?download=1` stay on the existing raw/R2 path.
 
-**Cost.** A Markdown share-link root no longer hits R2. Download remains. This is a display wrapper, not a new artifact `kind`.
+**Cost.** A Markdown share-link root no longer hits R2. Download remains. This is a display wrapper, not a new artifact `kind`. The HTML body is wrapped in Cloudflare `email_off` comments so Scrape Shield does not replace addresses with a JS decoder the recipient pages do not run.
