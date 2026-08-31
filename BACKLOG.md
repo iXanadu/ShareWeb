@@ -38,6 +38,12 @@ _(none)_
 - **SW-9** `share_user` GitHub deploy key on WebOne cannot `git fetch` (`Permission denied
   (publickey)`). Pulls work as `ixanadu` (in `share_user` group). Root: prod ops. Found: 2026-08-28.
 
+- **SW-10** Cloudflare injects its own `User-agent: *` group with `Allow: /` ahead of Share's
+  robots.txt, so the served file has two conflicting `*` groups (`Allow: /` then `Disallow: /`).
+  Compliant crawlers merging them resolve the tie toward Allow, undoing the intended disallow of
+  `/s/`. Impact limited: `/s/` responses also carry `X-Robots-Tag: noindex, nofollow`. Root: prod
+  ops / Cloudflare. Found: 2026-08-31.
+
 ## BLOCKED-EXTERNAL
 
 _(none)_
