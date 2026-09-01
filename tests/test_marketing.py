@@ -45,15 +45,13 @@ async def test_marketing_does_not_steal_artifacts(client, root_user):
     assert missing.content == hidden.content
 
 
-async def test_robots_allows_marketing(client):
+async def test_robots_allows_whole_site(client):
     resp = await client.get("/robots.txt")
     assert resp.status_code == 200
     body = resp.text
-    assert "Allow: /$" in body
-    assert "Allow: /how-it-works" in body
-    assert "Allow: /for-agents" in body
-    assert "Allow: /your-server" in body
-    assert "Disallow: /" in body
+    assert "User-agent: *" in body
+    assert "Allow: /" in body
+    assert "Disallow" not in body
 
 
 async def test_marketing_assets(client):

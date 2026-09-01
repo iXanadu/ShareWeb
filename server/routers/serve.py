@@ -19,14 +19,10 @@ router = APIRouter(tags=["serve"])
 @router.get("/robots.txt")
 async def robots() -> Response:
     return Response(
-        content=(
-            "User-agent: *\n"
-            "Allow: /$\n"
-            "Allow: /how-it-works\n"
-            "Allow: /for-agents\n"
-            "Allow: /your-server\n"
-            "Disallow: /\n"
-        ),
+        # Whole site open to crawlers and agents (owner call 2026-09-01).
+        # Private shares are protected by per-response noindex, which only
+        # works when the crawler is allowed to fetch the page.
+        content="User-agent: *\nAllow: /\n",
         media_type="text/plain; charset=utf-8",
         headers={"Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow"},
     )
