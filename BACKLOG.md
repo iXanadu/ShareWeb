@@ -12,11 +12,7 @@ Status: OPEN / IN-PROGRESS / FIXED / WONTFIX. Root = where born. Found = where s
 
 ## BLOCKING
 
-- **SW-11** **IN-PROGRESS.** Bearer-token actors pass `require_user` on owner-only dashboard routes. Any agent
-  token can list/create/revoke the owner's API tokens and begin/finish passkey registration,
-  enabling account takeover and cross-agent credential revocation. Require a browser session
-  (or a narrowly identified bootstrap/recovery credential) for token administration and passkey
-  enrollment before issuing tokens broadly. Root: Phase 1 auth plumbing. Found: 2026-09-04.
+_(none)_
 
 ## NEEDS-DECISION
 
@@ -53,5 +49,8 @@ _(none)_
 
 ## FIXED
 
+- **SW-11** Bearer tokens could access owner-only token administration and passkey enrollment.
+  Fixed with browser-session dependencies and purpose-limited, one-time recovery grants; deployed
+  to WebOne at `75a2a8e`. Root: Phase 1 auth plumbing. Found/fixed: 2026-09-04.
 - **SW-7** WebOne `share.c52.com` live: nginx TLS → `127.0.0.1:8021`, unit
   `uvicorn_share_c52_prod`, 50MiB/file 64MiB/artifact. Found: huddle 2026-08-26.
