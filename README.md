@@ -43,11 +43,23 @@ createdb share_dev          # once
 openssl rand -hex 32        # → SHARE_SECRET_KEY in .keys
 openssl rand -hex 32        # → SHARE_VIEW_SALT in .keys
 
-sharectl bootstrap --email you@example.com --handle you
 uvicorn server.main:app --host 127.0.0.1 --port 8000
 ```
 
-Migrations run on startup. Bootstrap prints **once**: an API token (`shr_…`) and a session cookie. Save both. The bootstrap token can post files; minting share links needs the `share:create` scope, which only a signed-in owner can grant.
+In a second terminal, create the owner:
+
+```bash
+sharectl bootstrap --email you@example.com --handle you
+```
+
+Migrations run on application and `sharectl` startup. Bootstrap prints **once**:
+
+- an agent API token (`shr_…`) with `artifacts:read` and `artifacts:write`; and
+- a one-time owner setup URL valid for 30 minutes.
+
+Open the setup URL immediately and register a passkey. Share has no password login. The URL
+creates a restricted browser session that can only inspect and register passkeys until setup is
+complete. If you lose it before registering a passkey, use the server recovery command below.
 
 | URL | What |
 | --- | --- |
@@ -59,6 +71,16 @@ Migrations run on startup. Bootstrap prints **once**: an API token (`shr_…`) a
 pytest tests/ -q
 ruff check .
 ```
+
+## Create agent tokens
+
+Open `/~/tokens` while signed in. Create a separate named token for each coder, bot, or service;
+do not share one bearer token across unrelated agents. Separate tokens give useful attribution
+and let you revoke one agent without stopping the others.
+
+Every token starts with `artifacts:read` and `artifacts:write`. Add `share:create` only when that
+agent should be able to publish expiring `/s/…` links. Add `artifacts:delete` only when it should
+be able to purge trash permanently. The full token is shown once.
 
 ## Point an agent at it
 
@@ -81,6 +103,19 @@ From a terminal:
 share post ./out --name report
 share ls
 ```
+
+## Recover owner access
+
+There is no password or email-link bypass. If all owner passkeys are unavailable, SSH to the
+Share server and run this as root:
+
+```bash
+sharectl grant-session --email you@example.com --minutes 30
+```
+
+Open the printed URL once. It expires within 30 minutes, cannot be replayed, and forces passkey
+registration before token administration or artifact access. Creating and redeeming it are
+written to the audit log.
 
 ## Tools
 

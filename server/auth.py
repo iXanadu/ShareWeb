@@ -24,6 +24,8 @@ class Actor:
     scopes: tuple[str, ...] = ()
     handle: str | None = None
     is_root: bool = False
+    session_id: str | None = None
+    session_purpose: str | None = None
     link_id: str | None = None
     link_artifact_id: str | None = None
     link_live: bool = False
@@ -84,7 +86,7 @@ async def _lookup_session(secret: str) -> Actor | None:
     async with pool.acquire() as conn:
         row = await conn.fetchrow(
             """
-            SELECT s.id, s.user_id, s.revoked_at, s.expires_at,
+            SELECT s.id, s.user_id, s.purpose, s.revoked_at, s.expires_at,
                    u.handle, u.is_root, u.disabled_at
             FROM session s
             JOIN app_user u ON u.id = s.user_id
@@ -107,6 +109,8 @@ async def _lookup_session(secret: str) -> Actor | None:
         scopes=("artifacts:read", "artifacts:write", "artifacts:delete", "share:create"),
         handle=row["handle"],
         is_root=bool(row["is_root"]),
+        session_id=row["id"],
+        session_purpose=row["purpose"],
     )
 
 
@@ -131,6 +135,54 @@ async def require_user(request: Request) -> Actor:
     actor = await identify(request)
     if not actor.is_user:
         raise ShareError(401, "invalid_token", "Invalid or missing API token.")
+    if actor.session_purpose == "recovery":
+        raise ShareError(
+            403,
+            "restricted_session",
+            "Finish passkey setup before using this session.",
+        )
+    return actor
+
+
+async def require_any_user(request: Request) -> Actor:
+    """Accept an agent token or either browser-session purpose."""
+    actor = await identify(request)
+    if not actor.is_user:
+        raise ShareError(401, "invalid_token", "Invalid or missing API token.")
+    return actor
+
+
+async def require_owner_session(request: Request) -> Actor:
+    """Require a full browser session for owner-only administration."""
+    actor = await identify(request)
+    if not actor.is_user:
+        raise ShareError(401, "session_expired", "Sign in first.")
+    if actor.token_id:
+        raise ShareError(
+            403,
+            "wrong_credential_class",
+            "This operation requires an owner browser session.",
+        )
+    if actor.session_purpose != "full":
+        raise ShareError(
+            403,
+            "restricted_session",
+            "Register a passkey before using owner administration.",
+        )
+    return actor
+
+
+async def require_passkey_session(request: Request) -> Actor:
+    """Require a browser session, allowing the limited recovery purpose."""
+    actor = await identify(request)
+    if not actor.is_user:
+        raise ShareError(401, "session_expired", "Sign in first.")
+    if actor.token_id:
+        raise ShareError(
+            403,
+            "wrong_credential_class",
+            "Passkeys can only be managed from a browser session.",
+        )
     return actor
 
 

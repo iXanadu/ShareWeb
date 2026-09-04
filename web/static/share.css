@@ -270,6 +270,11 @@ a:hover {
   color: var(--share-danger);
 }
 
+.share-warning-text {
+  color: var(--share-danger);
+  font-size: 14px;
+}
+
 .share-btn-sm {
   font-size: 15px;
   padding: 6px 12px;

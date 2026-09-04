@@ -193,7 +193,7 @@ def recipient_landing_html(*, title: str, kind: str, view_href: str, download_hr
         f"<title>{title_e}</title></head><body><h1>{title_e}</h1>"
         f"<p>{kind_e}</p><p><a href='{view_e}'>View</a> "
         f"<a href='{dl_e}'>Download</a></p></body></html>"
-    ).encode("utf-8")
+    ).encode()
 
 
 def password_gate_html(token: str, *, wrong: bool = False) -> str:

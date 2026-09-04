@@ -242,7 +242,7 @@ async def register_finish(actor: Actor, credential: dict, name: str) -> dict:
     pky_id = prefixed("pky")
     label = (name or "").strip() or "Passkey"
     pool = await get_pool()
-    async with pool.acquire() as conn:
+    async with pool.acquire() as conn, conn.transaction():
         await conn.execute(
             """
             INSERT INTO passkey_credential (
@@ -257,6 +257,16 @@ async def register_finish(actor: Actor, credential: dict, name: str) -> dict:
             label,
             None,
         )
+        if actor.session_purpose == "recovery" and actor.session_id:
+            await conn.execute(
+                """
+                UPDATE session
+                SET purpose = 'full', expires_at = $2
+                WHERE id = $1 AND purpose = 'recovery'
+                """,
+                actor.session_id,
+                datetime.now(UTC) + timedelta(days=30),
+            )
     return {
         "id": pky_id,
         "name": label,

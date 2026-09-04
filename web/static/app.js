@@ -83,6 +83,10 @@ const COPY = {
     columns: ["Name", "Prefix", "Scopes", "Last used"],
     nameLabel: "Name",
     namePlaceholder: "agent@machine",
+    baseScopes: "Read and post artifacts",
+    shareScope: "Create public share links",
+    shareScopeWarning: "This lets the agent publish URLs that anyone with the link can open.",
+    deleteScope: "Permanently purge trashed artifacts",
     create: "Create token",
     createdHeading: "Copy this token now",
     createdBody: "It is shown once. Store it somewhere safe — Share cannot show it again.",
@@ -713,6 +717,12 @@ async function viewTokens(root, user) {
           <label for="token-name">${escapeHtml(COPY.tokens.nameLabel)}</label>
           <input class="share-input" id="token-name" type="text" placeholder="${escapeHtml(COPY.tokens.namePlaceholder)}">
         </div>
+        <div class="share-form-row">
+          <strong>${escapeHtml(COPY.tokens.baseScopes)}</strong>
+          <label><input id="token-share-scope" type="checkbox"> ${escapeHtml(COPY.tokens.shareScope)}</label>
+          <span class="share-warning-text">${escapeHtml(COPY.tokens.shareScopeWarning)}</span>
+          <label><input id="token-delete-scope" type="checkbox"> ${escapeHtml(COPY.tokens.deleteScope)}</label>
+        </div>
         <div class="share-error" id="token-error" role="alert" hidden></div>
         <button type="button" class="share-btn" id="create-token-btn">${escapeHtml(COPY.tokens.create)}</button>
       </div>
@@ -752,10 +762,13 @@ async function viewTokens(root, user) {
     }
     btn.disabled = true;
     try {
+      const scopes = ["artifacts:read", "artifacts:write"];
+      if (root.querySelector("#token-share-scope")?.checked) scopes.push("share:create");
+      if (root.querySelector("#token-delete-scope")?.checked) scopes.push("artifacts:delete");
       const created = await api("/api/v1/tokens", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, scopes: ["artifacts:read", "artifacts:write"] }),
+        body: JSON.stringify({ name, scopes }),
       });
       root.querySelector("#token-create").hidden = true;
       root.querySelector("#token-list").hidden = true;
@@ -1143,6 +1156,11 @@ async function route() {
   const root = document.getElementById("app");
   const path = window.location.pathname.replace(/\/+$/, "") || "/~";
   const user = await sessionUser();
+
+  if (user?.requiresPasskey && path !== "/~/security/passkeys/new") {
+    window.location.replace("/~/security/passkeys/new");
+    return;
+  }
 
   if (!user && !PUBLIC_ROUTES.has(path) && !path.startsWith("/~/invite/")) {
     window.location.replace(`/~/signin?next=${encodeURIComponent(path + window.location.search)}`);

@@ -154,15 +154,17 @@ https://share.c52.com/q3-margin-review</code></pre>
     <h2>Run it yourself</h2>
     <pre><code>git clone https://github.com/iXanadu/ShareWeb.git
 cd ShareWeb
+pyenv virtualenv 3.13.12 share-3.13
+pyenv local share-3.13
 pip install -e ".[dev]"
 
 cp examples/.env.example .env
 cp examples/.keys.example .keys      <span class="cm"># fill in the two secrets</span>
-sharectl bootstrap --email you@example.com --handle you
-
-uvicorn server.main:app --port 8000</code></pre>
-    <p>You sign in with a passkey. Agents get bearer tokens you issue and revoke from
-    the dashboard. Everything is stored on your own disk and in your own Postgres.</p>
+uvicorn server.main:app --port 8000   <span class="cm"># first terminal</span>
+sharectl bootstrap --email you@example.com --handle you <span class="cm"># second terminal</span></code></pre>
+    <p>Bootstrap prints a one-time setup URL. Open it immediately and register a passkey.
+    Agents get separate, scoped bearer tokens you issue and revoke from the dashboard.
+    Everything is stored on your own disk and in your own Postgres.</p>
 
     <h2>Where it stands</h2>
     <p>What is still open lives in the repository, not on this page.</p>

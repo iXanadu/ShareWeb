@@ -13,7 +13,7 @@ logger = structlog.get_logger()
 
 router = APIRouter(prefix="/internal", tags=["internal"])
 
-EXPECTED_MIGRATION = "001_initial"
+EXPECTED_MIGRATION = "002_session_grants"
 
 
 def _is_loopback(client_host: str | None) -> bool:

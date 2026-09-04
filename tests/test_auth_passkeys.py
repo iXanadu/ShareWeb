@@ -25,6 +25,16 @@ async def test_register_begin_requires_session(client):
     assert resp.status_code == 401
 
 
+async def test_register_begin_rejects_bearer_token(client, root_user):
+    resp = await client.post(
+        "/auth/passkey/register/begin",
+        json={},
+        headers=root_user["headers"],
+    )
+    assert resp.status_code == 403
+    assert resp.json()["error"]["code"] == "wrong_credential_class"
+
+
 async def test_register_begin_with_session(client, root_user):
     client.cookies.set("share_s", root_user["session"])
     resp = await client.post("/auth/passkey/register/begin", json={})

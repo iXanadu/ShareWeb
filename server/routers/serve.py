@@ -8,10 +8,9 @@ from fastapi import APIRouter, Form, Request, Response
 from fastapi.responses import FileResponse, RedirectResponse
 
 from ..config import get_settings
-
 from ..errors import NOT_FOUND_HEADERS, not_found_response
-from ..services.authorize import PasswordRequired, authorize_request
 from ..services import sharing
+from ..services.authorize import PasswordRequired, authorize_request
 
 router = APIRouter(tags=["serve"])
 

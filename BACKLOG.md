@@ -12,7 +12,11 @@ Status: OPEN / IN-PROGRESS / FIXED / WONTFIX. Root = where born. Found = where s
 
 ## BLOCKING
 
-_(none)_
+- **SW-11** **IN-PROGRESS.** Bearer-token actors pass `require_user` on owner-only dashboard routes. Any agent
+  token can list/create/revoke the owner's API tokens and begin/finish passkey registration,
+  enabling account takeover and cross-agent credential revocation. Require a browser session
+  (or a narrowly identified bootstrap/recovery credential) for token administration and passkey
+  enrollment before issuing tokens broadly. Root: Phase 1 auth plumbing. Found: 2026-09-04.
 
 ## NEEDS-DECISION
 

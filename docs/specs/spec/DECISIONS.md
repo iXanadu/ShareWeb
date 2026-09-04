@@ -377,3 +377,24 @@ gets built.
 **Resolution.** Stored bytes and `contentType` stay as posted (`text/plain` or `text/markdown`). A GET of a `.md` / `.markdown` / `text/markdown` file without `?download=1` is rendered server-side (CommonMark + tables/strikethrough/task lists) into a no-JS HTML document using the recipient type tokens. Raw HTML in the source is escaped; `javascript:` and other non-`http`/`https`/`mailto` URLs are stripped. Files over 1 MiB, unreadable files, and `?download=1` stay on the existing raw/R2 path.
 
 **Cost.** A Markdown share-link root no longer hits R2. Download remains. This is a display wrapper, not a new artifact `kind`. The HTML body is wrapped in Cloudflare `email_off` comments so Scrape Shield does not replace addresses with a JS decoder the recipient pages do not run.
+
+---
+
+## D-30 — Bootstrap and recovery use one-time setup URLs
+
+**Sections:** §4.2, §4.5; supersedes D-22's raw session-cookie output
+
+**Conflict.** Printing a `share_s` cookie left the operator with no usable browser-login path.
+The initial production owner never registered a passkey. Separately, owner routes accepted any
+bearer-token actor because they depended on generic `require_user`, allowing agent tokens to
+manage peer credentials and enroll an owner passkey.
+
+**Resolution.** `sharectl bootstrap` prints a one-time 30-minute setup URL instead of a raw
+session cookie. `sharectl grant-session --email … --minutes 30`, run as root on the server,
+provides the same recovery path later. Redemption creates a purpose-limited session: it can only
+identify the owner, list passkeys, and complete passkey enrollment. Successful enrollment upgrades
+that browser session to a normal 30-day session. Token administration and device-code approval
+require a full browser session; bearer tokens are rejected regardless of their scopes.
+
+**Cost.** One migration adds session purpose and one-time grant state. Operators must open the
+URL before it expires, but no longer need to install an opaque cookie manually.

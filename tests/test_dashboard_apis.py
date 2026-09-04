@@ -41,3 +41,29 @@ async def test_passkeys_list_empty(client, root_user):
     resp = await client.get("/api/v1/auth/passkeys")
     assert resp.status_code == 200, resp.text
     assert resp.json()["items"] == []
+
+
+async def test_owner_routes_reject_bearer_token(client, root_user):
+    headers = root_user["headers"]
+    requests = [
+        client.get("/api/v1/tokens", headers=headers),
+        client.post(
+            "/api/v1/tokens",
+            headers=headers,
+            json={"name": "intruder", "scopes": ["artifacts:read"]},
+        ),
+        client.get("/api/v1/auth/passkeys", headers=headers),
+        client.post(
+            "/api/v1/auth/device/lookup",
+            headers=headers,
+            json={"userCode": "AAAA-AAAA"},
+        ),
+    ]
+    responses = [await request for request in requests]
+    for response in responses:
+        assert response.status_code == 403, response.text
+        assert response.json()["error"]["code"] == "wrong_credential_class"
+
+    me = await client.get("/api/v1/me", headers=headers)
+    assert me.status_code == 200
+    assert me.json()["requiresPasskey"] is False

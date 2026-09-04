@@ -44,7 +44,7 @@ async def services():
               artifact_tag, version_file, upload_session,
               idempotency_record, view_daily, audit_event,
               artifact_version, artifact, file,
-              api_token, session, recovery_code, passkey_credential,
+              api_token, session_grant, session, recovery_code, passkey_credential,
               invite, app_user
             RESTART IDENTITY CASCADE
             """

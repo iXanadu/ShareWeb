@@ -47,7 +47,17 @@ ruff check .
 - Config: `.env` (non-sensitive) + `.keys` (secrets). Prefix `SHARE_`.
 - Python: pyenv + pyenv-virtualenv, env `share-3.13`. Never `python -m venv`.
 - Database: PostgreSQL (local Homebrew 17) + asyncpg. Redis for cache/rate limits.
-- Local only this sprint. Do not deploy to WebOne until the owner sets folder + HTTPS.
+- Production is WebOne: `/var/www/share.c52.com/prod`, unit `uvicorn_share_c52_prod`
+  on `127.0.0.1:8021`, public `https://share.c52.com`. There is no deploy script yet;
+  the working path is `git fetch` as `ixanadu` (the `share_user` deploy key cannot
+  fetch, SW-9), `git reset --hard origin/main` as `share_user`, `pip install -e .`
+  only when dependencies changed, then restart the unit and check `/health`.
+- `robots.txt` is a route in `server/routers/serve.py` and serves `Allow: /` for the
+  whole site. Do not re-narrow it: Share is agent-facing, and private `/s/` pages stay
+  out of indexes through their `X-Robots-Tag: noindex` headers, which only take effect
+  when a crawler is permitted to fetch the page at all. Cloudflare's Managed robots.txt
+  feature (AI Crawl Control) must stay off on the zone; it prepends `Disallow: /` for
+  ClaudeBot, GPTBot and others ahead of this route.
 - Routers thin; logic in `server/services/`.
 - `can_view` is four lines and has no fifth case. P1: unknown and unauthorized are the same 404.
 

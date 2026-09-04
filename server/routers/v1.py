@@ -5,7 +5,13 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, Query, Request, Response
 from fastapi.responses import FileResponse, JSONResponse
 
-from ..auth import Actor, require_user
+from ..auth import (
+    Actor,
+    require_any_user,
+    require_owner_session,
+    require_passkey_session,
+    require_user,
+)
 from ..services import artifacts as arts
 from ..services import device, passkeys, sharing, tokens
 
@@ -13,11 +19,12 @@ router = APIRouter(prefix="/api/v1", tags=["v1"])
 
 
 @router.get("/me")
-async def me(actor: Actor = Depends(require_user)):
+async def me(actor: Actor = Depends(require_any_user)):
     return {
         "id": actor.user_id,
         "handle": actor.handle,
         "isRoot": actor.is_root,
+        "requiresPasskey": actor.session_purpose == "recovery",
     }
 
 
@@ -114,12 +121,12 @@ async def restore_artifact(
 
 
 @router.get("/tokens")
-async def list_tokens(actor: Actor = Depends(require_user)):
+async def list_tokens(actor: Actor = Depends(require_owner_session)):
     return await tokens.list_tokens(actor)
 
 
 @router.post("/tokens")
-async def create_token(request: Request, actor: Actor = Depends(require_user)):
+async def create_token(request: Request, actor: Actor = Depends(require_owner_session)):
     body = await request.json()
     data = await tokens.create_token(
         actor, body.get("name") or "", body.get("scopes") or [], _ip(request)
@@ -128,13 +135,17 @@ async def create_token(request: Request, actor: Actor = Depends(require_user)):
 
 
 @router.delete("/tokens/{token_id}")
-async def delete_token(token_id: str, request: Request, actor: Actor = Depends(require_user)):
+async def delete_token(
+    token_id: str,
+    request: Request,
+    actor: Actor = Depends(require_owner_session),
+):
     await tokens.revoke_token(actor, token_id, _ip(request))
     return Response(status_code=204)
 
 
 @router.get("/auth/passkeys")
-async def list_passkeys(actor: Actor = Depends(require_user)):
+async def list_passkeys(actor: Actor = Depends(require_passkey_session)):
     return await passkeys.list_passkeys(actor)
 
 
@@ -155,19 +166,19 @@ async def device_poll(request: Request):
 
 
 @router.post("/auth/device/lookup")
-async def device_lookup(request: Request, actor: Actor = Depends(require_user)):
+async def device_lookup(request: Request, actor: Actor = Depends(require_owner_session)):
     body = await request.json()
     return await device.lookup(body.get("userCode") or "")
 
 
 @router.post("/auth/device/approve")
-async def device_approve(request: Request, actor: Actor = Depends(require_user)):
+async def device_approve(request: Request, actor: Actor = Depends(require_owner_session)):
     body = await request.json()
     return await device.approve(actor, body.get("userCode") or "", _ip(request))
 
 
 @router.post("/auth/device/deny")
-async def device_deny(request: Request, actor: Actor = Depends(require_user)):
+async def device_deny(request: Request, actor: Actor = Depends(require_owner_session)):
     body = await request.json()
     return await device.deny(body.get("userCode") or "")
 
