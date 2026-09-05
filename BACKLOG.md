@@ -20,8 +20,6 @@ _(none)_
 
 ## DEGRADING
 
-- **SW-1** Headed passkey register+sign-in passed (scripts/headed_passkey_check.py). Bootstrap
-  session cookie still exists as a local back door (D-22). Root: Phase 1 §4. Found: 2026-08-26.
 - **SW-2** Mini has no Caddy; FastAPI serves artifacts locally (D-21). Prod is nginx on WebOne,
   not Caddy. Root: §2.4. Found: 2026-08-26.
 - **SW-3** Phase 1 dashboard screens 11.1/11.3/11.5–8/11.15/11.18/11.19/11.26/11.27 are built
@@ -49,6 +47,9 @@ _(none)_
 
 ## FIXED
 
+- **SW-1** Raw-cookie bootstrap replaced by one-time purpose-limited setup grants (D-30). The
+  pre-passkey production sessions were revoked after owner passkey enrollment. Root: Phase 1 §4.
+  Found: 2026-08-26. Fixed: 2026-09-05.
 - **SW-11** Bearer tokens could access owner-only token administration and passkey enrollment.
   Fixed with browser-session dependencies and purpose-limited, one-time recovery grants; deployed
   to WebOne at `75a2a8e`. Root: Phase 1 auth plumbing. Found/fixed: 2026-09-04.
