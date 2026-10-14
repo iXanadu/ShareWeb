@@ -25,7 +25,7 @@ class Settings(BaseSettings):
 
     # Database
     database_url: str = ""
-    db_host: str = ""  # empty → Unix socket (local peer auth)
+    db_host: str = ""  # empty → Unix socket (local peer auth); db_port still picks the instance
     db_port: int = 5432
     db_name: str = "share_dev"
     db_user: str = "share"
@@ -63,7 +63,7 @@ class Settings(BaseSettings):
         user = self.db_user
         name = self.db_name
         if not self.db_host:
-            return f"postgresql://{user}@/{name}"
+            return f"postgresql://{user}@/{name}?port={self.db_port}"
         if self.db_password:
             pw = quote_plus(self.db_password)
             return f"postgresql://{user}:{pw}@{self.db_host}:{self.db_port}/{name}"

@@ -9,7 +9,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 os.environ.setdefault("SHARE_HOST", "localhost")
 os.environ.setdefault("SHARE_PORT", "8000")
-os.environ.setdefault("SHARE_DB_USER", os.environ.get("USER", "dev"))
+# Dev/test databases live on the TEST Postgres instance (:5433), never production :5432.
+os.environ.setdefault("SHARE_DB_PORT", "5433")
+os.environ.setdefault("SHARE_DB_USER", "share")
 os.environ.setdefault("SHARE_DB_NAME", "share_test")
 os.environ.setdefault("SHARE_DB_PASSWORD", "")
 os.environ.setdefault("SHARE_REDIS_URL", "redis://127.0.0.1:6379/1")
